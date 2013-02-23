@@ -58,5 +58,53 @@ namespace KinectScan {
                 this["ModellingMode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
+        public global::System.Drawing.Point CalibrationTableA {
+            get {
+                return ((global::System.Drawing.Point)(this["CalibrationTableA"]));
+            }
+            set {
+                this["CalibrationTableA"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
+        public global::System.Drawing.Point CalibrationTableB {
+            get {
+                return ((global::System.Drawing.Point)(this["CalibrationTableB"]));
+            }
+            set {
+                this["CalibrationTableB"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
+        public global::System.Drawing.Point CalibrationCylinderA {
+            get {
+                return ((global::System.Drawing.Point)(this["CalibrationCylinderA"]));
+            }
+            set {
+                this["CalibrationCylinderA"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
+        public global::System.Drawing.Point CalibrationCylinderB {
+            get {
+                return ((global::System.Drawing.Point)(this["CalibrationCylinderB"]));
+            }
+            set {
+                this["CalibrationCylinderB"] = value;
+            }
+        }
     }
 }

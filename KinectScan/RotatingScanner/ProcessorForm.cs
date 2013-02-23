@@ -94,6 +94,8 @@ namespace KinectScan
 
             DepthCache = new DepthContainer[DepthCacheSize];
             DepthIndex = DepthCacheUsed = 0;
+
+            CF = new CalibrationForm(Context);
         }
 
         MenuItem[] ModellingModeMenuItems;
@@ -2599,10 +2601,13 @@ namespace KinectScan
 
         enum States { None, Calibration };
         States State;
-        
+
+        CalibrationForm CF;
         private void TSBCalibration_Click(object sender, EventArgs e)
         {
-            SwitchState(States.Calibration);
+            //SwitchState(States.Calibration);
+            CF.Show();
+            
         }
 
         void SwitchState(States state)

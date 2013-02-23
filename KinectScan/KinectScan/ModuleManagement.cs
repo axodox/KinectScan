@@ -153,6 +153,18 @@ namespace KinectScan
 
             internal event EventHandler StartVirtualDevice;
             internal event EventHandler StartKinectDevice;
+
+            public float GetDepth(ushort depth)
+            {
+                return DepthA - DepthB / (depth - DepthC);
+            }
+
+            public Vector4 GetWorldPosition(int x, int y, ushort rawDepth)
+            {
+                float depth = GetDepth(rawDepth);
+                Vector4 imagePos = new Vector4(x * depth, y * depth, depth, 1f);
+                return Vector4.Transform(imagePos, Matrix.Transpose(DepthInverseIntrinsics));
+            }
         }
     }
 }

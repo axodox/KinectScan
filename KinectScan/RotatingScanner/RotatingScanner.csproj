@@ -61,6 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalibrationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CalibrationForm.Designer.cs">
+      <DependentUpon>CalibrationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CurveFit.cs" />
     <Compile Include="ProcessorForm.cs">
       <SubType>Form</SubType>
@@ -127,6 +133,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CalibrationForm.resx">
+      <DependentUpon>CalibrationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProcessorForm.resx">
       <DependentUpon>ProcessorForm.cs</DependentUpon>
     </EmbeddedResource>

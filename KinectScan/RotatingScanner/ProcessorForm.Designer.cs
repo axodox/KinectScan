@@ -151,7 +151,7 @@
             this.TSDDBView.Image = global::KinectScan.Resources.view16;
             this.TSDDBView.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TSDDBView.Name = "TSDDBView";
-            this.TSDDBView.Size = new System.Drawing.Size(61, 22);
+            this.TSDDBView.Size = new System.Drawing.Size(61, 20);
             this.TSDDBView.Text = "View";
             // 
             // TSS0
@@ -164,27 +164,27 @@
             this.TSBBuildModel.Image = global::KinectScan.Resources.buildmodel16;
             this.TSBBuildModel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TSBBuildModel.Name = "TSBBuildModel";
-            this.TSBBuildModel.Size = new System.Drawing.Size(91, 22);
+            this.TSBBuildModel.Size = new System.Drawing.Size(91, 20);
             this.TSBBuildModel.Text = "Build model";
             this.TSBBuildModel.Click += new System.EventHandler(this.TSBBuildModel_Click);
             // 
             // TSLLabel
             // 
             this.TSLLabel.Name = "TSLLabel";
-            this.TSLLabel.Size = new System.Drawing.Size(35, 22);
+            this.TSLLabel.Size = new System.Drawing.Size(35, 15);
             this.TSLLabel.Text = "Label";
             // 
             // TSTBLabel
             // 
             this.TSTBLabel.Name = "TSTBLabel";
-            this.TSTBLabel.Size = new System.Drawing.Size(100, 25);
+            this.TSTBLabel.Size = new System.Drawing.Size(100, 23);
             // 
             // TSBSaveModel
             // 
             this.TSBSaveModel.Image = global::KinectScan.Resources.save16;
             this.TSBSaveModel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TSBSaveModel.Name = "TSBSaveModel";
-            this.TSBSaveModel.Size = new System.Drawing.Size(88, 22);
+            this.TSBSaveModel.Size = new System.Drawing.Size(88, 20);
             this.TSBSaveModel.Text = "Save model";
             this.TSBSaveModel.Click += new System.EventHandler(this.TSBSaveModel_Click);
             // 
@@ -233,7 +233,7 @@
             this.SSStatus.TabIndex = 1;
             this.SSStatus.Text = "statusStrip1";
             // 
-            // ProcessForm
+            // ProcessorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -241,7 +241,7 @@
             this.Controls.Add(this.SSStatus);
             this.Controls.Add(this.TSMain);
             this.Menu = this.MMRotatingScanner;
-            this.Name = "ProcessForm";
+            this.Name = "ProcessorForm";
             this.Text = "Rotating scanner";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DebugForm_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DebugForm_MouseMove);
