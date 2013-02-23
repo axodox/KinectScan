@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Connecting" xml:space="preserve">
+    <value>Kapcsolódás a Kinecthez...</value>
+  </data>
+  <data name="ConnectingAborted" xml:space="preserve">
+    <value>Kapcsolódás megszakadt.</value>
+  </data>
+  <data name="ConnectionEstablished" xml:space="preserve">
+    <value>Kapcsolat létrejött.</value>
+  </data>
+  <data name="CreatingGPUProcessingPipeline" xml:space="preserve">
+    <value>GPU feldolgozólánc felépítése...</value>
+  </data>
+  <data name="ExportedModels" xml:space="preserve">
+    <value>Exportált modellek</value>
+  </data>
+  <data name="LoadingModel" xml:space="preserve">
+    <value>Modell betöltése folyamatban...</value>
+  </data>
+  <data name="ModelLoaded" xml:space="preserve">
+    <value>Modell betöltve.</value>
+  </data>
+  <data name="ModelLoadingFailed" xml:space="preserve">
+    <value>Modell betöltése sikertelen.</value>
+  </data>
+  <data name="OpeningVideoStream" xml:space="preserve">
+    <value>Videófolyam megnyitása...</value>
+  </data>
+  <data name="OpenModel" xml:space="preserve">
+    <value>Modell megnyitása</value>
+  </data>
+  <data name="PrepareToShutdown" xml:space="preserve">
+    <value>Felkészülés a leállásra...</value>
+  </data>
+  <data name="ProcessingHalted" xml:space="preserve">
+    <value>A feldolgozás felfüggesztve.</value>
+  </data>
+  <data name="ProcessingResumed" xml:space="preserve">
+    <value>A feldolgozás folytatása</value>
+  </data>
+  <data name="ProcessingStarted" xml:space="preserve">
+    <value>A feldolgozás elindult.</value>
+  </data>
+  <data name="ProcessingStopped" xml:space="preserve">
+    <value>A feldolgozás leállt.</value>
+  </data>
+  <data name="RecreatingGPUProcessingPipeline" xml:space="preserve">
+    <value>GPU feldolgozólánc újraépítése...</value>
+  </data>
+  <data name="ReleasingGPUProcessingPipeline" xml:space="preserve">
+    <value>GPU feldolgozólánc lebontása...</value>
+  </data>
+  <data name="SelectWorkingDirectory" xml:space="preserve">
+    <value>Kérem válasszon munkakönyvtárat:</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Indítás</value>
+  </data>
+  <data name="Stop" xml:space="preserve">
+    <value>Leállítás</value>
+  </data>
+  <data name="ProbeAddHelp" xml:space="preserve">
+    <value>Szondák hozzáadása: Kattintson a képre szonda hozzáadásához.</value>
+  </data>
+  <data name="ProbeHelp" xml:space="preserve">
+    <value>Ezzel az eszközzel szondákat adhat a képhez pozíció mérésére.</value>
+  </data>
+  <data name="ProbeMoveEndHelp" xml:space="preserve">
+    <value>Szondák mozgatása: Válassza ki az új pozíciót.</value>
+  </data>
+  <data name="ProbeMoveStartHelp" xml:space="preserve">
+    <value>Szondák mozgatása: Válassza ki a mozgatni kívánt szondát.</value>
+  </data>
+  <data name="ProbeRemoveHelp" xml:space="preserve">
+    <value>Szondák eltávolítása: Válassza ki a törölni kívánt szondát.</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Hiba</value>
+  </data>
+  <data name="ModeUnsupported" xml:space="preserve">
+    <value>A(z) {0} működési módot nem támogatja ez az eszköz.</value>
+  </data>
+  <data name="SaveSuccessful" xml:space="preserve">
+    <value>"{0}" mentése befejeződött.</value>
+  </data>
+  <data name="SaveUnsuccessful" xml:space="preserve">
+    <value>"{0}" mentése sikertelen volt, a hiba oka: {1}.</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Figyelmeztetés</value>
+  </data>
+  <data name="LabelNameConflict" xml:space="preserve">
+    <value>Ez a címke már használatban van. Felül kívánja írni a már létező fájlokat?</value>
+  </data>
+  <data name="LabelSpecificationNeeded" xml:space="preserve">
+    <value>A címkét kötelező megadni.</value>
+  </data>
+  <data name="HideAdvancedSettings" xml:space="preserve">
+    <value>Haladó beállítások elrejtése</value>
+  </data>
+  <data name="HideTestSettings" xml:space="preserve">
+    <value>Tesztelési beállítások elrejtése</value>
+  </data>
+  <data name="ShowAdvancedSettings" xml:space="preserve">
+    <value>Haladó beállítások megjelenítése</value>
+  </data>
+  <data name="ShowTestSettings" xml:space="preserve">
+    <value>Tesztelési beállítások megjelenítése</value>
+  </data>
+  <data name="DirectoryCreationError" xml:space="preserve">
+    <value>A könyvtárak nem hozhatóak létre!</value>
+  </data>
+  <data name="PositionCaptured" xml:space="preserve">
+    <value> helyzet lett eddig rögzítve.</value>
+  </data>
+  <data name="SelectCalibrationFolder" xml:space="preserve">
+    <value>Válassza ki a mentés helyét!</value>
+  </data>
+</root>

@@ -1,0 +1,792 @@
+﻿float4x4 World;
+float4x4 View;
+float4x4 Projection;
+float4x4 DepthTransform;
+float NaN;
+uniform extern texture ScreenTexture;
+uniform extern texture ScreenTexture2;	
+
+sampler ScreenS = sampler_state
+{
+	magfilter = POINT; minfilter = POINT; mipfilter=POINT;
+	Texture = <ScreenTexture>;	
+};
+
+sampler ScreenS2 = sampler_state
+{
+	magfilter = POINT; minfilter = POINT; mipfilter=POINT;
+	Texture = <ScreenTexture2>;	
+};
+
+struct VertexPositionTexture
+{
+    float4 Position : POSITION0;
+	float2 TextureCoordinate : TEXCOORD0;
+};
+
+float DepthHStep = 1./320;
+float DepthVStep = 1./240;
+float3 DepthWeight= float3(3840,240,15)/2047;
+
+float DepthJump(sampler tex, float2 coord)
+{
+	float3 s11 = dot(tex2D(tex, coord + float2(-DepthHStep, -DepthVStep)).xyz,DepthWeight);
+	float3 s12 = dot(tex2D(tex, coord + float2(0, -DepthVStep)).xyz,DepthWeight);
+	float3 s13 = dot(tex2D(tex, coord + float2(DepthHStep, -DepthVStep)).xyz,DepthWeight);
+	float3 s21 = dot(tex2D(tex, coord + float2(-DepthHStep, 0)).xyz,DepthWeight);
+	float3 s23 = dot(tex2D(tex, coord + float2(DepthHStep, 0)).xyz,DepthWeight);
+	float3 s31 = dot(tex2D(tex, coord + float2(-DepthHStep, DepthVStep)).xyz,DepthWeight);
+	float3 s32 = dot(tex2D(tex, coord + float2(0, DepthVStep)).xyz,DepthWeight);
+	float3 s33 = dot(tex2D(tex, coord + float2(DepthHStep, DepthVStep)).xyz,DepthWeight);
+	float gx = abs(s13 + s33 + (2 * s23) - s11 - (2 * s21) - s31);
+	float gy = abs(s31 + (2 * s32) + s33 - s11 - (2 * s12) - s13);
+	float res=sqrt(gx*gx + gy*gy);
+    return res;
+}
+
+float4 DepthTranslationShader(float2 texCoord: TEXCOORD0) : COLOR
+{
+	float4 color = tex2D(ScreenS, texCoord);
+	float i=(color.r*3840+color.g*240+color.b*15);
+
+
+	if(i>2046|| DepthJump(ScreenS, texCoord)>0.1)
+	return NaN;
+	else
+	{
+	float depth=1.0 / (i * -0.0030711016 + 3.3309495161);
+	float4 imgPos=mul(DepthTransform,float4(1280*texCoord.x,1024*texCoord.y,1,0)*depth);
+	return float4(imgPos.x,imgPos.y,imgPos.z,(color.g*240+color.b*15)/255);
+	}
+}
+
+technique DepthTranslation
+{
+	pass P0
+	{
+		PixelShader = compile ps_2_0 DepthTranslationShader();
+	}
+}
+
+VertexPositionTexture KinectVertexShader(VertexPositionTexture input)
+{
+    VertexPositionTexture processed=input, output;
+	float4 depthColor = tex2Dlod(ScreenS,float4(input.TextureCoordinate.x,input.TextureCoordinate.y,0,0));
+	processed.Position=float4(-depthColor.x,-depthColor.y,depthColor.z,1);
+
+    float4 worldPosition = mul(processed.Position, World);
+    float4 viewPosition = mul(worldPosition, View);
+    output.Position = mul(viewPosition, Projection);
+	output.TextureCoordinate = input.TextureCoordinate;
+
+    return output;
+}
+
+
+
+
+
+
+float4 IRShader(float2 texCoord: TEXCOORD0) : COLOR
+{
+	float4 color = tex2D(ScreenS, texCoord);
+	float i=(color.r*3840+color.g*240+color.b*15)/1023;
+	color.r=i;
+	color.g=i;
+	color.b=i;
+	color.a=1;
+	return color;
+}
+
+technique IR
+{
+	pass P0
+	{
+		PixelShader = compile ps_2_0 IRShader();
+	}
+}
+
+float4 RGBShader(float2 texCoord: TEXCOORD0) : COLOR
+{
+	float4 color = tex2D(ScreenS, texCoord);
+	color.a=1;
+	return color;
+}
+
+technique RGB
+{
+	pass P0
+	{
+		PixelShader = compile ps_2_0 RGBShader();
+	}
+}
+
+float4 DepthShader(float2 texCoord: TEXCOORD0) : COLOR
+{
+	float4 color = tex2D(ScreenS, texCoord);
+	float i=(color.r*3840+color.g*240+color.b*15)/2047;
+	color.r=i;
+	color.g=i;
+	color.b=i;
+	color.a=1;
+	return color;
+}
+
+float4 DepthShader2(float2 texCoord: TEXCOORD0) : COLOR
+{
+	float4 color = tex2D(ScreenS, texCoord);
+	float i=(color.g*240+color.b*15)/255;
+	float j=(color.r*7)/16;
+	color.r=j;
+	color.g=i;
+	color.b=i;
+	color.a=1;
+	return color;
+}
+
+float4 HSLToRGB(float4 cl)
+{
+    float h=cl.x, sl=cl.y, l=cl.z;
+    float v;
+    float r=1.,g=1.,b=1.;
+	if(h>=1)h=0.999999;
+    v = (l <= 0.5) ? (l * (1.0 + sl)) : (l + sl - l * sl);
+    if (v > 0.) 
+    {
+            float m;
+            float sv;
+            float fract, vsf, mid1, mid2;
+            m = l + l - v;
+            sv = (v - m ) / v;
+            h *= 6.;
+            fract = h - trunc(h);
+            vsf = v * sv * fract;
+            mid1 = m + vsf;
+            mid2 = v - vsf;
+            if(h<1.)
+			{
+                        r = v; 
+                        g = mid1; 
+                        b = m; 
+            }
+			else if(h<2.)
+            { 
+                        r = mid2; 
+                        g = v; 
+                        b = m; 
+            }
+            else if(h<3.)
+			{ 
+                        r = m; 
+                        g = v; 
+                        b = mid1; 
+            }
+			else if(h<4.)
+            {
+                        r = m; 
+                        g = mid2; 
+                        b = v; 
+            }
+			else if(h<5)
+            { 
+                        r = mid1; 
+                        g = m; 
+                        b = v; 
+            }
+            else
+			{ 
+                        r = v; 
+                        g = m; 
+                        b = mid2;
+            }
+    }
+    return float4(r,g,b,cl.a);
+}
+
+float4 DepthShader3(float2 texCoord: TEXCOORD0) : COLOR
+{
+	float4 color = tex2D(ScreenS, texCoord);
+	float i=(color.g*240+color.b*15)/255;
+	if(i==1 && color.r>0.4666)
+	return float4(0,0,0,1);
+	else
+	return HSLToRGB(float4(i,1,0.5,1));
+}
+
+technique Depth
+{
+	pass P0
+	{
+		PixelShader = compile ps_2_0 DepthShader3();
+	}
+}
+
+float4 KinectPixelShader(float2 texCoord: TEXCOORD0) : COLOR0
+{
+	float4 color = tex2D(ScreenS2, texCoord);
+	color.a=1;
+    return color;//HSLToRGB(float4(color.a,1,0.5,1));
+}
+
+technique Kinect
+{
+    pass P0
+    {
+        VertexShader = compile vs_3_0 KinectVertexShader();
+        PixelShader = compile ps_3_0 KinectPixelShader();
+    }
+}
+
+float DepthJump(sampler tex, float2 coord)
+{
+	float s11 = fkill(dot(tex2D(tex, coord + float2(-DepthHStep, -DepthVStep)).xyz,DepthWeight));
+	float s12 = fkill(dot(tex2D(tex, coord + float2(0, -DepthVStep)).xyz,DepthWeight));
+	float s13 = fkill(dot(tex2D(tex, coord + float2(DepthHStep, -DepthVStep)).xyz,DepthWeight));
+	float s21 = fkill(dot(tex2D(tex, coord + float2(-DepthHStep, 0)).xyz,DepthWeight));
+	float s23 = fkill(dot(tex2D(tex, coord + float2(DepthHStep, 0)).xyz,DepthWeight));
+	float s31 = fkill(dot(tex2D(tex, coord + float2(-DepthHStep, DepthVStep)).xyz,DepthWeight));
+	float s32 = fkill(dot(tex2D(tex, coord + float2(0, DepthVStep)).xyz,DepthWeight));
+	float s33 = fkill(dot(tex2D(tex, coord + float2(DepthHStep, DepthVStep)).xyz,DepthWeight));
+	float gx = abs(s13 + s33 + (2 * s23) - s11 - (2 * s21) - s31);
+	float gy = abs(s31 + (2 * s32) + s33 - s11 - (2 * s12) - s13);
+	float res=sqrt(gx*gx + gy*gy);
+    return res;
+}
+
+float4x4 Test=float4x4(1,0,0,0, 0,1,0,0, 0,0,1,5, 0,0,0,1);
+float4 DepthTranslationShader(float2 texCoord: TEXCOORD0) : COLOR
+{
+	float2 cpos = tex2D(DepthCorrectionSampler, texCoord).xy;
+	float4 color = tex2D(DepthSampler, cpos/DepthCorrectionTextureSize);
+	float x=(color.r*3840+color.g*240+color.b*15);
+
+
+	if(x>2046)// || DepthJump(DepthSampler, texCoord)>TriangleRemoveLimit/100000)
+	return NaN;
+	else
+	{
+	float depth=-0.0233458-354.988/(x-1093.09);//1 / (i * -0.0030711016 + 3.3309495161);
+	return mul(DepthInverseIntrinsics,float4(1280*texCoord.x*depth,1024*texCoord.y*depth,depth,1));
+	//return mul(Test,float4(0,0,depth,1));
+	}
+}
+
+float4 DepthTranslationShader(float2 texCoord: TEXCOORD0) : COLOR
+{
+	float2 cpos = tex2D(DepthCorrectionSampler, texCoord).xy;
+	float4 color = tex2D(DepthSampler, cpos / DepthCorrectionTextureSize);
+	float x = (color.r * 3840 + color.g * 240 + color.b * 15);
+	if(x > 2046)
+		return NaN;
+	else
+	{
+		float depth = ToDepth(x);
+		return mul(DepthInverseIntrinsics, float4(1280 * texCoord.x * depth, 1024 * texCoord.y * depth, depth, 1));
+	}
+}
+
+technique DepthTranslation
+{
+	pass P0
+	{
+		VertexShader = compile vs_3_0 SpriteVertexShader();
+		PixelShader = compile ps_3_0 DepthTranslationShader();
+	}
+}
+
+VertexPositionTexture KinectVertexShader(VertexPositionTexture input)
+{
+    VertexPositionTexture processed, output;
+	float4 pos = tex2Dlod(DepthSampler, float4(input.TextureCoordinate.x, input.TextureCoordinate.y, 0, 0));
+	float3 posu = tex2Dlod(DepthSampler, float4(input.TextureCoordinate.x, input.TextureCoordinate.y + DepthVBigStep, 0, 0)).xyz;
+	float3 posd = tex2Dlod(DepthSampler, float4(input.TextureCoordinate.x, input.TextureCoordinate.y - DepthVBigStep, 0, 0)).xyz;
+	float3 posl = tex2Dlod(DepthSampler, float4(input.TextureCoordinate.x - DepthHBigStep, input.TextureCoordinate.y, 0, 0)).xyz;
+	float3 posr = tex2Dlod(DepthSampler, float4(input.TextureCoordinate.x + DepthHBigStep, input.TextureCoordinate.y, 0, 0)).xyz;
+	if(length(posu - posd) / pos.z > TriangleRemoveLimit || length(posr - posl) / pos.z > TriangleRemoveLimit)
+	{
+		processed.Position = float4(NaN, NaN, NaN, NaN);
+	}
+	else
+	{
+		processed.Position = float4(pos.x, -pos.y, pos.z, 1);
+	}
+    float4 worldPosition = mul(processed.Position, World);
+    float4 viewPosition = mul(worldPosition, View);
+    output.Position = mul(viewPosition, Projection);
+	output.TextureCoordinate = input.TextureCoordinate;
+    return output;
+}
+
+float4 KinectPixelShader(float2 texCoord: TEXCOORD0) : COLOR0
+{
+	//float2 cpos = tex2D(DepthCorrectionSampler, texCoord).xy;
+	//float4 depth = tex2D(DepthSampler, cpos/VideoCorrectionTextureSize);
+	//float4 v=mul(DepthToColor,depth);
+	//v=v/v.z;
+	//float4 color = tex2D(VideoSampler, float2(v.x/1280, v.y/1024));
+
+	//color.a=1;
+    //return color;//HSLToRGB(float4(color.a,1,0.5,1));
+	return tex2D(VideoSampler, texCoord);
+}
+
+technique Kinect
+{
+    pass P0
+    {
+        VertexShader = compile vs_3_0 KinectVertexShader();
+        PixelShader = compile ps_3_0 KinectPixelShader();
+    }
+}
+
+
+
+
+
+
+
+
+VertexPositionColor PositionColorVertexShader(VertexPositionColor input)
+{
+	VertexPositionColor output;
+	output.Position=mul(float4(input.Position.x,input.Position.y,input.Position.z,1),SimpleTransform);
+	output.Color=input.Color;
+    return output;
+}
+
+float4 PositionColorPixelShader(VertexPositionColor input) : COLOR
+{
+	return input.Color;
+}
+
+technique PositionColor
+{
+    pass P0
+    {
+        VertexShader = compile vs_3_0 PositionColorVertexShader();
+        PixelShader = compile ps_3_0 PositionColorPixelShader();
+    }
+}
+
+VertexPositionTexture PositionTextureVertexShader(VertexPositionTexture input)
+{
+	VertexPositionTexture output;
+	output.Position=mul(float4(input.Position.x,input.Position.y,input.Position.z,1),SimpleTransform);
+	output.TextureCoordinate=input.TextureCoordinate;
+    return output;
+}
+
+float4 PositionTexturePixelShader(VertexPositionTexture input) : COLOR
+{
+	return tex2D(VideoSampler, input.TextureCoordinate);
+}
+
+technique PositionTexture
+{
+    pass P0
+    {
+        VertexShader = compile vs_3_0 PositionTextureVertexShader();
+        PixelShader = compile ps_3_0 PositionTexturePixelShader();
+    }
+}
+
+
+float4 NormalVGaussShader(float4 uv : TEXCOORD) : COLOR0
+{
+	float4 sum = float4(0, 0, 0, 0);
+	float4 data;
+	float2 pos;
+	float gain = 0;
+	for(int i = 0; i < CoeffCount; i++)
+	{
+		pos = float2(uv.x, uv.y + NormalVGaussPos[i]);
+		if(pos.x >= 0 && pos.x <= 1 && pos.y >= 0 && pos.y <= 1)
+		{
+			data = tex2D(DepthNormalSampler, pos);
+			if(data.z != 0)
+			{
+				sum += data * NormalVGaussWeights[i];
+				gain +=	NormalVGaussWeights[i];
+			}		
+		}
+	}
+	return sum / gain;
+}
+
+technique NormalVGauss
+{
+	pass P0
+	{
+		VertexShader = compile vs_3_0 MiniPlaneVertexShader();
+		PixelShader = compile ps_3_0 NormalVGaussShader();
+	}
+}
+
+float4 NormalHGaussShader(float4 uv : TEXCOORD) : COLOR0
+{
+	float4 sum = float4(0, 0, 0, 0);
+	float4 data;
+	float2 pos;
+	float gain = 0;
+	for(int i = 0; i < CoeffCount; i++)
+	{
+		pos = float2(uv.x + NormalHGaussPos[i], uv.y);
+		if(pos.x >= 0 && pos.x <= 1 && pos.y >= 0 && pos.y <= 1)
+		{
+			data = tex2D(DepthNormalSampler, pos);
+			if(data.z != 0)
+			{
+				sum += data * NormalHGaussWeights[i];
+				gain +=	NormalHGaussWeights[i];
+			}
+		}		
+	}
+	return sum / gain;
+}
+
+technique NormalHGauss
+{
+	pass P0
+	{
+		VertexShader = compile vs_3_0 MiniPlaneVertexShader();
+		PixelShader = compile ps_3_0 NormalHGaussShader();
+	}
+}
+
+
+//int width = target.Width;
+            //int height = target.Height;
+            //ARGB[] buffer = new ARGB[width * height];
+            //target.GetData<ARGB>(buffer);
+            //using (Bitmap B = new Bitmap(width, height, PixelFormat.Format24bppRgb))
+            //{
+            //    BitmapData BD = B.LockBits(new System.Drawing.Rectangle(0, 0, width, height), ImageLockMode.WriteOnly, PixelFormat.Format24bppRgb);
+            //    unsafe
+            //    {
+            //        byte* sTarget = (byte*)BD.Scan0.ToPointer();
+            //        fixed (ARGB* sSource = &buffer[0])
+            //        {
+            //            byte* pTarget = sTarget;
+            //            ARGB* pSource = sSource;
+            //            ARGB* eSource = sSource + buffer.Length;
+            //            while (pSource < eSource)
+            //            {
+            //                *pTarget = pSource->R;
+            //                pTarget++;
+            //                *pTarget = pSource->G;
+            //                pTarget++;
+            //                *pTarget = pSource->B;
+            //                pTarget++;
+            //                pSource++;
+            //            }
+            //        }
+            //    }
+            //    B.UnlockBits(BD);
+            //    B.Save(path, ImageFormat.Png);
+            //}
+
+
+//float4 DepthShader(float2 texCoord: TEXCOORD0) : COLOR
+//{
+	//float4 color = tex2D(VideoSampler, texCoord);
+	//float i=(color.g*240+color.b*15)/255;
+	//if(i==1 && color.r>0.4666)
+	//return float4(0,0,0,1);
+	//else
+	//return HSLToRGB(float4((i)%1,1,0.5,1));
+//}
+//
+//float4 DepthShader2(float2 texCoord: TEXCOORD0) : COLOR
+//{
+	//float4 color = tex2D(VideoSampler, texCoord);
+	//float i=(color.r*3840+color.g*240+color.b*15)/2047;
+//
+	//return float4(i,i,i,1);
+//}
+
+//float4 DepthAddShader2(float2 texCoord: TEXCOORD0) : COLOR0
+//{
+	//float4 source = tex2D(VideoSampler, texCoord);
+	//float rawDepth = dot(source.xyz, Depth2047Weight);
+	//float depth = ToDepth(rawDepth);
+	//if (rawDepth > 2046 || depth > DepthZLimit || rawDepth == 0)
+	//{
+		//return float4(0, 0, 0, 0);
+	//}
+	//else
+	//{
+		//return float4(source.x, (source.y * 240. + source.z * 15.) / 255., 1, DepthAvgCount) / DepthAvgCount;
+	//}
+//}
+//
+//float4 DepthAddShader(float2 texCoord: TEXCOORD0) : COLOR0
+//{
+	//float4 source = tex2D(VideoSampler, texCoord);
+	//float rawDepth = source.r*3840+source.g*240+source.b*15;
+	//float depth = ToDepth(rawDepth);
+	//if (rawDepth > 2046 || depth > DepthZLimit || rawDepth == 0)
+	//{
+		//return float4(0, 0, 0, 0);
+	//}
+	//else
+	//{
+		//return float4(source.x, source.y, source.z, 1) / DepthAvgCount;
+	//}
+//}
+//
+//technique DepthAdd
+//{
+    //pass P0
+    //{
+        //PixelShader = compile ps_2_0 DepthAddShader();
+    //}
+//}
+
+//float4 DepthAverageShader(float2 texCoord: TEXCOORD0) : COLOR0
+//{
+	//float4 source = tex2D(VideoSampler, texCoord);
+	//if (source.w == 0)
+	//{
+		//return float4(0, 0, 0, 0);
+	//}
+	//else
+	//{
+		//float count = source.w * DepthAvgCount;
+		//source = source * DepthAvgCount / count;
+		//return float4(source.x, source.y, source.z, 1);
+	//}
+//}
+//
+//float4 DepthAverageShader2(float2 texCoord: TEXCOORD0) : COLOR0
+//{
+	//float4 source = tex2D(VideoSampler, texCoord);
+	//if (source.z == 0)
+	//{
+		//return float4(0, 0, 0, 0);
+	//}
+	//else
+	//{
+		//return float4(source.x / source.z, source.y / source.z, 1, 1);
+	//}
+//}
+//
+//technique DepthAverage
+//{
+    //pass P0
+    //{
+        //PixelShader = compile ps_2_0 DepthAverageShader();
+    //}
+//}
+//float4 DepthShaderAvg(float2 texCoord: TEXCOORD0) : COLOR
+//{
+	//float4 source = tex2D(VideoSampler, texCoord);
+	//float rawDepth = source.z;// * 3840 + source.y * 255 + source.z) / 2047;
+	//return float4(rawDepth,rawDepth,rawDepth,1);
+//}
+//
+//float4 DepthShaderAvg2(float2 texCoord: TEXCOORD0) : COLOR
+//{
+	//float2 cpos = tex2D(DepthCorrectionSampler, texCoord).xy / DepthCorrectionTextureSize;
+	//float4 source = tex2D(VideoSampler, cpos);
+	//float rawDepth = (source.x * 3840 + source.y * 255) / source.z;
+	//float depth = ToDepth(rawDepth);
+	//float i = depth % DepthHSLColoringPeriod / DepthHSLColoringPeriod;
+	//if (source.z == 0 || pow(ddx(i),2)+pow(ddy(i),2)>TriangleRemoveLimit)
+		//return float4(1, 1, 1, 1);
+	//else
+		//return HSLToRGB(float4(i, 1, 0.5, 1));
+//}
+//
+//float4 AntiDepthDistortShader(float2 texCoord: TEXCOORD0) : COLOR
+//{
+	//float2 cpos = tex2D(DepthCorrectionSampler, texCoord).xy / DepthCorrectionTextureSize;
+	//if(cpos.x < 0 || cpos.x > 1 || cpos.y < 0 || cpos.y > 1)
+		//return float4(NaN, NaN, NaN, NaN);
+	//else
+		//return tex2D(DepthSampler, cpos);
+//}
+
+
+//technique Depth
+//{
+	//pass P0
+	//{
+		//VertexShader = compile vs_3_0 MiniPlaneVertexShader();
+		//PixelShader = compile ps_3_0 DepthShaderAvg();
+	//}
+//}
+
+//technique DepthAntiDistort
+//{
+	//pass P0
+	//{
+		//PixelShader = compile ps_2_0 AntiDepthDistortShader();
+	//}
+//}
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Microsoft.Xna.Framework;
+using System.ComponentModel;
+using System.Runtime.Serialization;
+
+namespace DistortionMapCreator
+{
+    public class DistortionMap
+    {
+        [CategoryAttribute("Radial distortion"), Description("First coefficient of radial distortion (1+K1*r^2+K2*r^4+...)")]
+        public double K1 { get; set; }
+        [CategoryAttribute("Radial distortion"), Description("Second coefficient of radial distortion (1+K1*r^2+K2*r^4+...)")]
+        public double K2 { get; set; }
+        [CategoryAttribute("Tangential distortion"), Description("First coefficient of tangential distortion")]
+        public double P1 { get; set; }
+        [CategoryAttribute("Tangential distortion"), Description("Second coefficient of tangential distortion")]
+        public double P2 { get; set; }
+        [CategoryAttribute("Principal point"), Description("X coordinate of the principal point")]
+        public double CX { get; set; }
+        [CategoryAttribute("Principal point"), Description("Y coordinate of the principal point")]
+        public double CY { get; set; }
+        [CategoryAttribute("Focal length"), Description("Focal length along X axis")]
+        public double FX { get; set; }
+        [CategoryAttribute("Focal length"), Description("Focal length along Y axis")]
+        public double FY { get; set; }
+        [CategoryAttribute("Calibration resolution"), Description("Calibration horizontal resolution")]
+        public int OriginalWidth { get; set; }
+        [CategoryAttribute("Calibration resolution"), Description("Calibration vertical resolution")]
+        public int OriginalHeight { get; set; }
+        [CategoryAttribute("Output"), Description("Width of distortion map")]
+        public int Width { get; set; }
+        [CategoryAttribute("Output"), Description("Height of distortion map")]
+        public int Height { get; set; }
+        //[CategoryAttribute("Output"), Description("Precision of calculations")]
+        //public double Precision { get; set; }
+        //[CategoryAttribute("Output"), Description("Iteration limit")]
+        //public int IterationLimit { get; set; }
+
+        public float[] GenerateMap()
+        {
+            float[] map = new float[Width * Height * 2];
+            double x, xd, y, yd, r2, r4;
+            for (int j = 0; j < Height; j++)
+            {
+                y = (j * OriginalHeight / Height - CY) / FY;
+                for (int i = 0; i < Width; i++)
+                {
+                    x = (i * OriginalWidth / Width - CX) / FX;
+                    r2 = x * x + y * y;
+                    r4 = r2 * r2;
+                    xd = x * (1 + K1 * r2 + K2 * r4) + P1 * (r2 + 2 * x * x) + 2 * P2 * x * y;
+                    yd = y * (1 + K1 * r2 + K2 * r4) + P2 * (r2 + 2 * y * y) + 2 * P1 * x * y;
+                    map[(j * Width + i) * 2] = (float)((xd * FX + CX) / OriginalWidth * Width);
+                    map[(j * Width + i) * 2 + 1] = (float)((yd * FY + CY) / OriginalHeight * Height);
+                }
+            }
+            return map;
+        }
+
+        //public float[] GenerateMap()
+        //{
+        //    float[] map = new float[Width * Height * 2];
+        //    int iterations;
+        //    double xu, yu, xd, xn, yd, yn, jxx, jxy, jyx, jyy, fx, fy, r2, det;
+        //    for (int j = 0; j < Height; j++)
+        //    {
+        //        yu = (j * OriginalHeight / Height - CY) / FY;
+        //        for (int i = 0; i < Width; i++)
+        //        {
+        //            iterations = 0;
+        //            xu = (i * OriginalWidth / Width - CX) / FX;
+        //            xn = xu;
+        //            yn = yu;
+        //            do
+        //            {
+        //                iterations++;
+        //                xd = xn;
+        //                yd = yn;
+        //                r2 = xd * xd + yd * yd;
+        //                jxx = Jxx(xd, yd, r2);
+        //                jxy = Jxy(xd, yd, r2);
+        //                jyx = Jyx(xd, yd, r2);
+        //                jyy = Jyy(xd, yd, r2);
+        //                fx = Fx(xd, yd, r2, xu);
+        //                fy = Fy(xd, yd, r2, yu);
+        //                det = jxx * jyy - jxy * jyx;
+        //                xn = xd - (jyy * fx - jxy * fy) / det;
+        //                yn = yd - (jxx * fy - jyx * fx) / det;
+        //            }
+        //            while (Math.Abs(xn - xd) > Precision && Math.Abs(yn - yd) > Precision && iterations < IterationLimit);
+        //            if (iterations == IterationLimit)
+        //            {
+        //                map[(j * Width + i) * 2] = float.NaN;
+        //                map[(j * Width + i) * 2 + 1] = float.NaN;
+        //            }
+        //            else
+        //            {
+        //                map[(j * Width + i) * 2] = (float)((xn * FX + CX) / OriginalWidth * Width);
+        //                map[(j * Width + i) * 2 + 1] = (float)((yn * FY + CY) / OriginalHeight * Height);
+        //            }
+        //        }
+        //    }
+        //    return map;
+        //}
+
+        //private double Jxx(double x, double y, double r2)
+        //{
+        //    return 1 + 6 * P2 * x + 2 * P1 * y + K1 * r2 + K2 * r2 * r2 + x * (2 * K1 * x + 4 * K2 * x * r2);
+        //}
+
+        //private double Jxy(double x, double y, double r2)
+        //{
+        //    return 2 * P1 * x + 2 * P2 * y + x * (2 * K1 * y + 4 * K2 * y * r2);
+        //}
+
+        //private double Jyx(double x, double y, double r2)
+        //{
+        //    return 2 * P1 * x + 2 * P2 * y + y * (2 * K1 * x + 4 * K2 * x * r2);
+        //}
+
+        //private double Jyy(double x, double y, double r2)
+        //{
+        //    return 1 + 2 * P2 * x + 6 * P1 * y + K1 * r2 + K2 * r2 * r2 + y * (2 * K1 * y + 4 * K2 * y * r2);
+        //}
+
+        //private double Fx(double x, double y, double r2, double x0)
+        //{
+        //    return -x0 + 2 * P1 * x * y + P2 * (3 * x * x + y * y) + x * (1 + K1 * r2 + K2 * r2 * r2);
+        //}
+
+        //private double Fy(double x, double y, double r2, double y0)
+        //{
+        //    return 2 * P2 * x * y + P1 * (x * x + 3 * y * y) + y * (1 + K1 * r2 + K2 * r2 * r2) - y0;
+        //}
+
+        public string Serialize()
+        {
+            return string.Join("|", new object[] { FX, FY, CX, CY, K1, K2, P1, P2, OriginalWidth, OriginalHeight, Width, Height/*, IterationLimit, Precision*/ });
+        }
+
+        public void Deserialize(string text)
+        {
+            if (!string.IsNullOrEmpty(text))
+            {
+                string[] settings = text.Split(new char[] { '|' });
+                FX = double.Parse(settings[0]);
+                FY = double.Parse(settings[1]);
+                CX = double.Parse(settings[2]);
+                CY = double.Parse(settings[3]);
+                K1 = double.Parse(settings[4]);
+                K2 = double.Parse(settings[5]);
+                P1 = double.Parse(settings[6]);
+                P2 = double.Parse(settings[7]);
+                OriginalWidth = int.Parse(settings[8]);
+                OriginalHeight = int.Parse(settings[9]);
+                Width = int.Parse(settings[10]);
+                Height = int.Parse(settings[11]);
+                //IterationLimit = int.Parse(settings[12]);
+                //Precision = double.Parse(settings[13]);
+            }
+        }
+    }
+}
