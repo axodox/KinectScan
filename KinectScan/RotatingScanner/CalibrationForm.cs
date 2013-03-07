@@ -190,11 +190,11 @@ namespace KinectScan
             {
                 Context=context;
             }
-            public void Calibrate(byte[] data, Point tableA, Point tableB)
+            public void CalibrateTable(byte[] data, Point tableA, Point tableB)
             {
                 ground = Plane.FromDepthData(data, Context.DepthWidth, Context.DepthHeight, new EllipseRegion(tableA, tableB), Context.GetWorldPosition);
             }
-            public void Calibrate(byte[] data, Point bookA, Point bookB)
+            public void CalibrateBook(byte[] data, Point bookA, Point bookB)
             {
                 int mX=(bookA.X + bookB.X) / 2;
                 Point bookA1 = new Point(mX - 10, bookA.Y);

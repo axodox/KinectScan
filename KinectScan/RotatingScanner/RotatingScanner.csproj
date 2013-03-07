@@ -68,6 +68,9 @@
       <DependentUpon>CalibrationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CurveFit.cs" />
+    <Compile Include="ExCore.cs" />
+    <Compile Include="Fusion.cs" />
+    <Compile Include="Modelling.cs" />
     <Compile Include="ProcessorForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="ModuleSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>ModuleSettings.Designer.cs</LastGenOutput>

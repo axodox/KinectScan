@@ -62,10 +62,10 @@ namespace KinectScan
         MainForm.KinectScanContext Context;
         ContentManager XContent;
         Effect XEffect;
-        Texture2D TRawDepth, TDepth, TDepthCorrection;
-        RenderTarget2D Vector2TargetA, Vector2TargetB, SingleTargetA, SingleTargetB, Vector4Target, ExCoreTargetA, ExCoreTargetB;
-        EffectTechnique DepthAntiDistortTechnique, FusionDisplayTechnique, SumTechnique, AvgTechnique, PerspectiveReprojectionTechnique, FusionOutputTechnique, FusionLinesTechnique, VGaussTechnique, HGaussTechnique, CalibrationTechnique, DualTechnique, ColoredDepthTechnique, SimpleTechnique;
-        EffectTechnique DepthVisualizationTechnique, SignedDepthVisualizationTechnique, PolarDisplayTechnique, PolarOutputTechnique, ColorModelTechnique, PolarAddTechnique, PolarAvgTechnique, PolarAvgDisplayTechnique;
+        Texture2D TRawDepth, TDepth, TDepthCorrection;//
+        RenderTarget2D Vector2TargetA, Vector2TargetB, SingleTargetA, SingleTargetB, Vector4Target, ExCoreTargetA, ExCoreTargetB;//
+        EffectTechnique DepthAntiDistortTechnique, FusionDisplayTechnique, SumTechnique, AvgTechnique, PerspectiveReprojectionTechnique, FusionOutputTechnique, FusionLinesTechnique, VGaussTechnique, HGaussTechnique, CalibrationTechnique, DualTechnique, ColoredDepthTechnique, SimpleTechnique;//
+        EffectTechnique DepthVisualizationTechnique, SignedDepthVisualizationTechnique, PolarDisplayTechnique, PolarOutputTechnique, ColorModelTechnique, PolarAddTechnique, PolarAvgTechnique, PolarAvgDisplayTechnique;//
         EffectParameter DepthSampler, DepthCorrectionSampler, DepthToColorTransform, ReprojectionTransform, DepthZLimit, TriangleRemoveLimit, DepthSamplerA, DepthSamplerB, SpaceTransform, MinX, MinY, MaxWidth, MaxHeight, SplitPlaneVector, FusionTranform, SegmentLength, FusionTransform, LinesTransform, ShadingColor, MaxClipRadius, MinClipRadius, ClipOn, MinAvgCount, DepthAvgLimit, MinClipY, SideSelector, MainSampler, ModelTransform, CorePos;
         XPlane MiniPlane, MaxiPlane;
         VertexBuffer LinesVertexBuffer;
