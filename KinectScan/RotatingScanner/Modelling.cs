@@ -6,8 +6,8 @@ namespace KinectScan
 {
     abstract class Modeller : IServiceProvider, IGraphicsDeviceService
     {
-        protected MainForm.KinectScanContext Context;
-        public Modeller(MainForm.KinectScanContext context)
+        protected KinectScanContext Context;
+        public Modeller(KinectScanContext context)
         {
             Context = context;
             InitHardwareAcceleration();

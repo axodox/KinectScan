@@ -238,13 +238,10 @@
     <value>Írja ide a mentésnél használt címkét</value>
   </data>
   <data name="TSBSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 20</value>
+    <value>124, 22</value>
   </data>
   <data name="TSBSave.Text" xml:space="preserve">
     <value>Modell mentése</value>
-  </data>
-  <data name="TSBSequenceSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 20</value>
   </data>
   <data name="TSBSequenceSave.Text" xml:space="preserve">
     <value>Sorozat mentése</value>

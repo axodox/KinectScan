@@ -118,61 +118,61 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CalibrationTitle" xml:space="preserve">
-    <value>Calibration</value>
+    <value>Kalibráció</value>
   </data>
   <data name="DeviceNotFound" xml:space="preserve">
-    <value>Device not found! Please connect a Kinect device to the computer.</value>
+    <value>Nem található eszköz. Kérem csatlakoztasson egy Kinect-et a számítógéphez!</value>
   </data>
   <data name="DeviceRemoved" xml:space="preserve">
-    <value>The connection with the device has been lost.</value>
+    <value>Az eszközzel megszakadt a kapcsolat!</value>
   </data>
   <data name="ErrorCaption" xml:space="preserve">
-    <value>Error</value>
+    <value>Hiba</value>
   </data>
   <data name="ExportSuccesful" xml:space="preserve">
-    <value>Export went succesfully.</value>
+    <value>Exportálás sikeres.</value>
   </data>
   <data name="ExportUnsuccesful" xml:space="preserve">
-    <value>Export were unsuccesful.</value>
+    <value>Exportálás sikertelen!</value>
   </data>
   <data name="ImportSuccesful" xml:space="preserve">
-    <value>Import went succesfully.</value>
+    <value>Importálás sikeres.</value>
   </data>
   <data name="ImportUnsuccesful" xml:space="preserve">
-    <value>Import were unsuccesful.</value>
+    <value>Importálás sikertelen!</value>
   </data>
   <data name="ScannerDone" xml:space="preserve">
-    <value>Scanning finished.</value>
+    <value>Szkennelés befejezve.</value>
   </data>
   <data name="ScannerMovingToOrigin" xml:space="preserve">
-    <value>Moving to start position...</value>
+    <value>Kezdőpozíció felvétele...</value>
   </data>
   <data name="ScannerReady" xml:space="preserve">
-    <value>Ready.</value>
+    <value>Kész.</value>
   </data>
   <data name="ScannerScanning" xml:space="preserve">
-    <value>Scanning at {0} degrees.</value>
+    <value>Szkennelés {0} foknál...</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>Settings</value>
+    <value>Beállítások</value>
   </data>
   <data name="Step1" xml:space="preserve">
-    <value>Adjust the mirror to the correct angle: you should barely see the side of the turntable in the correct position on the bottom of the image. Also check the image for interference and reflections, which may disrupt the scanner. Click next to continue.</value>
+    <value>Tükör beállítása: állítsa úgy a tükröt, hogy a forkópad oldala éppen látszódjon a kép alján! Ellenőrizze, hogy nem jelentkezik-e interferencia vagy káprázás, ami megzavarhatja a szkenner működését! Kattintson a "Következő" gombra a folytatáshoz!</value>
   </data>
   <data name="Step2" xml:space="preserve">
-    <value>Remove any objects from the turntable, then click next.</value>
+    <value>Távolítson el minden objektumot a forgópad közeléből, majd kattintson a "Következő" gombra!</value>
   </data>
   <data name="Step3" xml:space="preserve">
-    <value>Select the turntable on the image with the mouse: move the cursor to the upper-left corner of the imaginary boundary rectangle of the turntable, then hold down the left button, and move the mouse to the bottom-right corner and release the button. You may repeat this procedure to select the turntable correctly. Click next to continue.</value>
+    <value>Jelölje be a képen hol található a forgópad: mozgassa a kurzort a forgópad bennfoglaló téglalapjának bal-felső sarkába, majd nyomja le és tartsa nyomva az egér bal gombját, ezután húzza kurzort a jobb-alsó sarokba és engedje el a bal gombot! Amennyiben nem sikerült kijelölni a forgópadot, úgy ismételje meg a műveletet. Kattintson a "Következő" gombra a folytatáshoz!</value>
   </data>
   <data name="Step4" xml:space="preserve">
-    <value>Place the calibration etalon to the turntable: the etalon should face toward the scanner's mirror and it should snap in the holes on the turntable. Click next to continue.</value>
+    <value>Helyezze a kalibráló etalont a forgópadra úgy, hogy a rajta található lábak belepattanjanak a forgópadon kialakított lyukakba! Kattintson a "Következő" gombra a folytatáshoz!</value>
   </data>
   <data name="Step5" xml:space="preserve">
-    <value>Select the etalon on the image with the mouse (like in step 2). Click next to preview the calibration results.</value>
+    <value>Jelölje be az etalont a képen, úgy mint a második lépésben. Kattintson a "Következő" gombra a kalibráció eredményeinek előnézetéhez!</value>
   </data>
   <data name="Step6" xml:space="preserve">
-    <value>Check if the the turntable's position has been selected correctly. Close the window to finish the calibration procedure.</value>
+    <value>Ellenőrizze, hogy jól sikerült-e a forgópad helyének meghatározása! Zárja be az ablakot a befejezéshez!</value>
   </data>
   <data name="TurntableNotFound" xml:space="preserve">
     <value>Turntable not found!</value>

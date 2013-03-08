@@ -1,6 +1,6 @@
 ﻿namespace KinectScan
 {
-    partial class RSSettingsForm
+    partial class TurntableSettingsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RSSettingsForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TurntableSettingsForm));
             this.FLPSettings = new System.Windows.Forms.FlowLayoutPanel();
             this.CBClip = new System.Windows.Forms.CheckBox();
             this.NBMinClipRadius = new CustomControls.NumericBar();

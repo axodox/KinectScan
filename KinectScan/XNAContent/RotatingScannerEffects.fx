@@ -459,18 +459,6 @@ float4 DepthDiffShader(float2 uv : TEXCOORD0) : COLOR0
 	}
 } 
 
-
-
-
-
-
-
-
-
-
-
-
-
 float4 DepthAntiDistortPixelShader(float2 texCoord: TEXCOORD0) : COLOR
 {
 	float2 cpos = tex2D(DepthCorrectionSampler, texCoord).xy / DepthCorrectionTextureSize;
@@ -605,11 +593,6 @@ technique FusionOutput
 	}
 }
 
-
-
-
-
-
 technique DepthHGauss
 {
 	pass P0
@@ -618,8 +601,6 @@ technique DepthHGauss
 		PixelShader = compile ps_3_0 DepthHGaussShader();
 	}
 }
-
-
 
 technique DepthVGauss
 {
@@ -713,9 +694,6 @@ technique ColorModel
 		PixelShader = compile ps_3_0 ColorModelPixelShader();
 	}
 }
-
-
-
 
 technique ColoredDepth
 {

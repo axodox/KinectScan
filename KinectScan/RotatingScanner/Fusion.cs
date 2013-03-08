@@ -10,7 +10,7 @@ namespace KinectScan
 {
     class FusionModeller : Modeller
     {
-        public FusionModeller(MainForm.KinectScanContext context)
+        public FusionModeller(KinectScanContext context)
             : base(context)
         {
 

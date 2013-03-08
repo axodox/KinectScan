@@ -33,7 +33,7 @@ namespace KinectScan
         int DepthCacheUsed;
         float debugValue = 1f;
         const float debugStep = 0.01f;
-        RSSettingsForm SF;
+        TurntableSettingsForm SF;
         float RotationX, RotationZ, TranslationX, TranslationY, TranslationZ;
         ModelMaker MM;
         DepthContainer[] DepthCache;
@@ -59,7 +59,7 @@ namespace KinectScan
         }
         bool ExCoreTick;
         GraphicsDevice XDevice;
-        MainForm.KinectScanContext Context;
+        KinectScanContext Context;
         ContentManager XContent;
         Effect XEffect;
         Texture2D TRawDepth, TDepth, TDepthCorrection;//
@@ -76,7 +76,7 @@ namespace KinectScan
             for (int i = 0; i < menu.Length; i++) menu[i].Visible = visibility;
         }
 
-        public ProcessorForm(MainForm.KinectScanContext context)
+        public ProcessorForm(KinectScanContext context)
         {
             Context = context;
             Context.TriangleRemoveLimitChanged += (object o, EventArgs e) => { TriangleRemoveLimit.SetValue(Context.TriangleRemoveLimit); };
@@ -95,7 +95,7 @@ namespace KinectScan
             DepthCache = new DepthContainer[DepthCacheSize];
             DepthIndex = DepthCacheUsed = 0;
 
-            CF = new CalibrationForm(Context);
+            CF = new TurntableCalibrationForm(Context);
         }
 
         MenuItem[] ModellingModeMenuItems;
@@ -160,7 +160,7 @@ namespace KinectScan
 
         private void LoadSettings()
         {
-            SF = new RSSettingsForm();
+            SF = new TurntableSettingsForm();
             SF.SettingsLoaded += new EventHandler(SF_SettingsLoaded);
             SF.LoadSettings();
             SF.NBZLimit.ValueChanged += (object o, EventArgs e) => { DepthZLimit.SetValue(SF.NBZLimit.Value); };
@@ -2602,7 +2602,7 @@ namespace KinectScan
         enum States { None, Calibration };
         States State;
 
-        CalibrationForm CF;
+        TurntableCalibrationForm CF;
         private void TSBCalibration_Click(object sender, EventArgs e)
         {
             //SwitchState(States.Calibration);

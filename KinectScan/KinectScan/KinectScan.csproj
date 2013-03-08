@@ -249,7 +249,7 @@
     <Content Include="DistortionMaps\color.dismap" />
     <Content Include="DistortionMaps\depth.dismap" />
     <None Include="App.config" />
-    <None Include="ClassDiagram1.cd" />
+    <None Include="ScannerClassDiagram.cd" />
     <None Include="KinectScan_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

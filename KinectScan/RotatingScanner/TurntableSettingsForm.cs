@@ -8,10 +8,10 @@ using System.Windows.Forms;
 
 namespace KinectScan
 {
-    public partial class RSSettingsForm : Form
+    public partial class TurntableSettingsForm : Form
     {
         bool start = true;
-        public RSSettingsForm()
+        public TurntableSettingsForm()
         {
             InitializeComponent();
             FLPSettings_Resize(this, null);

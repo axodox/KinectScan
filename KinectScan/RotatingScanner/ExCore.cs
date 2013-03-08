@@ -6,7 +6,7 @@ namespace KinectScan
 {
     class ExCoreModeller:Modeller
     {
-        public ExCoreModeller(MainForm.KinectScanContext context)
+        public ExCoreModeller(KinectScanContext context)
             : base(context)
         {
 

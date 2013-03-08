@@ -117,64 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CalibrationTitle" xml:space="preserve">
-    <value>Calibration</value>
+  <data name="BPrevious.Text" xml:space="preserve">
+    <value>Előző</value>
   </data>
-  <data name="DeviceNotFound" xml:space="preserve">
-    <value>Device not found! Please connect a Kinect device to the computer.</value>
+  <data name="BNext.Text" xml:space="preserve">
+    <value>Következő</value>
   </data>
-  <data name="DeviceRemoved" xml:space="preserve">
-    <value>The connection with the device has been lost.</value>
-  </data>
-  <data name="ErrorCaption" xml:space="preserve">
-    <value>Error</value>
-  </data>
-  <data name="ExportSuccesful" xml:space="preserve">
-    <value>Export went succesfully.</value>
-  </data>
-  <data name="ExportUnsuccesful" xml:space="preserve">
-    <value>Export were unsuccesful.</value>
-  </data>
-  <data name="ImportSuccesful" xml:space="preserve">
-    <value>Import went succesfully.</value>
-  </data>
-  <data name="ImportUnsuccesful" xml:space="preserve">
-    <value>Import were unsuccesful.</value>
-  </data>
-  <data name="ScannerDone" xml:space="preserve">
-    <value>Scanning finished.</value>
-  </data>
-  <data name="ScannerMovingToOrigin" xml:space="preserve">
-    <value>Moving to start position...</value>
-  </data>
-  <data name="ScannerReady" xml:space="preserve">
-    <value>Ready.</value>
-  </data>
-  <data name="ScannerScanning" xml:space="preserve">
-    <value>Scanning at {0} degrees.</value>
-  </data>
-  <data name="SettingsTitle" xml:space="preserve">
-    <value>Settings</value>
-  </data>
-  <data name="Step1" xml:space="preserve">
-    <value>Adjust the mirror to the correct angle: you should barely see the side of the turntable in the correct position on the bottom of the image. Also check the image for interference and reflections, which may disrupt the scanner. Click next to continue.</value>
-  </data>
-  <data name="Step2" xml:space="preserve">
-    <value>Remove any objects from the turntable, then click next.</value>
-  </data>
-  <data name="Step3" xml:space="preserve">
-    <value>Select the turntable on the image with the mouse: move the cursor to the upper-left corner of the imaginary boundary rectangle of the turntable, then hold down the left button, and move the mouse to the bottom-right corner and release the button. You may repeat this procedure to select the turntable correctly. Click next to continue.</value>
-  </data>
-  <data name="Step4" xml:space="preserve">
-    <value>Place the calibration etalon to the turntable: the etalon should face toward the scanner's mirror and it should snap in the holes on the turntable. Click next to continue.</value>
-  </data>
-  <data name="Step5" xml:space="preserve">
-    <value>Select the etalon on the image with the mouse (like in step 2). Click next to preview the calibration results.</value>
-  </data>
-  <data name="Step6" xml:space="preserve">
-    <value>Check if the the turntable's position has been selected correctly. Close the window to finish the calibration procedure.</value>
-  </data>
-  <data name="TurntableNotFound" xml:space="preserve">
-    <value>Turntable not found!</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Kalibráció</value>
   </data>
 </root>

@@ -61,6 +61,33 @@ namespace KinectScan {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Calibration.
+        /// </summary>
+        internal static string CalibrationTitle {
+            get {
+                return ResourceManager.GetString("CalibrationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Device not found! Please connect a Kinect device to the computer..
+        /// </summary>
+        internal static string DeviceNotFound {
+            get {
+                return ResourceManager.GetString("DeviceNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The connection with the device has been lost..
+        /// </summary>
+        internal static string DeviceRemoved {
+            get {
+                return ResourceManager.GetString("DeviceRemoved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         internal static string ErrorCaption {
@@ -147,6 +174,60 @@ namespace KinectScan {
         internal static string SettingsTitle {
             get {
                 return ResourceManager.GetString("SettingsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adjust the mirror to the correct angle: you should barely see the side of the turntable in the correct position on the bottom of the image. Also check the image for interference and reflections, which may disrupt the scanner. Click next to continue..
+        /// </summary>
+        internal static string Step1 {
+            get {
+                return ResourceManager.GetString("Step1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove any objects from the turntable, then click next..
+        /// </summary>
+        internal static string Step2 {
+            get {
+                return ResourceManager.GetString("Step2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select the turntable on the image with the mouse: move the cursor to the upper-left corner of the imaginary boundary rectangle of the turntable, then hold down the left button, and move the mouse to the bottom-right corner and release the button. You may repeat this procedure to select the turntable correctly. Click next to continue..
+        /// </summary>
+        internal static string Step3 {
+            get {
+                return ResourceManager.GetString("Step3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Place the calibration etalon to the turntable: the etalon should face toward the scanner&apos;s mirror and it should snap in the holes on the turntable. Click next to continue..
+        /// </summary>
+        internal static string Step4 {
+            get {
+                return ResourceManager.GetString("Step4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select the etalon on the image with the mouse (like in step 2). Click next to preview the calibration results..
+        /// </summary>
+        internal static string Step5 {
+            get {
+                return ResourceManager.GetString("Step5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check if the the turntable&apos;s position has been selected correctly. Close the window to finish the calibration procedure..
+        /// </summary>
+        internal static string Step6 {
+            get {
+                return ResourceManager.GetString("Step6", resourceCulture);
             }
         }
         

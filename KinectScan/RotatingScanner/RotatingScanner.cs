@@ -14,26 +14,28 @@ namespace KinectScan
     {
         public ProcessorForm PF { get; private set; }
         double Rotation;
-        MainForm.KinectScanContext Context;
+        KinectScanContext Context;
         public override string Name
         {
             get { return "Rotating Scanner"; }
         }
 
-        public KinectScanModule(MainForm.KinectScanContext context)
+        public KinectScanModule(KinectScanContext context)
         {
-            Context = context;
-            Context.ProgramClosing += (object sender, EventArgs e) => { PF.Exit(); };
+            //Context = context;
+            //Context.ProgramClosing += (object sender, EventArgs e) => { PF.Exit(); };
 
-            PF = new ProcessorForm(context);
-            PF.LoadDirectory += (object sender, EventArgs e) => { InitVirtualLoad(PF.WorkingDirectory); };
-            PF.Show();
+            //PF = new ProcessorForm(context);
+            //PF.LoadDirectory += (object sender, EventArgs e) => { InitVirtualLoad(PF.WorkingDirectory); };
+            //PF.Show();
+
+            new RotationScannerForm(context).Show();
 
             LoadTimer = new Timer();
             LoadTimer.Interval = 50;
             LoadTimer.Tick += (object sender, EventArgs e) => { LoadNext(); };
 
-            InitHardwareLoad();
+            //InitHardwareLoad();
         }
         #region Test
         string[] Files;

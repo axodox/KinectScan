@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="TSBSequenceDecreaseInterval.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
   <data name="TSDDBShading.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 22</value>
   </data>
@@ -145,21 +148,27 @@
   <data name="TSBStartStop.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 22</value>
   </data>
-  <data name="&gt;&gt;TSSMainSeparatorFile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="MITiltHorizontal.Text" xml:space="preserve">
+    <value>Horizontal position</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="TSTBLabel.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;MISaveTo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="TSLFileCount.Text" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="TSBProbes.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
   </data>
+  <data name="TSLSequenceIntervalLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 22</value>
+  </data>
   <data name="MIDisconnect.Text" xml:space="preserve">
     <value>Disconnect</value>
+  </data>
+  <data name="MIStart.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;TSBRotateRight.Name" xml:space="preserve">
     <value>TSBRotateRight</value>
@@ -172,6 +181,9 @@
   </data>
   <data name="TSSMainSeparator.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 25</value>
+  </data>
+  <data name="TSBSequenceSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
   </data>
   <data name="&gt;&gt;TSSMainSeparatorFile.Name" xml:space="preserve">
     <value>TSSMainSeparatorFile</value>
@@ -188,11 +200,8 @@
   <data name="&gt;&gt;MISettings.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;MITilt.Name" xml:space="preserve">
-    <value>MITilt</value>
-  </data>
-  <data name="TSBRotateRight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
+  <data name="MIDevices.Text" xml:space="preserve">
+    <value>Device</value>
   </data>
   <data name="TSBSequenceSave.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -233,8 +242,8 @@
   <data name="&gt;&gt;TSLSequenceCounter.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="TSSMainSeparatorFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
+  <data name="&gt;&gt;MISaveTo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;TSMain.Parent" xml:space="preserve">
     <value>$this</value>
@@ -251,14 +260,14 @@
   <data name="&gt;&gt;MICalibration.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="TSMain.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="TSBResetView.Text" xml:space="preserve">
     <value>Reset view</value>
   </data>
   <data name="&gt;&gt;TSBResetView.Name" xml:space="preserve">
     <value>TSBResetView</value>
-  </data>
-  <data name="TSBFileNext.Text" xml:space="preserve">
-    <value>Next file</value>
   </data>
   <data name="TSLFileCount.Size" type="System.Drawing.Size, System.Drawing">
     <value>13, 22</value>
@@ -787,8 +796,8 @@
   <data name="&gt;&gt;MITilt.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;TSLSequenceLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="TSSMainSeparatorFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
   </data>
   <data name="TSBProbes.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -847,9 +856,6 @@
   <data name="&gt;&gt;TSMain.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="TSBFilePrevious.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
   <data name="TSBRotateLeft.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
   </data>
@@ -889,14 +895,11 @@
   <data name="SBStatus.Size" type="System.Drawing.Size, System.Drawing">
     <value>624, 22</value>
   </data>
-  <data name="MITiltHorizontal.Text" xml:space="preserve">
-    <value>Horizontal position</value>
-  </data>
   <data name="&gt;&gt;TSLSequencePerformance.Name" xml:space="preserve">
     <value>TSLSequencePerformance</value>
   </data>
-  <data name="MIDevices.Text" xml:space="preserve">
-    <value>Device</value>
+  <data name="&gt;&gt;TSSMainSeparatorFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;MIDisconnect.Name" xml:space="preserve">
     <value>MIDisconnect</value>
@@ -915,9 +918,6 @@
   </data>
   <data name="TSBSequenceRecord.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
-  </data>
-  <data name="&gt;&gt;TSBRotateLeft.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="TSBSequenceSave.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -940,6 +940,9 @@
   <data name="&gt;&gt;XPanel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;TSLSequenceLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;MIWorkingDirectory.Name" xml:space="preserve">
     <value>MIWorkingDirectory</value>
   </data>
@@ -954,6 +957,9 @@
   </data>
   <data name="MIDisconnect.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="TSSSequence1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
   </data>
   <data name="MISaveTo.Text" xml:space="preserve">
     <value>Save to</value>
@@ -976,20 +982,23 @@
   <data name="TSBRotateRight.Text" xml:space="preserve">
     <value>Rotate right</value>
   </data>
+  <data name="TSLSequenceInterval.Text" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="TSLSequenceCounterLabel.Text" xml:space="preserve">
     <value>Counter</value>
   </data>
   <data name="MIFile.Text" xml:space="preserve">
     <value>File</value>
   </data>
+  <data name="TSSSequence0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
+  </data>
   <data name="TSMain.Size" type="System.Drawing.Size, System.Drawing">
     <value>624, 25</value>
   </data>
   <data name="&gt;&gt;MIDisconnect.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="MIStart.Text" xml:space="preserve">
-    <value>Start</value>
   </data>
   <data name="&gt;&gt;MIRotateLeft.Name" xml:space="preserve">
     <value>MIRotateLeft</value>
@@ -1027,11 +1036,14 @@
   <data name="&gt;&gt;MIDevicesSeparator2.Name" xml:space="preserve">
     <value>MIDevicesSeparator2</value>
   </data>
-  <data name="MIStart.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="TSBFilePrevious.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
   </data>
   <data name="TSSMainSeparatorSave.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="TSLSequenceCounterLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 22</value>
   </data>
   <data name="&gt;&gt;TSBRotateRight.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1063,20 +1075,20 @@
   <data name="&gt;&gt;MIOpenSavedModel.Name" xml:space="preserve">
     <value>MIOpenSavedModel</value>
   </data>
+  <data name="&gt;&gt;TSSequence.Name" xml:space="preserve">
+    <value>TSSequence</value>
+  </data>
   <data name="MITilt.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="&gt;&gt;TSSMainSeparator.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;MITiltDown.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;TSBSave.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSplitButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;TSSSequnce2.Name" xml:space="preserve">
-    <value>TSSSequnce2</value>
+  <data name="MIStop.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="TSSequence.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1111,14 +1123,11 @@
   <data name="&gt;&gt;MIFileSeparator.Name" xml:space="preserve">
     <value>MIFileSeparator</value>
   </data>
-  <data name="TSMain.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="MIView.Text" xml:space="preserve">
     <value>View</value>
   </data>
-  <data name="MIStop.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="&gt;&gt;TSBRotateLeft.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;MIView.Name" xml:space="preserve">
     <value>MIView</value>
@@ -1135,8 +1144,8 @@
   <data name="TSSequence.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 25</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="TSBSequenceIncreaseInterval.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
   </data>
   <data name="&gt;&gt;TSBFileNext.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1147,8 +1156,8 @@
   <data name="&gt;&gt;TSSSequence1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="TSBSequenceSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="SBStatus.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 315</value>
@@ -1204,8 +1213,8 @@
   <data name="MIDevicesSeparator.Text" xml:space="preserve">
     <value>-</value>
   </data>
-  <data name="TSBSequenceDecreaseInterval.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
+  <data name="&gt;&gt;TSSSequnce2.Name" xml:space="preserve">
+    <value>TSSSequnce2</value>
   </data>
   <data name="&gt;&gt;MIFile.Name" xml:space="preserve">
     <value>MIFile</value>
@@ -1228,9 +1237,8 @@
   <data name="MIDevicesSeparator2.Text" xml:space="preserve">
     <value>-</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="XPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="MISaveTo.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;SBStatus.Name" xml:space="preserve">
     <value>SBStatus</value>
@@ -1243,9 +1251,6 @@
   </data>
   <data name="&gt;&gt;MITiltUp.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TSLFileCount.Name" xml:space="preserve">
-    <value>TSLFileCount</value>
   </data>
   <data name="XPanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 25</value>
@@ -1265,13 +1270,10 @@
   <data name="&gt;&gt;TSLSequenceInterval.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;TSBFilePrevious.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="TSBProbes.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAAAdlJREFUOE+dk99rzXEYx1/Otrg6UcNE0iJ2HJud812bHYfj585oWMrNIhdT1pIU
+        vAAADrwBlbxySQAAAdlJREFUOE+dk99rzXEYx1/Otrg6UcNE0iJ2HJud812bHYfj585oWMrNIhdT1pIU
         Lb/quPBjJSEuLIrWhIgVJZEpQrlx60+QlNzsQnt79/W5OC3D8a6nvp/n87zf7+d5Pn35I5ppdIyE038g
         S8kxzmKmh0yFyDBGhCxSCJkKYNdpEePJQixQCtkKENE5I48W7IwF3v77GBnmOUarVzFR142W7UfJDotE
         fLbQnlA1BbLUOj7N7kJLe1HqAFpxGK08gZYPoJo8ExbvCdW/QZahWpMb+lD6EGo6ijIl1HIOtV309yBK
@@ -1291,9 +1293,6 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>624, 337</value>
   </data>
-  <data name="&gt;&gt;MIDevices.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;MIFileSeparator.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -1309,20 +1308,20 @@
   <data name="&gt;&gt;TSBSequencePause.Name" xml:space="preserve">
     <value>TSBSequencePause</value>
   </data>
-  <data name="TSLSequenceIntervalLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 22</value>
+  <data name="TSBRotateRight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
   </data>
   <data name="MITiltUp.Text" xml:space="preserve">
     <value>Tilt up</value>
   </data>
-  <data name="TSLSequenceInterval.Text" xml:space="preserve">
-    <value>0</value>
+  <data name="MIStart.Text" xml:space="preserve">
+    <value>Start</value>
   </data>
   <data name="TSBSequenceStop.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
   </data>
-  <data name="&gt;&gt;TSSequence.Name" xml:space="preserve">
-    <value>TSSequence</value>
+  <data name="&gt;&gt;MIDevices.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;TSTBLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripTextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1339,11 +1338,11 @@
   <data name="&gt;&gt;TSSequence.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="TSBSequenceIncreaseInterval.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
+  <data name="&gt;&gt;TSBFilePrevious.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="TSSSequence0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
+  <data name="TSBFileNext.Text" xml:space="preserve">
+    <value>Next file</value>
   </data>
   <data name="TSSequence.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1375,14 +1374,15 @@
   <data name="TSBStartStop.Text" xml:space="preserve">
     <value>Start</value>
   </data>
-  <data name="TSSSequence1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
+  <data name="&gt;&gt;TSLFileCount.Name" xml:space="preserve">
+    <value>TSLFileCount</value>
   </data>
   <data name="TSBSequenceRecord.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 22</value>
   </data>
-  <data name="MISaveTo.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="XPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="&gt;&gt;TSBStartStop.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1393,11 +1393,11 @@
   <data name="SBStatus.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="TSLSequenceCounterLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 22</value>
+  <data name="&gt;&gt;MITilt.Name" xml:space="preserve">
+    <value>MITilt</value>
   </data>
-  <data name="TSLFileCount.Text" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;MITiltDown.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;TSSSequence0.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

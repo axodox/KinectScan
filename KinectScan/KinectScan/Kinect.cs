@@ -13,20 +13,20 @@ namespace KinectScan
     public abstract class Scanner
     {
         protected SynchronizationContext SC;
-        public Scanner()
+        internal Scanner()
         {
             SC = SynchronizationContext.Current;  
         }
-        public abstract bool AllTexturesReady { get; }
+        internal abstract bool AllTexturesReady { get; }
         public enum Modes : byte { RGB1024 = 0, RGB480, IR1024, IR480, Depth480 }
         public Modes Mode { get; protected set; }
-        public abstract TextureDoubleBuffer DepthTexture { get; }
-        public abstract Texture2D VideoTexture { get; }
-        public abstract void InitXNA(GraphicsDevice device);
-        public abstract void PrepareXNAResources();
-        public abstract void EnableBufferUsage();
+        internal abstract TextureDoubleBuffer DepthTexture { get; }
+        internal abstract Texture2D VideoTexture { get; }
+        internal abstract void InitXNA(GraphicsDevice device);
+        internal abstract void PrepareXNAResources();
+        internal abstract void EnableBufferUsage();
         public readonly int DepthWidth = 640, DepthHeight = 480;
-        public int DepthAvgFrameCount { get; protected set; }
+        protected internal int DepthAvgFrameCount { get; protected set; }
         public Size GetVideoSize(Modes mode)
         {
             switch (mode)
@@ -42,14 +42,14 @@ namespace KinectScan
                     return new Size(-1, -1);
             }
         }
-        public abstract void DisableBufferUsage();
-        public abstract void ReleaseXNAResources();
+        internal abstract void DisableBufferUsage();
+        internal abstract void ReleaseXNAResources();
         public int Index { get; protected set; }
         public event IOEventHandler IOEvent;
-        public abstract void Start(Modes mode);
-        public abstract void Stop();
+        internal abstract void Start(Modes mode);
+        internal abstract void Stop();
         public abstract double Tilt { get; set; }
-        public abstract void Destroy();
+        internal abstract void Destroy();
         public abstract void SaveRawData(string path);
         protected void SendIOEvent(IOEventArgs e)
         {
@@ -60,7 +60,7 @@ namespace KinectScan
             if (IOEvent != null) IOEvent(this, o as IOEventArgs);
         }
         public abstract bool IsModeSupported(Modes mode);
-        public bool BufferUsageDisabled { get; protected set; }
+        protected internal bool BufferUsageDisabled { get; protected set; }
 
         protected unsafe void ConvertColorData(byte[] source, byte[] target)
         {
@@ -139,7 +139,7 @@ namespace KinectScan
         GraphicsDevice XDevice;
         
         public string FilePath { get; private set; }
-        public FileScanner(string path = null)
+        internal FileScanner(string path = null)
         {
             Index = -1;
             FileCount = 0;
@@ -174,7 +174,7 @@ namespace KinectScan
 
 
         bool FileLoaded;
-        public override bool AllTexturesReady
+        internal override bool AllTexturesReady
         {
             get
             {
@@ -182,23 +182,23 @@ namespace KinectScan
             }
         }
 
-        public override TextureDoubleBuffer DepthTexture
+        internal override TextureDoubleBuffer DepthTexture
         {
             get { return DepthTextureBuffer; }
         }
 
-        public override Texture2D VideoTexture
+        internal override Texture2D VideoTexture
         {
             get { return VideoTextureBuffer.FrontTexture; }
         }
 
-        public override void InitXNA(GraphicsDevice device)
+        internal override void InitXNA(GraphicsDevice device)
         {
             XDevice = device;
         }
 
         bool XNAReady;
-        public override void PrepareXNAResources()
+        internal override void PrepareXNAResources()
         {
             DepthTextureBuffer = new TextureDoubleBuffer(XDevice, 640, 480, SurfaceFormat.Bgra4444);
             VideoTextureBuffer = new TextureDoubleBuffer(XDevice, 640, 480, SurfaceFormat.Color);
@@ -206,18 +206,18 @@ namespace KinectScan
             UploadTextures();
         }
 
-        public override void EnableBufferUsage()
+        internal override void EnableBufferUsage()
         {
             BufferUsageDisabled = false;
             UploadTextures();
         }
 
-        public override void DisableBufferUsage()
+        internal override void DisableBufferUsage()
         {
             BufferUsageDisabled = true;
         }
 
-        public override void ReleaseXNAResources()
+        internal override void ReleaseXNAResources()
         {
             XNAReady = false;
             if (VideoTextureBuffer != null)
@@ -233,21 +233,21 @@ namespace KinectScan
             FileLoaded = false;
         }
 
-        public override void Start(Scanner.Modes mode)
+        internal override void Start(Scanner.Modes mode)
         {
             Mode = mode;
             PrepareXNAResources();
             FrameID = 0;
         }
 
-        public override void Stop()
+        internal override void Stop()
         {
             
         }
 
         public override double Tilt {get; set; }
 
-        public override void Destroy()
+        internal override void Destroy()
         {
             
         }
@@ -403,9 +403,9 @@ namespace KinectScan
         Timer FPSTimer;
         public int FPS { get; private set; }
         int FrameCounter;
-        
-        
-        public override void DisableBufferUsage()
+
+
+        internal override void DisableBufferUsage()
         {
             BufferUsageDisabled = true;
             while (VideoBufferInUse || DepthBufferInUse)
@@ -414,12 +414,12 @@ namespace KinectScan
             }
         }
 
-        public override void EnableBufferUsage()
+        internal override void EnableBufferUsage()
         {
             BufferUsageDisabled = false;
         }
 
-        public KinectScanner(int index = 0, int avgframe = 2)
+        internal KinectScanner(int index = 0, int avgframe = 2)
         {
                       
             DepthAvgFrameCount = avgframe;
@@ -457,14 +457,14 @@ namespace KinectScan
         }
 
         AutoResetEvent StopARE, BufferReleaseARE;
-        public override void Stop()
+        internal override void Stop()
         {
             ThreadsOn = false;
             StopARE.WaitOne();
             ReleaseXNAResources();            
         }
 
-        public override void Start(Modes mode)
+        internal override void Start(Modes mode)
         {
             Mode = mode;
             PrepareXNAResources();
@@ -501,13 +501,13 @@ namespace KinectScan
 
 
 
-        
 
-        public System.Drawing.Rectangle? DepthMeasurementWindow {get; set;}
-        public int Depth { get; private set; }
+
+        internal System.Drawing.Rectangle? DepthMeasurementWindow { get; set; }
+        internal int Depth { get; private set; }
         private int DepthSum, DepthCount;
-        public double DepthAverage { get; private set; }
-        public void StartDepthMeasurement() { DepthSum = 0; DepthCount = 0; }
+        internal double DepthAverage { get; private set; }
+        internal void StartDepthMeasurement() { DepthSum = 0; DepthCount = 0; }
 
         void ProcessingWorker()
         {
@@ -727,7 +727,7 @@ namespace KinectScan
         }
 
         bool Destroyed = false;
-        public override void Destroy()
+        internal override void Destroy()
         {
             if (!Destroyed)
             {
@@ -746,12 +746,12 @@ namespace KinectScan
         TextureDoubleBuffer VideoTextureBuffer, DepthTextureBuffer;
         byte[] Prebuffer;
 
-        public override void InitXNA(GraphicsDevice device)
+        internal override void InitXNA(GraphicsDevice device)
         {
             XDevice = device;
         }
 
-        public override void PrepareXNAResources()
+        internal override void PrepareXNAResources()
         {
             ReleaseXNAResources();
             switch (Mode)
@@ -778,7 +778,7 @@ namespace KinectScan
             }
         }
 
-        public override void ReleaseXNAResources()
+        internal override void ReleaseXNAResources()
         {
             if (VideoTextureBuffer != null)
             {
@@ -790,7 +790,7 @@ namespace KinectScan
             }
         }
 
-        public override TextureDoubleBuffer DepthTexture
+        internal override TextureDoubleBuffer DepthTexture
         {
             get
             {
@@ -798,7 +798,7 @@ namespace KinectScan
             }
         }
 
-        public override Texture2D VideoTexture
+        internal override Texture2D VideoTexture
         {
             get
             {
@@ -806,7 +806,7 @@ namespace KinectScan
             }
         }
 
-        public override bool AllTexturesReady
+        internal override bool AllTexturesReady
         {
             get
             {
