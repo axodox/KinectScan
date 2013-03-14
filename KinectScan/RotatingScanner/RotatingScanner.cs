@@ -12,6 +12,8 @@ namespace KinectScan
 {
     public class KinectScanModule : ModuleBase
     {
+        RotationScannerForm RSF;
+
         public ProcessorForm PF { get; private set; }
         double Rotation;
         KinectScanContext Context;
@@ -22,14 +24,21 @@ namespace KinectScan
 
         public KinectScanModule(KinectScanContext context)
         {
-            //Context = context;
+            Context = context;
+
+            Turntable.DeviceConnected += (object sender, EventArgs e) => { Context.ShowTrayMessage("KinectScan", LocalizedResources.TurntableConnected,ToolTipIcon.Info); };
+            Turntable.DeviceDisconnected += (object sender, EventArgs e) => { Context.ShowTrayMessage("KinectScan", LocalizedResources.TurntableDisconnected, ToolTipIcon.Info); };
+            
+            Context.ProgramClosing+=Context_ProgramClosing;
+
             //Context.ProgramClosing += (object sender, EventArgs e) => { PF.Exit(); };
 
             //PF = new ProcessorForm(context);
             //PF.LoadDirectory += (object sender, EventArgs e) => { InitVirtualLoad(PF.WorkingDirectory); };
             //PF.Show();
 
-            new RotationScannerForm(context).Show();
+            RSF = new RotationScannerForm(context);
+            RSF.Show();
 
             LoadTimer = new Timer();
             LoadTimer.Interval = 50;
@@ -145,7 +154,8 @@ namespace KinectScan
 
         void Context_ProgramClosing(object sender, EventArgs e)
         {
-            if (Table != null) Table.Dispose();
+            //if (Table != null) Table.Dispose();
+            RSF.Close();
         }
 
 

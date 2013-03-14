@@ -127,7 +127,7 @@ namespace KinectScan
         }
     }
 
-    public class XPlane
+    public class XPlane : IDisposable
     {
         private VertexPositionTexture[] Vertices;
         private int[] Indicies;
@@ -198,6 +198,14 @@ namespace KinectScan
             GD.SetVertexBuffer(VB);
             GD.Indices = IB;
             GD.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, VB.VertexCount, 0, TriangleCount);
+        }
+
+        bool Disposed = false;
+        public void Dispose()
+        {
+            if (Disposed) return;
+            Disposed = true;
+            SetDevice(null);
         }
     }
 

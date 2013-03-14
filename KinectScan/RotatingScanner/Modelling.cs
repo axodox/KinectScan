@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 namespace KinectScan
 {
-    abstract class Modeller : IServiceProvider, IGraphicsDeviceService
+    public abstract class Modeller : IServiceProvider, IGraphicsDeviceService, IDisposable
     {
         protected KinectScanContext Context;
         public Modeller(KinectScanContext context)
@@ -28,16 +28,16 @@ namespace KinectScan
         private DepthContainer[] DepthCache;
         private int DepthCacheUsed, DepthIndex, DepthMainItem, LastDepthIndex;
         private int depthCacheSize;
-        public int DepthCacheSize
+        public int DepthAveragingCacheSize
         {
             get { return depthCacheSize; }
             set
             {
                 if (value < 1) return;
                 depthCacheSize = value;
-                if (DepthCacheSize % 2 == 1) depthCacheSize++;
-                DepthMainItem = DepthCacheSize / 2;
-                DepthCache = new DepthContainer[DepthCacheSize];
+                if (DepthAveragingCacheSize % 2 == 1) depthCacheSize++;
+                DepthMainItem = DepthAveragingCacheSize / 2;
+                DepthCache = new DepthContainer[DepthAveragingCacheSize];
                 DepthIndex = DepthCacheUsed = 0;
             }
         }
@@ -47,8 +47,8 @@ namespace KinectScan
             DepthCache[DepthIndex].Data = data;
             DepthCache[DepthIndex].Rotation = rotation;
             DepthIndex++;
-            if (DepthIndex == DepthCacheSize) DepthIndex = 0;
-            if (DepthCacheUsed < DepthCacheSize) DepthCacheUsed++;
+            if (DepthIndex == DepthAveragingCacheSize) DepthIndex = 0;
+            if (DepthCacheUsed < DepthAveragingCacheSize) DepthCacheUsed++;
         }
         #endregion
 
@@ -205,6 +205,26 @@ namespace KinectScan
             MaxiPlane.SetDevice(XDevice);
         }
 
+        public virtual void DestroyDevice()
+        {
+            TRawDepth.Dispose(); TRawDepth = null;
+            TDepth.Dispose(); TDepth = null;
+            TDepthCorrection.Dispose(); TDepthCorrection = null;
+
+            SingleTargetA.Dispose(); SingleTargetA = null;
+            SingleTargetB.Dispose(); SingleTargetB = null;
+            Vector2TargetA.Dispose(); Vector2TargetA = null;
+            Vector2TargetB.Dispose(); Vector2TargetB = null;
+            Vector4Target.Dispose(); Vector4Target = null;
+
+            MiniPlane.Dispose(); MiniPlane = null;
+            MaxiPlane.Dispose(); MaxiPlane = null;
+
+            XContent.Unload(); XContent.Dispose(); XContent = null;
+            XEffect=null;
+            XDevice.Dispose(); XDevice = null;
+        }
+
         public float TriangleClippingLimit
         {
             get { return TriangleRemoveLimit.GetValueSingle(); }
@@ -252,13 +272,13 @@ namespace KinectScan
             set { ClipOn.SetValue(value); }
         }
 
-        public int AveragingMinCount //Numeric error proof
+        public int DepthAveragingMinCount //Numeric error proof
         {
             get { return (int)(MinAvgCount.GetValueSingle()+0.2f); }
             set { MinAvgCount.SetValue(value - 0.1f); }
         }
 
-        public float DepthAverageLimit
+        public float DepthAveragingLimit
         {
             get { return DepthAvgLimit.GetValueSingle(); }
             set { DepthAvgLimit.SetValue(value); }
@@ -274,6 +294,8 @@ namespace KinectScan
         #region Visualization
         public enum Views : byte { AntiDistort, Sum, Avg, Gauss, Special };
         public Views ViewMode { get; set; }
+        public abstract string[] SpecialViewModes { get; }
+        public abstract void SetSpecialViewMode(int index);
 
         protected void Visualize(Texture texture, EffectTechnique technique, bool present = true)
         {
@@ -289,18 +311,18 @@ namespace KinectScan
 
         #region Transformations
         public float RotationX { get; set; }
+        public float SplitPlaneAngle { get; set; }
         public float RotationZ { get; set; }
         public float TranslationX { get; set; }
         public float TranslationY { get; set; }
-        public float TranslationZ { get; set; }
-        public float SplitPlaneAngle { get; set; }
+        public float TranslationZ { get; set; }        
         private void SetReprojection(float rotation)
         {
             Matrix T = Matrix.Transpose(Matrix.CreateTranslation(0, 0, -TranslationZ));
             Matrix T2 = Matrix.Transpose(Matrix.CreateTranslation(TranslationX, TranslationY, 0));
             Matrix Ti = Matrix.Invert(T);
-            Matrix R = Matrix.CreateRotationY(rotation) * Matrix.CreateRotationZ(RotationZ / 180 * MathHelper.Pi) *
-                    Matrix.CreateRotationX(RotationX / 180 * MathHelper.Pi);
+            Matrix R = Matrix.CreateRotationY(rotation) * Matrix.CreateRotationZ(RotationZ) *
+                    Matrix.CreateRotationX(RotationX);
             Matrix reproj = Context.DepthIntrinsics * Ti * R * T * T2 * Context.DepthInverseIntrinsics;
             ReprojectionTransform.SetValue(reproj); //->main
             Matrix space = R * T * T2 * Context.DepthInverseIntrinsics;
@@ -328,7 +350,7 @@ namespace KinectScan
         protected float mainRotation;
         public virtual void ProcessFrame()
         {
-            if (DepthCacheUsed >= DepthCacheSize)
+            if (DepthCacheUsed >= DepthAveragingCacheSize)
             {
                 if (FrameID % FusionSpacing == 0)
                 {
@@ -337,12 +359,12 @@ namespace KinectScan
                     XDevice.SetRenderTarget(Vector2TargetB);
                     XDevice.Clear(Color.Black);
 
-                    int mainIndex = (DepthIndex + DepthMainItem) % DepthCacheSize;
+                    int mainIndex = (DepthIndex + DepthMainItem) % DepthAveragingCacheSize;
                     mainRotation = DepthCache[mainIndex].Rotation;
                     byte[] deltaData;
                     float deltaRotation;
                     bool tick = false;
-                    for (int i = 0; i < DepthCacheSize; i++)
+                    for (int i = 0; i < DepthAveragingCacheSize; i++)
                     {
                         deltaData = DepthCache[i].Data;
                         deltaRotation = DepthCache[i].Rotation - mainRotation;
@@ -442,5 +464,13 @@ namespace KinectScan
             FrameID = 0;
         }
         #endregion
+
+        bool Disposed = false;
+        public void Dispose()
+        {
+            if (Disposed) return;
+            Disposed = true;
+            DestroyDevice();
+        }
     }
 }

@@ -41,6 +41,8 @@
             this.MIS3 = new System.Windows.Forms.MenuItem();
             this.MIClose = new System.Windows.Forms.MenuItem();
             this.MIScan = new System.Windows.Forms.MenuItem();
+            this.MIStop = new System.Windows.Forms.MenuItem();
+            this.MIView = new System.Windows.Forms.MenuItem();
             this.MICalibration = new System.Windows.Forms.MenuItem();
             this.MISettings = new System.Windows.Forms.MenuItem();
             this.SS = new System.Windows.Forms.StatusStrip();
@@ -54,6 +56,8 @@
             this.MM.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.MIFile,
             this.MIScan,
+            this.MIStop,
+            this.MIView,
             this.MICalibration,
             this.MISettings});
             // 
@@ -115,16 +119,28 @@
             // 
             this.MIScan.Index = 1;
             resources.ApplyResources(this.MIScan, "MIScan");
+            this.MIScan.Click += new System.EventHandler(this.MIScan_Click);
+            // 
+            // MIStop
+            // 
+            this.MIStop.Index = 2;
+            resources.ApplyResources(this.MIStop, "MIStop");
+            this.MIStop.Click += new System.EventHandler(this.MIStop_Click);
+            // 
+            // MIView
+            // 
+            this.MIView.Index = 3;
+            resources.ApplyResources(this.MIView, "MIView");
             // 
             // MICalibration
             // 
-            this.MICalibration.Index = 2;
+            this.MICalibration.Index = 4;
             resources.ApplyResources(this.MICalibration, "MICalibration");
             this.MICalibration.Click += new System.EventHandler(this.MICalibration_Click);
             // 
             // MISettings
             // 
-            this.MISettings.Index = 3;
+            this.MISettings.Index = 5;
             resources.ApplyResources(this.MISettings, "MISettings");
             this.MISettings.Click += new System.EventHandler(this.MISettings_Click);
             // 
@@ -145,6 +161,7 @@
             // TSPB
             // 
             this.TSPB.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.TSPB.Maximum = 360;
             this.TSPB.Name = "TSPB";
             resources.ApplyResources(this.TSPB, "TSPB");
             // 
@@ -155,6 +172,7 @@
             this.Controls.Add(this.SS);
             this.Menu = this.MM;
             this.Name = "RotationScannerForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RotationScannerForm_FormClosing);
             this.SS.ResumeLayout(false);
             this.SS.PerformLayout();
             this.ResumeLayout(false);
@@ -180,5 +198,7 @@
         private System.Windows.Forms.StatusStrip SS;
         private System.Windows.Forms.ToolStripStatusLabel TSSL;
         private System.Windows.Forms.ToolStripProgressBar TSPB;
+        private System.Windows.Forms.MenuItem MIView;
+        private System.Windows.Forms.MenuItem MIStop;
     }
 }

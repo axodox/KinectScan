@@ -16,9 +16,21 @@ namespace KinectScan
 
         }
 
+        #region Visualization
+        public override string[] SpecialViewModes
+        {
+            get { return new string[0]; }
+        }
+
+        public override void SetSpecialViewMode(int index)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+
         #region Hardware acceleration
         EffectTechnique FusionDisplayTechnique, FusionOutputTechnique, FusionLinesTechnique;
-        EffectParameter LinesTransform, SegmentLength, ProjMinX, ProjWidthMax;
+        EffectParameter LinesTransform, SegmentLength, ProjXMin, ProjWidthMax;
         public override void CreateDevice(System.IntPtr windowHandle)
         {
             base.CreateDevice(windowHandle);
@@ -31,25 +43,18 @@ namespace KinectScan
             //Parameters
             LinesTransform = XEffect.Parameters["LinesTransform"];
             SegmentLength = XEffect.Parameters["SegmentLength"];
-            ProjMinX = XEffect.Parameters["ProjXMin"];
+            ProjXMin = XEffect.Parameters["ProjXMin"];
             ProjWidthMax = XEffect.Parameters["ProjWidthMax"];
         }
 
-        public float ProjectionMinX 
+        public float ProjectionWidth
         {
-            get { return ProjMinX.GetValueSingle(); }
-            set 
+            get { return ProjWidthMax.GetValueSingle(); }
+            set
             {
-                float oldMaxX = ProjectionMinX;
-                ProjMinX.SetValue(value);
-                ProjectionMaxX = oldMaxX;
+                ProjXMin.SetValue(-value/2f);
+                ProjWidthMax.SetValue(value);
             }
-        }
-
-        public float ProjectionMaxX
-        {
-            get { return ProjWidthMax.GetValueSingle() + ProjectionMinX; }
-            set { ProjWidthMax.SetValue(value - ProjectionMinX); }
         }
         #endregion
 

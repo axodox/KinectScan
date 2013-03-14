@@ -1103,6 +1103,7 @@ namespace KinectScan
             SaveSettings();
             KSC.OnProgramClosing();
             ShutdownProbes();
+            NotifyIcon.Dispose();
         }
         #endregion
 

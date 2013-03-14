@@ -174,6 +174,12 @@
   <data name="Step6" xml:space="preserve">
     <value>Check if the the turntable's position has been selected correctly. Close the window to finish the calibration procedure.</value>
   </data>
+  <data name="TurntableConnected" xml:space="preserve">
+    <value>A turntable has been connected to the computer.</value>
+  </data>
+  <data name="TurntableDisconnected" xml:space="preserve">
+    <value>A turntable has been disconnected from the computer.</value>
+  </data>
   <data name="TurntableNotFound" xml:space="preserve">
     <value>Turntable not found!</value>
   </data>

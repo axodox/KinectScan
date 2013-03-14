@@ -174,6 +174,12 @@
   <data name="Step6" xml:space="preserve">
     <value>Ellenőrizze, hogy jól sikerült-e a forgópad helyének meghatározása! Zárja be az ablakot a befejezéshez!</value>
   </data>
+  <data name="TurntableConnected" xml:space="preserve">
+    <value>A számítógéphez egy forgópadot csatlakoztattak.</value>
+  </data>
+  <data name="TurntableDisconnected" xml:space="preserve">
+    <value>A számitógépről egy forgópadot leválasztottak.</value>
+  </data>
   <data name="TurntableNotFound" xml:space="preserve">
     <value>Turntable not found!</value>
   </data>

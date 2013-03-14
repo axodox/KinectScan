@@ -163,32 +163,32 @@ namespace KinectScan
             SF = new TurntableSettingsForm();
             SF.SettingsLoaded += new EventHandler(SF_SettingsLoaded);
             SF.LoadSettings();
-            SF.NBZLimit.ValueChanged += (object o, EventArgs e) => { DepthZLimit.SetValue(SF.NBZLimit.Value); };
-            SF.NBMinY.ValueChanged += (object o, EventArgs e) =>
+            SF.NBClippingDepthMax.ValueChanged += (object o, EventArgs e) => { DepthZLimit.SetValue(SF.NBClippingDepthMax.Value); };
+            SF.NBProjectionYMin.ValueChanged += (object o, EventArgs e) =>
             {
-                MinY.SetValue(SF.NBMinY.Value);
-                MaxHeight.SetValue(SF.NBMaxY.Value - SF.NBMinY.Value);
+                MinY.SetValue(SF.NBProjectionYMin.Value);
+                MaxHeight.SetValue(SF.NBProjectionYMax.Value - SF.NBProjectionYMin.Value);
             };
-            SF.NBMaxY.ValueChanged += (object o, EventArgs e) => { MaxHeight.SetValue(SF.NBMaxY.Value - SF.NBMinY.Value); };
+            SF.NBProjectionYMax.ValueChanged += (object o, EventArgs e) => { MaxHeight.SetValue(SF.NBProjectionYMax.Value - SF.NBProjectionYMin.Value); };
             SF.NBProjectionWidth.ValueChanged += (object o, EventArgs e) =>
             {
                 MinX.SetValue(-SF.NBProjectionWidth.Value / 2f);
                 MaxWidth.SetValue(SF.NBProjectionWidth.Value);
             };
-            SF.NBReprojectionRotationX.ValueChanged += (object o, EventArgs e) => { RotationX = SF.NBReprojectionRotationX.Value; };
-            SF.NBReprojectionRotationZ.ValueChanged += (object o, EventArgs e) => { RotationZ = SF.NBReprojectionRotationZ.Value; };
-            SF.NBReprojectionTranslationX.ValueChanged += (object o, EventArgs e) => { TranslationX = SF.NBReprojectionTranslationX.Value; };
-            SF.NBReprojectionTranslationY.ValueChanged += (object o, EventArgs e) => { TranslationY = SF.NBReprojectionTranslationY.Value; };
-            SF.NBReprojectionTranslationZ.ValueChanged += (object o, EventArgs e) => { TranslationZ = SF.NBReprojectionTranslationZ.Value; };
-            SF.NBMaxClipRadius.ValueChanged += (object o, EventArgs e) => { MaxClipRadius.SetValue(SF.NBMaxClipRadius.Value); };
-            SF.NBMinClipRadius.ValueChanged += (object o, EventArgs e) => { MinClipRadius.SetValue(SF.NBMinClipRadius.Value); };
+            SF.NBRotationX.ValueChanged += (object o, EventArgs e) => { RotationX = SF.NBRotationX.Value; };
+            SF.NBRotationZ.ValueChanged += (object o, EventArgs e) => { RotationZ = SF.NBRotationZ.Value; };
+            SF.NBTranslationX.ValueChanged += (object o, EventArgs e) => { TranslationX = SF.NBTranslationX.Value; };
+            SF.NBTranslationY.ValueChanged += (object o, EventArgs e) => { TranslationY = SF.NBTranslationY.Value; };
+            SF.NBTranslationZ.ValueChanged += (object o, EventArgs e) => { TranslationZ = SF.NBTranslationZ.Value; };
+            SF.NBClippingRadiusMax.ValueChanged += (object o, EventArgs e) => { MaxClipRadius.SetValue(SF.NBClippingRadiusMax.Value); };
+            SF.NBClippingRadiusMin.ValueChanged += (object o, EventArgs e) => { MinClipRadius.SetValue(SF.NBClippingRadiusMin.Value); };
             SF.NBFusionSpacing.ValueChanged += (object o, EventArgs e) => { FusionSpacing = SF.NBFusionSpacing.Int32Value; };
-            SF.CBClip.CheckedChanged += (object o, EventArgs e) => { ClipOn.SetValue(SF.CBClip.Checked); };
-            SF.NBMinAvgCount.ValueChanged += (object o, EventArgs e) => { MinAvgCount.SetValue(SF.NBMinAvgCount.Value - 0.1f); };
+            SF.CBClippingEnabled.CheckedChanged += (object o, EventArgs e) => { ClipOn.SetValue(SF.CBClippingEnabled.Checked); };
+            SF.NBDepthAveragingMinCount.ValueChanged += (object o, EventArgs e) => { MinAvgCount.SetValue(SF.NBDepthAveragingMinCount.Value - 0.1f); };
             SF.NBDepthAveragingLimit.ValueChanged += (object o, EventArgs e) => { DepthAvgLimit.SetValue(SF.NBDepthAveragingLimit.Value); };
-            SF.NBMinClipY.ValueChanged += (object o, EventArgs e) => { MinClipY.SetValue(SF.NBMinClipY.Value); };
+            SF.NBClippingYMin.ValueChanged += (object o, EventArgs e) => { MinClipY.SetValue(SF.NBClippingYMin.Value); };
 
-            DepthCacheSize = SF.NBAveragedFrames.Int32Value;
+            DepthCacheSize = SF.NBDepthAveragingCacheSize.Int32Value;
             if (DepthCacheSize % 2 == 1) DepthCacheSize++;
             DepthMainItem = DepthCacheSize / 2;
             SetBuildModel(ModuleSettings.Default.BuildModel);
@@ -197,23 +197,23 @@ namespace KinectScan
 
         void SF_SettingsLoaded(object sender, EventArgs e)
         {
-            RotationX = SF.NBReprojectionRotationX.Value;
-            RotationZ = SF.NBReprojectionRotationZ.Value;
-            TranslationX = SF.NBReprojectionTranslationX.Value;
-            TranslationY = SF.NBReprojectionTranslationY.Value;
-            TranslationZ = SF.NBReprojectionTranslationZ.Value;
-            DepthZLimit.SetValue(SF.NBZLimit.Value);
+            RotationX = SF.NBRotationX.Value;
+            RotationZ = SF.NBRotationZ.Value;
+            TranslationX = SF.NBTranslationX.Value;
+            TranslationY = SF.NBTranslationY.Value;
+            TranslationZ = SF.NBTranslationZ.Value;
+            DepthZLimit.SetValue(SF.NBClippingDepthMax.Value);
             MinX.SetValue(-SF.NBProjectionWidth.Value / 2f);
             MaxWidth.SetValue(SF.NBProjectionWidth.Value);
-            MinY.SetValue(SF.NBMinY.Value);
-            MaxHeight.SetValue(SF.NBMaxY.Value - SF.NBMinY.Value);
-            MaxClipRadius.SetValue(SF.NBMaxClipRadius.Value);
-            MinClipRadius.SetValue(SF.NBMinClipRadius.Value);
+            MinY.SetValue(SF.NBProjectionYMin.Value);
+            MaxHeight.SetValue(SF.NBProjectionYMax.Value - SF.NBProjectionYMin.Value);
+            MaxClipRadius.SetValue(SF.NBClippingRadiusMax.Value);
+            MinClipRadius.SetValue(SF.NBClippingRadiusMin.Value);
             FusionSpacing = SF.NBFusionSpacing.Int32Value;
-            ClipOn.SetValue(SF.CBClip.Checked);
-            MinAvgCount.SetValue(SF.NBMinAvgCount.Value - 0.1f);
+            ClipOn.SetValue(SF.CBClippingEnabled.Checked);
+            MinAvgCount.SetValue(SF.NBDepthAveragingMinCount.Value - 0.1f);
             DepthAvgLimit.SetValue(SF.NBDepthAveragingLimit.Value);
-            MinClipY.SetValue(SF.NBMinClipY.Value);
+            MinClipY.SetValue(SF.NBClippingYMin.Value);
         }
 
         public void Exit()
@@ -345,7 +345,7 @@ namespace KinectScan
             Matrix reproj = Context.DepthIntrinsics * Ti * R * T * Context.DepthInverseIntrinsics;
             ReprojectionTransform.SetValue(reproj);
             SpaceTransform.SetValue(space);
-            double a = SF.NBSplitPlane.DoubleValue / 180d * Math.PI;
+            double a = SF.NBSplitPlaneAngle.DoubleValue / 180d * Math.PI;
             SplitPlaneVector.SetValue(new Vector4((float)Math.Cos(a), 0f, (float)Math.Sin(a), 0f));
             FusionTranform.SetValue(Matrix.CreateRotationY(fusionRotation) * space);
         }
@@ -360,7 +360,7 @@ namespace KinectScan
             ReprojectionTransform.SetValue(reproj);
             SpaceTransform.SetValue(space);
             SplitPlaneVector.SetValue(new Vector4(0f, 0f, 1f, 0f));
-            FusionTranform.SetValue(Matrix.CreateRotationY((-SF.NBSplitPlane.Value+90f) / 180f * MathHelper.Pi) * space);
+            FusionTranform.SetValue(Matrix.CreateRotationY((-SF.NBSplitPlaneAngle.Value+90f) / 180f * MathHelper.Pi) * space);
         }
 
         private void SetModelProjection(float rotation)
@@ -599,7 +599,7 @@ namespace KinectScan
                         VPC[7] = new VertexPositionColor(new Vector3(-SF.NBCoreY.Value, 1, SF.NBCoreX.Value), Color.Green);
                         VPC[8] = new VertexPositionColor(new Vector3(-SF.NBCoreY.Value, -1, -SF.NBCoreX.Value), Color.Red);
                         VPC[9] = new VertexPositionColor(new Vector3(-SF.NBCoreY.Value, 1, -SF.NBCoreX.Value), Color.Red);
-                        SetModelProjection(-mainRotation + (SF.NBSplitPlane.Value+90f) / 180f * MathHelper.Pi);
+                        SetModelProjection(-mainRotation + (SF.NBSplitPlaneAngle.Value+90f) / 180f * MathHelper.Pi);
                         LinesVertexBuffer.SetData<VertexPositionColor>(VPC);
                         XDevice.SetVertexBuffer(LinesVertexBuffer);
                         XEffect.CurrentTechnique = ColorModelTechnique;

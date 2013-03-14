@@ -91,6 +91,7 @@ namespace KinectScan
             this.TSLSequencePerformance = new System.Windows.Forms.ToolStripProgressBar();
             this.TSLSequenceCounterLabel = new System.Windows.Forms.ToolStripLabel();
             this.TSLSequenceCounter = new System.Windows.Forms.ToolStripLabel();
+            this.NotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.TSMain.SuspendLayout();
             this.TSSequence.SuspendLayout();
             this.SuspendLayout();
@@ -102,11 +103,9 @@ namespace KinectScan
             this.MIDevices,
             this.MIView,
             this.MISettings});
-            resources.ApplyResources(this.MainMenu, "MainMenu");
             // 
             // MIFile
             // 
-            resources.ApplyResources(this.MIFile, "MIFile");
             this.MIFile.Index = 0;
             this.MIFile.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.MISaveTo,
@@ -114,38 +113,38 @@ namespace KinectScan
             this.MIFileSeparator,
             this.MIOpenSavedModel,
             this.MIOpenRawData});
+            resources.ApplyResources(this.MIFile, "MIFile");
             // 
             // MISaveTo
             // 
-            resources.ApplyResources(this.MISaveTo, "MISaveTo");
             this.MISaveTo.Index = 0;
+            resources.ApplyResources(this.MISaveTo, "MISaveTo");
             // 
             // MIWorkingDirectory
             // 
-            resources.ApplyResources(this.MIWorkingDirectory, "MIWorkingDirectory");
             this.MIWorkingDirectory.Index = 1;
+            resources.ApplyResources(this.MIWorkingDirectory, "MIWorkingDirectory");
             this.MIWorkingDirectory.Click += new System.EventHandler(this.MIWorkingDirectory_Click);
             // 
             // MIFileSeparator
             // 
-            resources.ApplyResources(this.MIFileSeparator, "MIFileSeparator");
             this.MIFileSeparator.Index = 2;
+            resources.ApplyResources(this.MIFileSeparator, "MIFileSeparator");
             // 
             // MIOpenSavedModel
             // 
-            resources.ApplyResources(this.MIOpenSavedModel, "MIOpenSavedModel");
             this.MIOpenSavedModel.Index = 3;
+            resources.ApplyResources(this.MIOpenSavedModel, "MIOpenSavedModel");
             this.MIOpenSavedModel.Click += new System.EventHandler(this.MIOpenSavedModel_Click);
             // 
             // MIOpenRawData
             // 
-            resources.ApplyResources(this.MIOpenRawData, "MIOpenRawData");
             this.MIOpenRawData.Index = 4;
+            resources.ApplyResources(this.MIOpenRawData, "MIOpenRawData");
             this.MIOpenRawData.Click += new System.EventHandler(this.MIOpenRawData_Click);
             // 
             // MIDevices
             // 
-            resources.ApplyResources(this.MIDevices, "MIDevices");
             this.MIDevices.Index = 1;
             this.MIDevices.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.MIStart,
@@ -158,6 +157,7 @@ namespace KinectScan
             this.MITilt,
             this.MIDevicesSeparator2,
             this.MIVirtualDevice});
+            resources.ApplyResources(this.MIDevices, "MIDevices");
             // 
             // MIStart
             // 
@@ -185,19 +185,19 @@ namespace KinectScan
             // 
             // MIDevicesRefresh
             // 
-            resources.ApplyResources(this.MIDevicesRefresh, "MIDevicesRefresh");
             this.MIDevicesRefresh.Index = 4;
+            resources.ApplyResources(this.MIDevicesRefresh, "MIDevicesRefresh");
             this.MIDevicesRefresh.Click += new System.EventHandler(this.MIDevicesRefresh_Click);
             // 
             // MIDevicesSeparator
             // 
-            resources.ApplyResources(this.MIDevicesSeparator, "MIDevicesSeparator");
             this.MIDevicesSeparator.Index = 5;
+            resources.ApplyResources(this.MIDevicesSeparator, "MIDevicesSeparator");
             // 
             // MIModes
             // 
-            resources.ApplyResources(this.MIModes, "MIModes");
             this.MIModes.Index = 6;
+            resources.ApplyResources(this.MIModes, "MIModes");
             // 
             // MITilt
             // 
@@ -210,66 +210,66 @@ namespace KinectScan
             // 
             // MITiltHorizontal
             // 
-            resources.ApplyResources(this.MITiltHorizontal, "MITiltHorizontal");
             this.MITiltHorizontal.Index = 0;
+            resources.ApplyResources(this.MITiltHorizontal, "MITiltHorizontal");
             this.MITiltHorizontal.Click += new System.EventHandler(this.MITiltHorizontal_Click);
             // 
             // MITiltUp
             // 
-            resources.ApplyResources(this.MITiltUp, "MITiltUp");
             this.MITiltUp.Index = 1;
+            resources.ApplyResources(this.MITiltUp, "MITiltUp");
             this.MITiltUp.Click += new System.EventHandler(this.MITiltUp_Click);
             // 
             // MITiltDown
             // 
-            resources.ApplyResources(this.MITiltDown, "MITiltDown");
             this.MITiltDown.Index = 2;
+            resources.ApplyResources(this.MITiltDown, "MITiltDown");
             this.MITiltDown.Click += new System.EventHandler(this.MITiltDown_Click);
             // 
             // MIDevicesSeparator2
             // 
-            resources.ApplyResources(this.MIDevicesSeparator2, "MIDevicesSeparator2");
             this.MIDevicesSeparator2.Index = 8;
+            resources.ApplyResources(this.MIDevicesSeparator2, "MIDevicesSeparator2");
             // 
             // MIVirtualDevice
             // 
-            resources.ApplyResources(this.MIVirtualDevice, "MIVirtualDevice");
             this.MIVirtualDevice.Index = 9;
             this.MIVirtualDevice.RadioCheck = true;
             this.MIVirtualDevice.Tag = -1;
+            resources.ApplyResources(this.MIVirtualDevice, "MIVirtualDevice");
             this.MIVirtualDevice.Click += new System.EventHandler(this.TSMIDevice_Click);
             // 
             // MIView
             // 
-            resources.ApplyResources(this.MIView, "MIView");
             this.MIView.Index = 2;
             this.MIView.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.MIRotateRight,
             this.MIRotateLeft,
             this.MIResetView});
+            resources.ApplyResources(this.MIView, "MIView");
             // 
             // MIRotateRight
             // 
-            resources.ApplyResources(this.MIRotateRight, "MIRotateRight");
             this.MIRotateRight.Index = 0;
+            resources.ApplyResources(this.MIRotateRight, "MIRotateRight");
             this.MIRotateRight.Click += new System.EventHandler(this.MIRotateRight_Click);
             // 
             // MIRotateLeft
             // 
-            resources.ApplyResources(this.MIRotateLeft, "MIRotateLeft");
             this.MIRotateLeft.Index = 1;
+            resources.ApplyResources(this.MIRotateLeft, "MIRotateLeft");
             this.MIRotateLeft.Click += new System.EventHandler(this.MIRotateLeft_Click);
             // 
             // MIResetView
             // 
-            resources.ApplyResources(this.MIResetView, "MIResetView");
             this.MIResetView.Index = 2;
+            resources.ApplyResources(this.MIResetView, "MIResetView");
             this.MIResetView.Click += new System.EventHandler(this.MIResetView_Click);
             // 
             // MISettings
             // 
-            resources.ApplyResources(this.MISettings, "MISettings");
             this.MISettings.Index = 3;
+            resources.ApplyResources(this.MISettings, "MISettings");
             this.MISettings.Click += new System.EventHandler(this.MISettings_Click);
             // 
             // SBStatus
@@ -279,7 +279,6 @@ namespace KinectScan
             // 
             // TSMain
             // 
-            resources.ApplyResources(this.TSMain, "TSMain");
             this.TSMain.BackColor = System.Drawing.SystemColors.Control;
             this.TSMain.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.TSMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -299,6 +298,7 @@ namespace KinectScan
             this.TSTBLabel,
             this.TSBSave,
             this.TSBSequenceSave});
+            resources.ApplyResources(this.TSMain, "TSMain");
             this.TSMain.Name = "TSMain";
             this.TSMain.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             // 
@@ -311,106 +311,106 @@ namespace KinectScan
             // 
             // TSSMainSeparatorFile
             // 
-            resources.ApplyResources(this.TSSMainSeparatorFile, "TSSMainSeparatorFile");
             this.TSSMainSeparatorFile.Name = "TSSMainSeparatorFile";
+            resources.ApplyResources(this.TSSMainSeparatorFile, "TSSMainSeparatorFile");
             // 
             // TSBFilePrevious
             // 
-            resources.ApplyResources(this.TSBFilePrevious, "TSBFilePrevious");
             this.TSBFilePrevious.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.TSBFilePrevious.Image = global::KinectScan.Properties.Resources.previous16;
+            resources.ApplyResources(this.TSBFilePrevious, "TSBFilePrevious");
             this.TSBFilePrevious.Name = "TSBFilePrevious";
             this.TSBFilePrevious.Click += new System.EventHandler(this.TSBFilePrevious_Click);
             // 
             // TSLFileCount
             // 
-            resources.ApplyResources(this.TSLFileCount, "TSLFileCount");
             this.TSLFileCount.Name = "TSLFileCount";
+            resources.ApplyResources(this.TSLFileCount, "TSLFileCount");
             // 
             // TSBFileNext
             // 
-            resources.ApplyResources(this.TSBFileNext, "TSBFileNext");
             this.TSBFileNext.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.TSBFileNext.Image = global::KinectScan.Properties.Resources.next16;
+            resources.ApplyResources(this.TSBFileNext, "TSBFileNext");
             this.TSBFileNext.Name = "TSBFileNext";
             this.TSBFileNext.Click += new System.EventHandler(this.TSBFileNext_Click);
             // 
             // TSSMainSeparator
             // 
-            resources.ApplyResources(this.TSSMainSeparator, "TSSMainSeparator");
             this.TSSMainSeparator.Name = "TSSMainSeparator";
+            resources.ApplyResources(this.TSSMainSeparator, "TSSMainSeparator");
             // 
             // TSBProbes
             // 
-            resources.ApplyResources(this.TSBProbes, "TSBProbes");
             this.TSBProbes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            resources.ApplyResources(this.TSBProbes, "TSBProbes");
             this.TSBProbes.Name = "TSBProbes";
             this.TSBProbes.Click += new System.EventHandler(this.TSBProbes_Click);
             // 
             // TSBRotateLeft
             // 
-            resources.ApplyResources(this.TSBRotateLeft, "TSBRotateLeft");
             this.TSBRotateLeft.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.TSBRotateLeft.Image = global::KinectScan.Properties.Resources.rotateLeft16;
+            resources.ApplyResources(this.TSBRotateLeft, "TSBRotateLeft");
             this.TSBRotateLeft.Name = "TSBRotateLeft";
             this.TSBRotateLeft.Click += new System.EventHandler(this.TSBRotateLeft_Click);
             // 
             // TSBRotateRight
             // 
-            resources.ApplyResources(this.TSBRotateRight, "TSBRotateRight");
             this.TSBRotateRight.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.TSBRotateRight.Image = global::KinectScan.Properties.Resources.rotateRight16;
+            resources.ApplyResources(this.TSBRotateRight, "TSBRotateRight");
             this.TSBRotateRight.Name = "TSBRotateRight";
             this.TSBRotateRight.Click += new System.EventHandler(this.TSBRotateRight_Click);
             // 
             // TSBResetView
             // 
-            resources.ApplyResources(this.TSBResetView, "TSBResetView");
             this.TSBResetView.Image = global::KinectScan.Properties.Resources.resetView16;
+            resources.ApplyResources(this.TSBResetView, "TSBResetView");
             this.TSBResetView.Name = "TSBResetView";
             this.TSBResetView.Click += new System.EventHandler(this.TSBResetView_Click);
             // 
             // TSDDBShading
             // 
-            resources.ApplyResources(this.TSDDBShading, "TSDDBShading");
             this.TSDDBShading.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.TSDDBShading.Image = global::KinectScan.Properties.Resources.shading16;
+            resources.ApplyResources(this.TSDDBShading, "TSDDBShading");
             this.TSDDBShading.Name = "TSDDBShading";
             // 
             // TSSMainSeparatorSave
             // 
-            resources.ApplyResources(this.TSSMainSeparatorSave, "TSSMainSeparatorSave");
             this.TSSMainSeparatorSave.Name = "TSSMainSeparatorSave";
+            resources.ApplyResources(this.TSSMainSeparatorSave, "TSSMainSeparatorSave");
             // 
             // TSLLabel
             // 
-            resources.ApplyResources(this.TSLLabel, "TSLLabel");
             this.TSLLabel.Name = "TSLLabel";
+            resources.ApplyResources(this.TSLLabel, "TSLLabel");
             // 
             // TSTBLabel
             // 
-            resources.ApplyResources(this.TSTBLabel, "TSTBLabel");
             this.TSTBLabel.Name = "TSTBLabel";
+            resources.ApplyResources(this.TSTBLabel, "TSTBLabel");
             // 
             // TSBSave
             // 
-            resources.ApplyResources(this.TSBSave, "TSBSave");
             this.TSBSave.Image = global::KinectScan.Properties.Resources.save16;
+            resources.ApplyResources(this.TSBSave, "TSBSave");
             this.TSBSave.Name = "TSBSave";
             this.TSBSave.ButtonClick += new System.EventHandler(this.TSMISave_Click);
             // 
             // TSBSequenceSave
             // 
-            resources.ApplyResources(this.TSBSequenceSave, "TSBSequenceSave");
             this.TSBSequenceSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.TSBSequenceSave.Image = global::KinectScan.Properties.Resources.sequence16;
+            resources.ApplyResources(this.TSBSequenceSave, "TSBSequenceSave");
             this.TSBSequenceSave.Name = "TSBSequenceSave";
             this.TSBSequenceSave.Click += new System.EventHandler(this.TSBSequenceSave_Click);
             // 
             // XPanel
             // 
-            resources.ApplyResources(this.XPanel, "XPanel");
             this.XPanel.BackColor = System.Drawing.Color.White;
+            resources.ApplyResources(this.XPanel, "XPanel");
             this.XPanel.Name = "XPanel";
             this.XPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.XPanel_MouseDown);
             this.XPanel.MouseLeave += new System.EventHandler(this.XPanel_MouseLeave);
@@ -418,7 +418,6 @@ namespace KinectScan
             // 
             // TSSequence
             // 
-            resources.ApplyResources(this.TSSequence, "TSSequence");
             this.TSSequence.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TSLSequenceLabel,
             this.TSSSequence0,
@@ -434,91 +433,96 @@ namespace KinectScan
             this.TSLSequencePerformance,
             this.TSLSequenceCounterLabel,
             this.TSLSequenceCounter});
+            resources.ApplyResources(this.TSSequence, "TSSequence");
             this.TSSequence.Name = "TSSequence";
             this.TSSequence.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             // 
             // TSLSequenceLabel
             // 
-            resources.ApplyResources(this.TSLSequenceLabel, "TSLSequenceLabel");
             this.TSLSequenceLabel.Name = "TSLSequenceLabel";
+            resources.ApplyResources(this.TSLSequenceLabel, "TSLSequenceLabel");
             // 
             // TSSSequence0
             // 
-            resources.ApplyResources(this.TSSSequence0, "TSSSequence0");
             this.TSSSequence0.Name = "TSSSequence0";
+            resources.ApplyResources(this.TSSSequence0, "TSSSequence0");
             // 
             // TSBSequenceRecord
             // 
-            resources.ApplyResources(this.TSBSequenceRecord, "TSBSequenceRecord");
             this.TSBSequenceRecord.Image = global::KinectScan.Properties.Resources.record16;
+            resources.ApplyResources(this.TSBSequenceRecord, "TSBSequenceRecord");
             this.TSBSequenceRecord.Name = "TSBSequenceRecord";
             this.TSBSequenceRecord.Click += new System.EventHandler(this.TSBSequenceRecord_Click);
             // 
             // TSBSequencePause
             // 
-            resources.ApplyResources(this.TSBSequencePause, "TSBSequencePause");
             this.TSBSequencePause.Image = global::KinectScan.Properties.Resources.pause16;
+            resources.ApplyResources(this.TSBSequencePause, "TSBSequencePause");
             this.TSBSequencePause.Name = "TSBSequencePause";
             this.TSBSequencePause.Click += new System.EventHandler(this.TSBSequencePause_Click);
             // 
             // TSBSequenceStop
             // 
-            resources.ApplyResources(this.TSBSequenceStop, "TSBSequenceStop");
             this.TSBSequenceStop.Image = global::KinectScan.Properties.Resources.stop16;
+            resources.ApplyResources(this.TSBSequenceStop, "TSBSequenceStop");
             this.TSBSequenceStop.Name = "TSBSequenceStop";
             this.TSBSequenceStop.Click += new System.EventHandler(this.TSBSequenceStop_Click);
             // 
             // TSSSequence1
             // 
-            resources.ApplyResources(this.TSSSequence1, "TSSSequence1");
             this.TSSSequence1.Name = "TSSSequence1";
+            resources.ApplyResources(this.TSSSequence1, "TSSSequence1");
             // 
             // TSLSequenceIntervalLabel
             // 
-            resources.ApplyResources(this.TSLSequenceIntervalLabel, "TSLSequenceIntervalLabel");
             this.TSLSequenceIntervalLabel.Name = "TSLSequenceIntervalLabel";
+            resources.ApplyResources(this.TSLSequenceIntervalLabel, "TSLSequenceIntervalLabel");
             // 
             // TSBSequenceDecreaseInterval
             // 
-            resources.ApplyResources(this.TSBSequenceDecreaseInterval, "TSBSequenceDecreaseInterval");
             this.TSBSequenceDecreaseInterval.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.TSBSequenceDecreaseInterval.Image = global::KinectScan.Properties.Resources.previous16;
+            resources.ApplyResources(this.TSBSequenceDecreaseInterval, "TSBSequenceDecreaseInterval");
             this.TSBSequenceDecreaseInterval.Name = "TSBSequenceDecreaseInterval";
             this.TSBSequenceDecreaseInterval.Click += new System.EventHandler(this.TSBSequenceDecreaseInterval_Click);
             // 
             // TSLSequenceInterval
             // 
-            resources.ApplyResources(this.TSLSequenceInterval, "TSLSequenceInterval");
             this.TSLSequenceInterval.Name = "TSLSequenceInterval";
+            resources.ApplyResources(this.TSLSequenceInterval, "TSLSequenceInterval");
             // 
             // TSBSequenceIncreaseInterval
             // 
-            resources.ApplyResources(this.TSBSequenceIncreaseInterval, "TSBSequenceIncreaseInterval");
             this.TSBSequenceIncreaseInterval.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.TSBSequenceIncreaseInterval.Image = global::KinectScan.Properties.Resources.next16;
+            resources.ApplyResources(this.TSBSequenceIncreaseInterval, "TSBSequenceIncreaseInterval");
             this.TSBSequenceIncreaseInterval.Name = "TSBSequenceIncreaseInterval";
             this.TSBSequenceIncreaseInterval.Click += new System.EventHandler(this.TSBSequenceIncreaseInterval_Click);
             // 
             // TSSSequnce2
             // 
-            resources.ApplyResources(this.TSSSequnce2, "TSSSequnce2");
             this.TSSSequnce2.Name = "TSSSequnce2";
+            resources.ApplyResources(this.TSSSequnce2, "TSSSequnce2");
             // 
             // TSLSequencePerformance
             // 
-            resources.ApplyResources(this.TSLSequencePerformance, "TSLSequencePerformance");
             this.TSLSequencePerformance.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.TSLSequencePerformance.Name = "TSLSequencePerformance";
+            resources.ApplyResources(this.TSLSequencePerformance, "TSLSequencePerformance");
             // 
             // TSLSequenceCounterLabel
             // 
-            resources.ApplyResources(this.TSLSequenceCounterLabel, "TSLSequenceCounterLabel");
             this.TSLSequenceCounterLabel.Name = "TSLSequenceCounterLabel";
+            resources.ApplyResources(this.TSLSequenceCounterLabel, "TSLSequenceCounterLabel");
             // 
             // TSLSequenceCounter
             // 
-            resources.ApplyResources(this.TSLSequenceCounter, "TSLSequenceCounter");
             this.TSLSequenceCounter.Name = "TSLSequenceCounter";
+            resources.ApplyResources(this.TSLSequenceCounter, "TSLSequenceCounter");
+            // 
+            // NotifyIcon
+            // 
+            resources.ApplyResources(this.NotifyIcon, "NotifyIcon");
             // 
             // MainForm
             // 
@@ -603,6 +607,7 @@ namespace KinectScan
         private System.Windows.Forms.ToolStripLabel TSLFileCount;
         private System.Windows.Forms.ToolStripButton TSBFileNext;
         private System.Windows.Forms.MenuItem MICalibration;
+        private System.Windows.Forms.NotifyIcon NotifyIcon;
     }
 }
 

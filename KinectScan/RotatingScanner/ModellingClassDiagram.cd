@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="NameAndType">
+  <Class Name="KinectScan.Modeller">
+    <Position X="0.5" Y="0.5" Width="3.75" />
+    <NestedTypes>
+      <Struct Name="KinectScan.Modeller.DepthContainer" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Modelling.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Enum Name="KinectScan.Modeller.Views" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Modelling.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>jBAAlcF5AsWAF9gjsJBwkKAIEsHIhVAAAAdEAxVpEMA=</HashCode>
+      <FileName>Modelling.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="KinectScan.FusionModeller">
+    <Position X="5" Y="8.75" Width="3" />
+    <NestedTypes>
+      <Class Name="KinectScan.FusionModeller.ModelMaker" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Fusion.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>CAAAAIAAAgAAAAIIIAABoAIAAAAAAQACAAAAAAABAIA=</HashCode>
+      <FileName>Fusion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="KinectScan.ExCoreModeller">
+    <Position X="5" Y="1" Width="3.25" />
+    <NestedTypes>
+      <Enum Name="KinectScan.ExCoreModeller.SpecialViews" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ExCore.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Struct Name="KinectScan.ExCoreModeller.FromPolarSettings" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ExCore.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>CRAAAIByNKAAAAgAUAgAQEQACAABEAAAAAAAAChAAIA=</HashCode>
+      <FileName>ExCore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -232,6 +232,24 @@ namespace KinectScan {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A turntable has been connected to the computer..
+        /// </summary>
+        internal static string TurntableConnected {
+            get {
+                return ResourceManager.GetString("TurntableConnected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A turntable has been disconnected from the computer..
+        /// </summary>
+        internal static string TurntableDisconnected {
+            get {
+                return ResourceManager.GetString("TurntableDisconnected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Turntable not found!.
         /// </summary>
         internal static string TurntableNotFound {

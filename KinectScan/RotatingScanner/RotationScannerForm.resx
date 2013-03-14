@@ -150,6 +150,12 @@
   <data name="MIScan.Text" xml:space="preserve">
     <value>Scan</value>
   </data>
+  <data name="MIStop.Text" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="MIView.Text" xml:space="preserve">
+    <value>View</value>
+  </data>
   <data name="MICalibration.Text" xml:space="preserve">
     <value>Calibration</value>
   </data>
@@ -270,6 +276,18 @@
     <value>MIScan</value>
   </data>
   <data name="&gt;&gt;MIScan.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MIStop.Name" xml:space="preserve">
+    <value>MIStop</value>
+  </data>
+  <data name="&gt;&gt;MIStop.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MIView.Name" xml:space="preserve">
+    <value>MIView</value>
+  </data>
+  <data name="&gt;&gt;MIView.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;MICalibration.Name" xml:space="preserve">

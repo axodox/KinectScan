@@ -125,468 +125,522 @@
   <data name="FLPSettings.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="CBClip.AutoSize" type="System.Boolean, mscorlib">
+  <data name="CBClippingEnabled.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="CBClip.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="CBClippingEnabled.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="CBClip.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="CBClippingEnabled.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
   </data>
-  <data name="CBClip.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="CBClippingEnabled.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 17</value>
   </data>
-  <data name="CBClip.TabIndex" type="System.Int32, mscorlib">
+  <data name="CBClippingEnabled.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
   </data>
-  <data name="CBClip.Text" xml:space="preserve">
+  <data name="CBClippingEnabled.Text" xml:space="preserve">
     <value>Clipping</value>
   </data>
-  <data name="&gt;&gt;CBClip.Name" xml:space="preserve">
-    <value>CBClip</value>
+  <data name="&gt;&gt;CBClippingEnabled.Name" xml:space="preserve">
+    <value>CBClippingEnabled</value>
   </data>
-  <data name="&gt;&gt;CBClip.Type" xml:space="preserve">
+  <data name="&gt;&gt;CBClippingEnabled.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;CBClip.Parent" xml:space="preserve">
+  <data name="&gt;&gt;CBClippingEnabled.Parent" xml:space="preserve">
     <value>FLPSettings</value>
   </data>
-  <data name="&gt;&gt;CBClip.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;CBClippingEnabled.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="NBMinClipRadius.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="NBClippingRadiusMin.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 23</value>
   </data>
-  <data name="NBMinClipRadius.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="NBClippingRadiusMin.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="NBMinClipRadius.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="NBClippingRadiusMin.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>4096, 56</value>
   </data>
-  <data name="NBMinClipRadius.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="NBClippingRadiusMin.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>128, 56</value>
   </data>
-  <data name="NBMinClipRadius.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="NBClippingRadiusMin.Size" type="System.Drawing.Size, System.Drawing">
     <value>256, 56</value>
   </data>
-  <data name="NBMinClipRadius.TabIndex" type="System.Int32, mscorlib">
+  <data name="NBClippingRadiusMin.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
   </data>
-  <data name="NBMinClipRadius.Title" xml:space="preserve">
+  <data name="NBClippingRadiusMin.Title" xml:space="preserve">
     <value>Minimal clip radius (meter)</value>
   </data>
-  <data name="&gt;&gt;NBMinClipRadius.Name" xml:space="preserve">
-    <value>NBMinClipRadius</value>
+  <data name="&gt;&gt;NBClippingRadiusMin.Name" xml:space="preserve">
+    <value>NBClippingRadiusMin</value>
   </data>
-  <data name="&gt;&gt;NBMinClipRadius.Type" xml:space="preserve">
+  <data name="&gt;&gt;NBClippingRadiusMin.Type" xml:space="preserve">
     <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;NBMinClipRadius.Parent" xml:space="preserve">
+  <data name="&gt;&gt;NBClippingRadiusMin.Parent" xml:space="preserve">
     <value>FLPSettings</value>
   </data>
-  <data name="&gt;&gt;NBMinClipRadius.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;NBClippingRadiusMin.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="NBMaxClipRadius.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="NBClippingRadiusMax.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 79</value>
   </data>
-  <data name="NBMaxClipRadius.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="NBClippingRadiusMax.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="NBMaxClipRadius.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="NBClippingRadiusMax.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>4096, 56</value>
   </data>
-  <data name="NBMaxClipRadius.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="NBClippingRadiusMax.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>128, 56</value>
   </data>
-  <data name="NBMaxClipRadius.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="NBClippingRadiusMax.Size" type="System.Drawing.Size, System.Drawing">
     <value>256, 56</value>
   </data>
-  <data name="NBMaxClipRadius.TabIndex" type="System.Int32, mscorlib">
+  <data name="NBClippingRadiusMax.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="NBMaxClipRadius.Title" xml:space="preserve">
+  <data name="NBClippingRadiusMax.Title" xml:space="preserve">
     <value>Maximal clip radius (meter)</value>
   </data>
-  <data name="&gt;&gt;NBMaxClipRadius.Name" xml:space="preserve">
-    <value>NBMaxClipRadius</value>
+  <data name="&gt;&gt;NBClippingRadiusMax.Name" xml:space="preserve">
+    <value>NBClippingRadiusMax</value>
   </data>
-  <data name="&gt;&gt;NBMaxClipRadius.Type" xml:space="preserve">
+  <data name="&gt;&gt;NBClippingRadiusMax.Type" xml:space="preserve">
     <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;NBMaxClipRadius.Parent" xml:space="preserve">
+  <data name="&gt;&gt;NBClippingRadiusMax.Parent" xml:space="preserve">
     <value>FLPSettings</value>
   </data>
-  <data name="&gt;&gt;NBMaxClipRadius.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;NBClippingRadiusMax.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="NBZLimit.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="NBClippingDepthMax.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 135</value>
   </data>
-  <data name="NBZLimit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="NBClippingDepthMax.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="NBZLimit.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="NBClippingDepthMax.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>4096, 56</value>
   </data>
-  <data name="NBZLimit.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="NBClippingDepthMax.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>128, 56</value>
   </data>
-  <data name="NBZLimit.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="NBClippingDepthMax.Size" type="System.Drawing.Size, System.Drawing">
     <value>256, 56</value>
   </data>
-  <data name="NBZLimit.TabIndex" type="System.Int32, mscorlib">
+  <data name="NBClippingDepthMax.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="NBZLimit.Title" xml:space="preserve">
+  <data name="NBClippingDepthMax.Title" xml:space="preserve">
     <value>Depth limit (meters)</value>
   </data>
-  <data name="&gt;&gt;NBZLimit.Name" xml:space="preserve">
-    <value>NBZLimit</value>
+  <data name="&gt;&gt;NBClippingDepthMax.Name" xml:space="preserve">
+    <value>NBClippingDepthMax</value>
   </data>
-  <data name="&gt;&gt;NBZLimit.Type" xml:space="preserve">
+  <data name="&gt;&gt;NBClippingDepthMax.Type" xml:space="preserve">
     <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;NBZLimit.Parent" xml:space="preserve">
+  <data name="&gt;&gt;NBClippingDepthMax.Parent" xml:space="preserve">
     <value>FLPSettings</value>
   </data>
-  <data name="&gt;&gt;NBZLimit.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;NBClippingDepthMax.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="NBReprojectionRotationX.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="NBClippingYMin.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 191</value>
   </data>
-  <data name="NBReprojectionRotationX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="NBClippingYMin.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="NBReprojectionRotationX.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="NBClippingYMin.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>4096, 56</value>
   </data>
-  <data name="NBReprojectionRotationX.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="NBClippingYMin.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>128, 56</value>
   </data>
-  <data name="NBReprojectionRotationX.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="NBClippingYMin.Size" type="System.Drawing.Size, System.Drawing">
     <value>256, 56</value>
   </data>
-  <data name="NBReprojectionRotationX.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="NBClippingYMin.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
   </data>
-  <data name="NBReprojectionRotationX.Title" xml:space="preserve">
-    <value>Rotation X (degrees)</value>
+  <data name="NBClippingYMin.Title" xml:space="preserve">
+    <value>Minimal clip Y</value>
   </data>
-  <data name="&gt;&gt;NBReprojectionRotationX.Name" xml:space="preserve">
-    <value>NBReprojectionRotationX</value>
+  <data name="&gt;&gt;NBClippingYMin.Name" xml:space="preserve">
+    <value>NBClippingYMin</value>
   </data>
-  <data name="&gt;&gt;NBReprojectionRotationX.Type" xml:space="preserve">
+  <data name="&gt;&gt;NBClippingYMin.Type" xml:space="preserve">
     <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;NBReprojectionRotationX.Parent" xml:space="preserve">
+  <data name="&gt;&gt;NBClippingYMin.Parent" xml:space="preserve">
     <value>FLPSettings</value>
   </data>
-  <data name="&gt;&gt;NBReprojectionRotationX.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;NBClippingYMin.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="NBReprojectionRotationZ.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 247</value>
+  <data name="LTransformations.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="NBReprojectionRotationZ.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="LTransformations.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 247</value>
   </data>
-  <data name="NBReprojectionRotationZ.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>4096, 56</value>
+  <data name="LTransformations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 13</value>
   </data>
-  <data name="NBReprojectionRotationZ.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>128, 56</value>
+  <data name="LTransformations.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
   </data>
-  <data name="NBReprojectionRotationZ.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 56</value>
+  <data name="LTransformations.Text" xml:space="preserve">
+    <value>Transformations</value>
   </data>
-  <data name="NBReprojectionRotationZ.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;LTransformations.Name" xml:space="preserve">
+    <value>LTransformations</value>
   </data>
-  <data name="NBReprojectionRotationZ.Title" xml:space="preserve">
-    <value>Rotation Z (degrees)</value>
+  <data name="&gt;&gt;LTransformations.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;NBReprojectionRotationZ.Name" xml:space="preserve">
-    <value>NBReprojectionRotationZ</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionRotationZ.Type" xml:space="preserve">
-    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionRotationZ.Parent" xml:space="preserve">
+  <data name="&gt;&gt;LTransformations.Parent" xml:space="preserve">
     <value>FLPSettings</value>
   </data>
-  <data name="&gt;&gt;NBReprojectionRotationZ.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;LTransformations.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="NBReprojectionTranslationX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 303</value>
+  <data name="NBRotationX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 260</value>
   </data>
-  <data name="NBReprojectionTranslationX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="NBRotationX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="NBReprojectionTranslationX.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="NBRotationX.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>4096, 56</value>
   </data>
-  <data name="NBReprojectionTranslationX.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="NBRotationX.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>128, 56</value>
   </data>
-  <data name="NBReprojectionTranslationX.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="NBRotationX.Size" type="System.Drawing.Size, System.Drawing">
     <value>256, 56</value>
   </data>
-  <data name="NBReprojectionTranslationX.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+  <data name="NBRotationX.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="NBReprojectionTranslationX.Title" xml:space="preserve">
-    <value>Translation X (meter)</value>
+  <data name="NBRotationX.Title" xml:space="preserve">
+    <value>Rotation X (degrees)</value>
   </data>
-  <data name="&gt;&gt;NBReprojectionTranslationX.Name" xml:space="preserve">
-    <value>NBReprojectionTranslationX</value>
+  <data name="&gt;&gt;NBRotationX.Name" xml:space="preserve">
+    <value>NBRotationX</value>
   </data>
-  <data name="&gt;&gt;NBReprojectionTranslationX.Type" xml:space="preserve">
+  <data name="&gt;&gt;NBRotationX.Type" xml:space="preserve">
     <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;NBReprojectionTranslationX.Parent" xml:space="preserve">
+  <data name="&gt;&gt;NBRotationX.Parent" xml:space="preserve">
     <value>FLPSettings</value>
   </data>
-  <data name="&gt;&gt;NBReprojectionTranslationX.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;NBRotationX.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="NBReprojectionTranslationY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 359</value>
+  <data name="NBSplitPlaneAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 316</value>
   </data>
-  <data name="NBReprojectionTranslationY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="NBSplitPlaneAngle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="NBReprojectionTranslationY.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="NBSplitPlaneAngle.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>4096, 56</value>
   </data>
-  <data name="NBReprojectionTranslationY.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="NBSplitPlaneAngle.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>128, 56</value>
   </data>
-  <data name="NBReprojectionTranslationY.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="NBSplitPlaneAngle.Size" type="System.Drawing.Size, System.Drawing">
     <value>256, 56</value>
   </data>
-  <data name="NBReprojectionTranslationY.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="NBReprojectionTranslationY.Title" xml:space="preserve">
-    <value>Translation Y (meter)</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionTranslationY.Name" xml:space="preserve">
-    <value>NBReprojectionTranslationY</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionTranslationY.Type" xml:space="preserve">
-    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionTranslationY.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionTranslationY.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="NBReprojectionTranslationZ.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 415</value>
-  </data>
-  <data name="NBReprojectionTranslationZ.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="NBReprojectionTranslationZ.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>4096, 56</value>
-  </data>
-  <data name="NBReprojectionTranslationZ.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>128, 56</value>
-  </data>
-  <data name="NBReprojectionTranslationZ.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 56</value>
-  </data>
-  <data name="NBReprojectionTranslationZ.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="NBReprojectionTranslationZ.Title" xml:space="preserve">
-    <value>Translation Z (meter)</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionTranslationZ.Name" xml:space="preserve">
-    <value>NBReprojectionTranslationZ</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionTranslationZ.Type" xml:space="preserve">
-    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionTranslationZ.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionTranslationZ.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="NBProjectionWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 471</value>
-  </data>
-  <data name="NBProjectionWidth.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="NBProjectionWidth.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>4096, 56</value>
-  </data>
-  <data name="NBProjectionWidth.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>128, 56</value>
-  </data>
-  <data name="NBProjectionWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 56</value>
-  </data>
-  <data name="NBProjectionWidth.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="NBProjectionWidth.Title" xml:space="preserve">
-    <value>Projection width (meter)</value>
-  </data>
-  <data name="&gt;&gt;NBProjectionWidth.Name" xml:space="preserve">
-    <value>NBProjectionWidth</value>
-  </data>
-  <data name="&gt;&gt;NBProjectionWidth.Type" xml:space="preserve">
-    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;NBProjectionWidth.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;NBProjectionWidth.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="NBMaxY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 527</value>
-  </data>
-  <data name="NBMaxY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="NBMaxY.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>4096, 56</value>
-  </data>
-  <data name="NBMaxY.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>128, 56</value>
-  </data>
-  <data name="NBMaxY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 56</value>
-  </data>
-  <data name="NBMaxY.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="NBMaxY.Title" xml:space="preserve">
-    <value>Max Y (meter)</value>
-  </data>
-  <data name="&gt;&gt;NBMaxY.Name" xml:space="preserve">
-    <value>NBMaxY</value>
-  </data>
-  <data name="&gt;&gt;NBMaxY.Type" xml:space="preserve">
-    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;NBMaxY.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;NBMaxY.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="NBMinY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 583</value>
-  </data>
-  <data name="NBMinY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="NBMinY.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>4096, 56</value>
-  </data>
-  <data name="NBMinY.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>128, 56</value>
-  </data>
-  <data name="NBMinY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 56</value>
-  </data>
-  <data name="NBMinY.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="NBMinY.Title" xml:space="preserve">
-    <value>Min Y (meter)</value>
-  </data>
-  <data name="&gt;&gt;NBMinY.Name" xml:space="preserve">
-    <value>NBMinY</value>
-  </data>
-  <data name="&gt;&gt;NBMinY.Type" xml:space="preserve">
-    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;NBMinY.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;NBMinY.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="NBSplitPlane.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 639</value>
-  </data>
-  <data name="NBSplitPlane.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="NBSplitPlane.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>4096, 56</value>
-  </data>
-  <data name="NBSplitPlane.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>128, 56</value>
-  </data>
-  <data name="NBSplitPlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 56</value>
-  </data>
-  <data name="NBSplitPlane.TabIndex" type="System.Int32, mscorlib">
+  <data name="NBSplitPlaneAngle.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
   </data>
-  <data name="NBSplitPlane.Title" xml:space="preserve">
-    <value>Split plane rotation (degrees)</value>
+  <data name="NBSplitPlaneAngle.Title" xml:space="preserve">
+    <value>Rotation Y (degrees) - Split plane angle</value>
   </data>
-  <data name="&gt;&gt;NBSplitPlane.Name" xml:space="preserve">
-    <value>NBSplitPlane</value>
+  <data name="&gt;&gt;NBSplitPlaneAngle.Name" xml:space="preserve">
+    <value>NBSplitPlaneAngle</value>
   </data>
-  <data name="&gt;&gt;NBSplitPlane.Type" xml:space="preserve">
+  <data name="&gt;&gt;NBSplitPlaneAngle.Type" xml:space="preserve">
     <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;NBSplitPlane.Parent" xml:space="preserve">
+  <data name="&gt;&gt;NBSplitPlaneAngle.Parent" xml:space="preserve">
     <value>FLPSettings</value>
   </data>
-  <data name="&gt;&gt;NBSplitPlane.ZOrder" xml:space="preserve">
-    <value>12</value>
+  <data name="&gt;&gt;NBSplitPlaneAngle.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
-  <data name="NBAveragedFrames.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 695</value>
+  <data name="NBRotationZ.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 372</value>
   </data>
-  <data name="NBAveragedFrames.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="NBRotationZ.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="NBAveragedFrames.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="NBRotationZ.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>4096, 56</value>
   </data>
-  <data name="NBAveragedFrames.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="NBRotationZ.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>128, 56</value>
   </data>
-  <data name="NBAveragedFrames.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="NBRotationZ.Size" type="System.Drawing.Size, System.Drawing">
     <value>256, 56</value>
   </data>
-  <data name="NBAveragedFrames.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
+  <data name="NBRotationZ.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="NBAveragedFrames.Title" xml:space="preserve">
-    <value>Averaged frames</value>
+  <data name="NBRotationZ.Title" xml:space="preserve">
+    <value>Rotation Z (degrees)</value>
   </data>
-  <data name="&gt;&gt;NBAveragedFrames.Name" xml:space="preserve">
-    <value>NBAveragedFrames</value>
+  <data name="&gt;&gt;NBRotationZ.Name" xml:space="preserve">
+    <value>NBRotationZ</value>
   </data>
-  <data name="&gt;&gt;NBAveragedFrames.Type" xml:space="preserve">
+  <data name="&gt;&gt;NBRotationZ.Type" xml:space="preserve">
     <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;NBAveragedFrames.Parent" xml:space="preserve">
+  <data name="&gt;&gt;NBRotationZ.Parent" xml:space="preserve">
     <value>FLPSettings</value>
   </data>
-  <data name="&gt;&gt;NBAveragedFrames.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;NBRotationZ.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="NBTranslationX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 428</value>
+  </data>
+  <data name="NBTranslationX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="NBTranslationX.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>4096, 56</value>
+  </data>
+  <data name="NBTranslationX.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>128, 56</value>
+  </data>
+  <data name="NBTranslationX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 56</value>
+  </data>
+  <data name="NBTranslationX.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="NBTranslationX.Title" xml:space="preserve">
+    <value>Translation X (meter)</value>
+  </data>
+  <data name="&gt;&gt;NBTranslationX.Name" xml:space="preserve">
+    <value>NBTranslationX</value>
+  </data>
+  <data name="&gt;&gt;NBTranslationX.Type" xml:space="preserve">
+    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;NBTranslationX.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="&gt;&gt;NBTranslationX.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="NBTranslationY.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 484</value>
+  </data>
+  <data name="NBTranslationY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="NBTranslationY.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>4096, 56</value>
+  </data>
+  <data name="NBTranslationY.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>128, 56</value>
+  </data>
+  <data name="NBTranslationY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 56</value>
+  </data>
+  <data name="NBTranslationY.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
   </data>
+  <data name="NBTranslationY.Title" xml:space="preserve">
+    <value>Translation Y (meter)</value>
+  </data>
+  <data name="&gt;&gt;NBTranslationY.Name" xml:space="preserve">
+    <value>NBTranslationY</value>
+  </data>
+  <data name="&gt;&gt;NBTranslationY.Type" xml:space="preserve">
+    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;NBTranslationY.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="&gt;&gt;NBTranslationY.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="NBTranslationZ.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 540</value>
+  </data>
+  <data name="NBTranslationZ.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="NBTranslationZ.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>4096, 56</value>
+  </data>
+  <data name="NBTranslationZ.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>128, 56</value>
+  </data>
+  <data name="NBTranslationZ.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 56</value>
+  </data>
+  <data name="NBTranslationZ.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="NBTranslationZ.Title" xml:space="preserve">
+    <value>Translation Z (meter)</value>
+  </data>
+  <data name="&gt;&gt;NBTranslationZ.Name" xml:space="preserve">
+    <value>NBTranslationZ</value>
+  </data>
+  <data name="&gt;&gt;NBTranslationZ.Type" xml:space="preserve">
+    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;NBTranslationZ.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="&gt;&gt;NBTranslationZ.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="NBProjectionYMax.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 596</value>
+  </data>
+  <data name="NBProjectionYMax.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="NBProjectionYMax.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>4096, 56</value>
+  </data>
+  <data name="NBProjectionYMax.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>128, 56</value>
+  </data>
+  <data name="NBProjectionYMax.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 56</value>
+  </data>
+  <data name="NBProjectionYMax.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="NBProjectionYMax.Title" xml:space="preserve">
+    <value>Max Y (meter)</value>
+  </data>
+  <data name="&gt;&gt;NBProjectionYMax.Name" xml:space="preserve">
+    <value>NBProjectionYMax</value>
+  </data>
+  <data name="&gt;&gt;NBProjectionYMax.Type" xml:space="preserve">
+    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;NBProjectionYMax.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="&gt;&gt;NBProjectionYMax.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="NBProjectionYMin.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 652</value>
+  </data>
+  <data name="NBProjectionYMin.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="NBProjectionYMin.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>4096, 56</value>
+  </data>
+  <data name="NBProjectionYMin.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>128, 56</value>
+  </data>
+  <data name="NBProjectionYMin.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 56</value>
+  </data>
+  <data name="NBProjectionYMin.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="NBProjectionYMin.Title" xml:space="preserve">
+    <value>Min Y (meter)</value>
+  </data>
+  <data name="&gt;&gt;NBProjectionYMin.Name" xml:space="preserve">
+    <value>NBProjectionYMin</value>
+  </data>
+  <data name="&gt;&gt;NBProjectionYMin.Type" xml:space="preserve">
+    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;NBProjectionYMin.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="&gt;&gt;NBProjectionYMin.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="LDepthAveraging.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LDepthAveraging.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 708</value>
+  </data>
+  <data name="LDepthAveraging.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 13</value>
+  </data>
+  <data name="LDepthAveraging.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="LDepthAveraging.Text" xml:space="preserve">
+    <value>Depth averaging</value>
+  </data>
+  <data name="&gt;&gt;LDepthAveraging.Name" xml:space="preserve">
+    <value>LDepthAveraging</value>
+  </data>
+  <data name="&gt;&gt;LDepthAveraging.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LDepthAveraging.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="&gt;&gt;LDepthAveraging.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="NBDepthAveragingCacheSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 721</value>
+  </data>
+  <data name="NBDepthAveragingCacheSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="NBDepthAveragingCacheSize.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>4096, 56</value>
+  </data>
+  <data name="NBDepthAveragingCacheSize.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>128, 56</value>
+  </data>
+  <data name="NBDepthAveragingCacheSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 56</value>
+  </data>
+  <data name="NBDepthAveragingCacheSize.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="NBDepthAveragingCacheSize.Title" xml:space="preserve">
+    <value>Averaged frames</value>
+  </data>
+  <data name="&gt;&gt;NBDepthAveragingCacheSize.Name" xml:space="preserve">
+    <value>NBDepthAveragingCacheSize</value>
+  </data>
+  <data name="&gt;&gt;NBDepthAveragingCacheSize.Type" xml:space="preserve">
+    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;NBDepthAveragingCacheSize.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="&gt;&gt;NBDepthAveragingCacheSize.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
   <data name="NBDepthAveragingLimit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 751</value>
+    <value>0, 777</value>
   </data>
   <data name="NBDepthAveragingLimit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -616,43 +670,43 @@
     <value>FLPSettings</value>
   </data>
   <data name="&gt;&gt;NBDepthAveragingLimit.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
-  <data name="NBMinAvgCount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 807</value>
+  <data name="NBDepthAveragingMinCount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 833</value>
   </data>
-  <data name="NBMinAvgCount.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="NBDepthAveragingMinCount.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="NBMinAvgCount.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="NBDepthAveragingMinCount.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>4096, 56</value>
   </data>
-  <data name="NBMinAvgCount.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="NBDepthAveragingMinCount.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>128, 56</value>
   </data>
-  <data name="NBMinAvgCount.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="NBDepthAveragingMinCount.Size" type="System.Drawing.Size, System.Drawing">
     <value>256, 56</value>
   </data>
-  <data name="NBMinAvgCount.TabIndex" type="System.Int32, mscorlib">
+  <data name="NBDepthAveragingMinCount.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
   </data>
-  <data name="NBMinAvgCount.Title" xml:space="preserve">
+  <data name="NBDepthAveragingMinCount.Title" xml:space="preserve">
     <value>Minimal averaged frames</value>
   </data>
-  <data name="&gt;&gt;NBMinAvgCount.Name" xml:space="preserve">
-    <value>NBMinAvgCount</value>
+  <data name="&gt;&gt;NBDepthAveragingMinCount.Name" xml:space="preserve">
+    <value>NBDepthAveragingMinCount</value>
   </data>
-  <data name="&gt;&gt;NBMinAvgCount.Type" xml:space="preserve">
+  <data name="&gt;&gt;NBDepthAveragingMinCount.Type" xml:space="preserve">
     <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;NBMinAvgCount.Parent" xml:space="preserve">
+  <data name="&gt;&gt;NBDepthAveragingMinCount.Parent" xml:space="preserve">
     <value>FLPSettings</value>
   </data>
-  <data name="&gt;&gt;NBMinAvgCount.ZOrder" xml:space="preserve">
-    <value>15</value>
+  <data name="&gt;&gt;NBDepthAveragingMinCount.ZOrder" xml:space="preserve">
+    <value>17</value>
   </data>
   <data name="NBFusionSpacing.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 863</value>
+    <value>0, 889</value>
   </data>
   <data name="NBFusionSpacing.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -682,43 +736,43 @@
     <value>FLPSettings</value>
   </data>
   <data name="&gt;&gt;NBFusionSpacing.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>18</value>
   </data>
-  <data name="NBMinClipY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 919</value>
+  <data name="NBProjectionWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 945</value>
   </data>
-  <data name="NBMinClipY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="NBProjectionWidth.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="NBMinClipY.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="NBProjectionWidth.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>4096, 56</value>
   </data>
-  <data name="NBMinClipY.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="NBProjectionWidth.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>128, 56</value>
   </data>
-  <data name="NBMinClipY.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="NBProjectionWidth.Size" type="System.Drawing.Size, System.Drawing">
     <value>256, 56</value>
   </data>
-  <data name="NBMinClipY.TabIndex" type="System.Int32, mscorlib">
-    <value>24</value>
-  </data>
-  <data name="NBMinClipY.Title" xml:space="preserve">
-    <value>Minimal clip Y</value>
-  </data>
-  <data name="&gt;&gt;NBMinClipY.Name" xml:space="preserve">
-    <value>NBMinClipY</value>
-  </data>
-  <data name="&gt;&gt;NBMinClipY.Type" xml:space="preserve">
-    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;NBMinClipY.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;NBMinClipY.ZOrder" xml:space="preserve">
+  <data name="NBProjectionWidth.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
   </data>
+  <data name="NBProjectionWidth.Title" xml:space="preserve">
+    <value>Projection width (meter)</value>
+  </data>
+  <data name="&gt;&gt;NBProjectionWidth.Name" xml:space="preserve">
+    <value>NBProjectionWidth</value>
+  </data>
+  <data name="&gt;&gt;NBProjectionWidth.Type" xml:space="preserve">
+    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;NBProjectionWidth.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="&gt;&gt;NBProjectionWidth.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
   <data name="NBCoreX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 975</value>
+    <value>0, 1001</value>
   </data>
   <data name="NBCoreX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -748,10 +802,10 @@
     <value>FLPSettings</value>
   </data>
   <data name="&gt;&gt;NBCoreX.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>20</value>
   </data>
   <data name="NBCoreY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 1031</value>
+    <value>0, 1057</value>
   </data>
   <data name="NBCoreY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -781,7 +835,34 @@
     <value>FLPSettings</value>
   </data>
   <data name="&gt;&gt;NBCoreY.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>21</value>
+  </data>
+  <data name="LProjection.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LProjection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 1113</value>
+  </data>
+  <data name="LProjection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 13</value>
+  </data>
+  <data name="LProjection.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="LProjection.Text" xml:space="preserve">
+    <value>Projection</value>
+  </data>
+  <data name="&gt;&gt;LProjection.Name" xml:space="preserve">
+    <value>LProjection</value>
+  </data>
+  <data name="&gt;&gt;LProjection.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LProjection.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="&gt;&gt;LProjection.ZOrder" xml:space="preserve">
+    <value>22</value>
   </data>
   <data name="FLPSettings.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -910,7 +991,7 @@
     <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>RSSettingsForm</value>
+    <value>TurntableSettingsForm</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

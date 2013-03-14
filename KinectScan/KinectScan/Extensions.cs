@@ -651,5 +651,22 @@ namespace KinectScan
             bitmap.UnlockBits(BD);
             texture.SetData<Byte4>(data);
         }
+
+        public static float ToRadians(this float angle)
+        {
+            return MathHelper.ToRadians(angle);
+        }
+
+        public static string[] EnumToStringArray<T>()
+        {
+            Array values = Enum.GetValues(typeof(T));
+            string[] names = new string[values.Length];
+            int i=0;
+            foreach (T value in values)
+            {
+                names[i++] = value.ToString();
+            }
+            return names;
+        }
     }
 }

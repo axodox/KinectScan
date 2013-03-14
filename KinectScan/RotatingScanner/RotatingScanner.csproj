@@ -186,6 +186,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="ModellingClassDiagram.cd" />
     <None Include="ModuleSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>ModuleSettings.Designer.cs</LastGenOutput>

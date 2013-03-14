@@ -10,6 +10,50 @@ namespace Turntables
 {
     public class Turntable : IDisposable
     {
+        static SynchronizationContext SC;
+        static Timer PollTimer;
+        public static int DeviceCount { get; private set; }
+        public static int OpenedDevices { get; private set; }
+        public static event EventHandler DeviceConnected, DeviceDisconnected;
+        static Turntable()
+        {
+            SC = SynchronizationContext.Current;
+            PollTimer = new Timer(DevicePollTimerCallback, null, 1000, 1000);
+        }
+
+        static void DevicePollTimerCallback(object o)
+        {
+            int deviceCount = GetDevices().Length;
+            SC.Post(DevicePollCallback, deviceCount);
+        }
+
+        static void DevicePollCallback(object o)
+        {
+            int oldDeviceCount = DeviceCount;
+            DeviceCount = (int)o + OpenedDevices;
+            if (DeviceCount > oldDeviceCount && DeviceConnected != null) DeviceConnected(null, null);
+            if (DeviceCount < oldDeviceCount && DeviceDisconnected != null) DeviceDisconnected(null, null);
+        }
+
+        public static Turntable DefaultDevice
+        {
+            get
+            {
+                if (DeviceCount == 0) return null;
+                Turntable T = null;
+                try
+                {
+                    T = new Turntable(GetDevices()[0]);
+                    return T;
+                }
+                catch
+                {
+                    if (T != null) T.Dispose();
+                    return null;
+                }
+            }
+        }
+
         [Flags]
         private enum States : ushort { None = 0, Rotating = 0x0001, RotatingUp = 0x0002}
         public enum Commands : int { About = 0, Stop, StartUp, StartDown, Status, Step, StepBack, ClearCounter, TurnOff, ToOrigin }
@@ -38,7 +82,6 @@ namespace Turntables
         }
 
         public const int PiSteps = 11000;
-
 
         private static void InitPort(SerialPort port)
         {
@@ -74,8 +117,10 @@ namespace Turntables
                     if (SP.ReadLine().StartsWith(DeviceSignal))
                     {
                         devices.Add(SP.PortName);
-                    }                    
+                        SP.Write(CommandStrings[(int)Commands.TurnOff]);
+                    }
                 }
+                catch (UnauthorizedAccessException) { }
                 finally
                 {
                     if (SP.IsOpen) SP.Close();
@@ -186,6 +231,7 @@ namespace Turntables
             Port.PortName = portName;
             InitPort(Port);
             Port.Open();
+            OpenedDevices++;
 
             CommandQueue = new Queue<string>();
             SendARE = new AutoResetEvent(true);
@@ -237,6 +283,7 @@ namespace Turntables
             CommunicationThread.Join();
             Port.Dispose();
             Port = null;
+            OpenedDevices--;
         }
 
         ~Turntable()

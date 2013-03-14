@@ -15,6 +15,14 @@ namespace KinectScan
         #region Visualization
         public enum SpecialViews { CorePosition, CoreReprojection, CorePolarDepth }
         public SpecialViews SpecialView { get; set; }
+        public override string[] SpecialViewModes
+        {
+            get { return Extensions.EnumToStringArray<SpecialViews>(); }
+        }
+        public override void SetSpecialViewMode(int index)
+        {
+            SpecialView = (SpecialViews)index;
+        }
         #endregion
 
         #region Hardware acceleration
@@ -47,6 +55,14 @@ namespace KinectScan
 
             //Vertex buffers
             LinesVertexBuffer = new VertexBuffer(XDevice, VertexPositionColor.VertexDeclaration, DisplayLines, BufferUsage.WriteOnly);
+        }
+
+        public override void DestroyDevice()
+        {
+            base.DestroyDevice();
+            ExCoreTargetA.Dispose(); ExCoreTargetA = null;
+            ExCoreTargetB.Dispose(); ExCoreTargetB = null;
+            LinesVertexBuffer.Dispose(); LinesVertexBuffer = null;
         }
         #endregion
 

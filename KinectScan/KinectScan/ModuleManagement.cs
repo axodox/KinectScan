@@ -35,8 +35,14 @@ namespace KinectScan
             KSC.StartVirtualDevice += KSC_StartVirtualDevice;
             KSC.StartKinectDevice += KSC_StartKinectDevice;
             KSC.ChangeUIMode += KSC_ChangeUIMode;
+            KSC.MessageReceived += KSC_MessageReceived;
             MM = new ModuleManager(KSC);
             MM.Load(@"..\..\..\RotatingScanner\bin\Release\RotatingScanner.dll");
+        }
+
+        void KSC_MessageReceived(object sender, KinectScanContext.MessageEventArgs e)
+        {
+            NotifyIcon.ShowBalloonTip(3000, e.Title, e.Text, e.Icon);
         }
 
         void KSC_ChangeUIMode(object sender, KinectScanContext.UIModeEventArgs e)
@@ -162,7 +168,7 @@ namespace KinectScan
             if (StartVirtualDevice != null) StartVirtualDevice(this, null);
         }
 
-        public void InitiateKinectDevice(KinectScanner.Modes mode, int id=-1)
+        public void InitiateKinectDevice(KinectScanner.Modes mode, int id = -1)
         {
             if (StartKinectDevice != null) StartKinectDevice(this, new KinectEventArgs(id, mode));
         }
@@ -187,7 +193,7 @@ namespace KinectScan
             public bool StartStopEnabled;
             public UIModeEventArgs(bool startStopEnabled)
             {
-                StartStopEnabled=startStopEnabled;
+                StartStopEnabled = startStopEnabled;
             }
         }
         internal delegate void UIModeEventHandler(object sender, UIModeEventArgs e);
@@ -207,6 +213,24 @@ namespace KinectScan
             float depth = GetDepth(rawDepth);
             Vector4 imagePos = new Vector4(x * depth, y * depth, depth, 1f);
             return Vector4.Transform(imagePos, Matrix.Transpose(DepthInverseIntrinsics));
+        }
+
+        internal class MessageEventArgs : EventArgs
+        {
+            public string Title, Text;
+            public ToolTipIcon Icon;
+            public MessageEventArgs(string title, string text, ToolTipIcon icon)
+            {
+                Title = title;
+                Text = text;
+                Icon = icon;
+            }
+        }
+        internal delegate void MessageEventHandler(object sender, MessageEventArgs e);
+        internal event MessageEventHandler MessageReceived;
+        public void ShowTrayMessage(string title, string text, ToolTipIcon icon)
+        {
+            if (MessageReceived != null) MessageReceived(this, new MessageEventArgs(title, text, icon));
         }
     }
 }
