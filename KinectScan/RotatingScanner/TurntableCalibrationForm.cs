@@ -22,7 +22,7 @@ namespace KinectScan
         enum States { None, SelectTable, SelectStandard };
         States State, ClickState;
         Point TableA, TableB, StandardA, StandardB;
-        Calibrator C;
+        public TurntableCalibrator Calibrator {get; private set;}
         Graphics3D G3D;
         public TurntableCalibrationForm(KinectScanContext context)
         {
@@ -41,7 +41,7 @@ namespace KinectScan
             TableB = ModuleSettings.Default.CalibrationTableB;
             StandardA = ModuleSettings.Default.CalibrationCylinderA;
             StandardB = ModuleSettings.Default.CalibrationCylinderB;
-            C = new Calibrator(Context);
+            Calibrator = new TurntableCalibrator(Context);
             G3D = new Graphics3D(Context.DepthWidth, Context.DepthHeight);
             G3D.Projection = Context.DepthIntrinsics;
         }
@@ -79,7 +79,7 @@ namespace KinectScan
                     Context.Scanner.RawFrameIn += Scanner_RawFrameIn;                    
                     break;
                 case 4:
-                    C.CalibrateTable(TableDepthData, TableA, TableB);
+                    Calibrator.CalibrateTable(TableDepthData, TableA, TableB);
                     PImage.Refresh();
                     ClickState = States.None;                    
                     break;
@@ -88,7 +88,7 @@ namespace KinectScan
                     Context.Scanner.RawFrameIn += Scanner_RawFrameIn;
                     break;
                 case 6:
-                    C.CalibrateStandard(StandardDepthData, StandardA, StandardB);
+                    Calibrator.CalibrateStandard(StandardDepthData, StandardA, StandardB);
                     PImage.Refresh();
                     ClickState = States.None;
                     break;
@@ -196,13 +196,13 @@ namespace KinectScan
             switch (Step)
             {
                 case CalibrationSteps:
-                    G3D.DrawPlane(C.StandardA, Color.Red);
-                    G3D.DrawPlane(C.StandardB, Color.Green);
-                    G3D.DrawPlane(C.Table, Color.Blue);
+                    G3D.DrawPlane(Calibrator.StandardA, Color.Red);
+                    G3D.DrawPlane(Calibrator.StandardB, Color.Green);
+                    G3D.DrawPlane(Calibrator.Table, Color.Blue);
                     break;
                 case 4:
-                    G3D.DrawPoint(C.Ground.Origin, Color.Yellow);
-                    G3D.DrawPlane(C.Ground, Color.Yellow);
+                    G3D.DrawPoint(Calibrator.Ground.Origin, Color.Yellow);
+                    G3D.DrawPlane(Calibrator.Ground, Color.Yellow);
                     break;
             }
         }
@@ -349,197 +349,218 @@ namespace KinectScan
         }
         #endregion
 
-        #region Calibration
-        public class Calibrator
-        {
-            KinectScanContext Context;
-            public Plane Ground { get; private set; }
-            public Plane StandardA { get; private set; }
-            public Plane StandardB { get; private set; }
-            public Plane Table { get; private set; }
-            public Calibrator(KinectScanContext context)
-            {
-                Context = context;
-            }
-            public void CalibrateTable(byte[] data, Point tableA, Point tableB)
-            {
-                Ground = Plane.FromDepthData(data, Context.DepthWidth, Context.DepthHeight, new EllipseRegion(tableA, tableB), Context.GetWorldPosition);
-            }
-            public void CalibrateStandard(byte[] data, Point standardA, Point standardB)
-            {
-                int mX=(standardA.X + standardB.X) / 2;
-                Point standardM1 = new Point(mX - 10, standardB.Y);
-                Point standardM2 = new Point(mX + 10, standardA.Y);
-                Plane a = Plane.FromDepthData(data, Context.DepthWidth, Context.DepthHeight, new RectangleRegion(standardA,standardM1), Context.GetWorldPosition);
-                Plane b = Plane.FromDepthData(data, Context.DepthWidth, Context.DepthHeight, new RectangleRegion(standardM2, standardB), Context.GetWorldPosition);
-                Line axis = Plane.Intersect(a, b);
-                Vector3 origin = axis.Intersect(Ground);
-                Table = new Plane(origin, axis.Direction);
-                StandardA = a;
-                StandardB = b;
-            }
-        }
-        public struct Line
-        {
-            public Vector3 Origin, Direction;
-            public Line(Vector3 origin, Vector3 direction)
-            {
-                Origin = origin;
-                Direction = direction;
-            }
-            public static Vector3 DistanceBetweenLines(Line a, Line b)
-            {
-                Vector3 d = Vector3.Cross(a.Direction, b.Direction);
-                d.Normalize();
-                return d * Vector3.Dot(b.Origin - a.Origin, d);
-            }
 
-            public static Vector3 Midpoint(Line a, Line b)
-            {
-                Vector3 d = Line.DistanceBetweenLines(a, b);
-                float t = ((a.Origin.Y + d.Y - b.Origin.Y) * b.Direction.X - (a.Origin.X + d.X - b.Origin.X) * b.Direction.Y) / (a.Direction.X * b.Direction.Y - a.Direction.Y * b.Direction.X);
-                return a.Origin + a.Direction * t + d / 2;
-            }
-
-            public Vector3 Intersect(Plane p)
-            {
-                float t = (Vector3.Dot(p.Origin, p.Normal) - Vector3.Dot(Origin, p.Normal)) / (Vector3.Dot(Direction, p.Normal));
-                return Origin + t * Direction;
-            }
-        }
-        public struct Plane
-        {
-            public Vector3 Origin, Normal;
-            public Plane(Vector3 origin, Vector3 normal)
-            {
-                Origin = origin;
-                Normal = normal;
-            }
-            public delegate Vector4 WorldPositionFunction(int x, int y, ushort depth);
-            public static Line Intersect(Plane a, Plane b)
-            {
-                Line L = new Line();
-                L.Direction = Vector3.Cross(a.Normal, b.Normal);
-                Line lA=new Line(a.Origin,Vector3.Cross(L.Direction, a.Normal));
-                Line lB=new Line(b.Origin,Vector3.Cross(L.Direction, b.Normal));
-                L.Origin = Line.Midpoint(lA, lB);
-                return L;
-            }
-            public static Plane FromDepthData(byte[] Data,int width, int height, RegionSelector region, WorldPositionFunction worldFunc)
-            {
-                Plane P = new Plane();
-                //Area selection
-                int minX = (region.MinX < 0 ? 0 : region.MinX);
-                int maxX = (region.MaxX > width ? width : region.MaxX);
-                int minY = (region.MinY < 0 ? 0 : region.MinY);
-                int maxY = (region.MaxY > height ? height : region.MaxY);
-                int jumpX = width - (maxX - minX);
-                int startX = minY * width + minX;
-                Vector4 pos = Vector4.Zero;
-                unsafe
-                {
-                    fixed (byte* sData = &Data[0])
-                    {
-                        //Calculate origin
-                        ushort* pData = (ushort*)sData + startX;
-                        for (int y = minY; y < maxY; y++)
-                        {
-                            for (int x = minX; x < maxX; x++)
-                            {
-                                pData++;
-                                if (region.Covered(x,y) && *pData != 2047)
-                                {
-                                    pos += worldFunc(x, y, *pData);
-                                }
-                            }
-                            pData += jumpX;
-                        }
-                        pos /= pos.W;
-                        P.Origin = new Vector3(pos.X, pos.Y, pos.Z);
-
-                        //Calculate normal
-                        float a, b, c, d, e, f;
-                        a = b = c = d = e = f=0;
-                        float rx, ry, rz;
-                        pData = (ushort*)sData + startX;
-                        for (int y = minY; y < maxY; y++)
-                        {
-                            for (int x = minX; x < maxX; x++)
-                            {
-                                pData++;
-                                if (region.Covered(x, y) && *pData != 2047)
-                                {
-                                    pos = worldFunc(x, y, *pData);
-                                    rx = pos.X - P.Origin.X;
-                                    ry = pos.Y - P.Origin.Y;
-                                    rz = pos.Z - P.Origin.Z;
-                                    a += ry * ry;
-                                    b += rz * ry;
-                                    c -= rx * ry;
-                                    d += ry * rz;
-                                    e += rz * rz;
-                                    f -= rx * rz;
-                                }
-                            }
-                            pData += jumpX;
-                        }                        
-                        float nz = (c * d - a * f) / (b * d - a * e);
-                        float ny = (f - e * nz) / d;
-                        P.Normal = new Vector3(1f, ny, nz);
-                        P.Normal.Normalize();
-                    }
-                }
-                return P;
-            }
-
-            
-        }
-
-        public abstract class RegionSelector
-        {
-            public int MinX { get; protected set; }
-            public int MinY { get; protected set; }
-            public int MaxX { get; protected set; }
-            public int MaxY { get; protected set; }
-            public abstract bool Covered(int x, int y);
-        }
-
-        public class EllipseRegion : RegionSelector
-        {
-            double ellipseX, ellipseY, ellipseA, ellipseB;
-            public EllipseRegion(Point a, Point b)
-            {
-                MinX = Math.Min(a.X, b.X);
-                MaxX = Math.Max(a.X, b.X);
-                MinY = Math.Min(a.Y, b.Y);
-                MaxY = Math.Max(a.Y, b.Y);
-
-                ellipseX = (b.X + a.X) / 2d;
-                ellipseY = (b.Y + a.Y) / 2d;
-                ellipseA = Math.Pow((b.X - a.X) / 2d, 2d);
-                ellipseB = Math.Pow((b.Y - a.Y) / 2d, 2d);
-            }
-            public override bool Covered(int x, int y)
-            {
-                return Math.Pow(x - ellipseX, 2) / ellipseA + Math.Pow(y - ellipseY, 2) / ellipseB < 1;
-            }
-        }
-
-        public class RectangleRegion : RegionSelector
-        {
-            public RectangleRegion(Point a, Point b)
-            {
-                MinX = Math.Min(a.X, b.X);
-                MaxX = Math.Max(a.X, b.X);
-                MinY = Math.Min(a.Y, b.Y);
-                MaxY = Math.Max(a.Y, b.Y);
-            }
-
-            public override bool Covered(int x, int y)
-            {
-                return x >= MinX && x <= MaxX && y >= MinY && y <= MaxY;
-            }
-        }
-        #endregion
     }
+    #region Calibration
+    public class TurntableCalibrator
+    {
+        KinectScanContext Context;
+        public Plane Ground { get; private set; }
+        public Plane StandardA { get; private set; }
+        public Plane StandardB { get; private set; }
+        public Plane Table { get; private set; }
+        public bool IsCalibrated { get; private set; }
+
+        public float TranslationX { get { return -Table.Origin.X; } }
+        public float TranslationY { get { return -Table.Origin.Y; } }
+        public float TranslationZ { get { return Table.Origin.Z; } }
+        public float RotationX
+        {
+            get
+            {
+                return Extensions.Vector3Angle(Vector3.UnitZ, Vector3.Cross(Vector3.UnitX, -Table.Normal)).ToDegrees();
+            }
+        }
+        public float RotationZ
+        {
+            get
+            {
+                return -((float)Math.Asin(Math.Abs(Table.Normal.X / Table.Normal.Length()))).ToDegrees();
+            }
+        }
+
+        public TurntableCalibrator(KinectScanContext context)
+        {
+            Context = context;
+            IsCalibrated = false;
+        }
+        public void CalibrateTable(byte[] data, Point tableA, Point tableB)
+        {
+            Ground = Plane.FromDepthData(data, Context.DepthWidth, Context.DepthHeight, new EllipseRegion(tableA, tableB), Context.GetWorldPosition);
+        }
+        public void CalibrateStandard(byte[] data, Point standardA, Point standardB)
+        {
+            int mX = (standardA.X + standardB.X) / 2;
+            Point standardM1 = new Point(mX - 10, standardB.Y);
+            Point standardM2 = new Point(mX + 10, standardA.Y);
+            Plane a = Plane.FromDepthData(data, Context.DepthWidth, Context.DepthHeight, new RectangleRegion(standardA, standardM1), Context.GetWorldPosition);
+            Plane b = Plane.FromDepthData(data, Context.DepthWidth, Context.DepthHeight, new RectangleRegion(standardM2, standardB), Context.GetWorldPosition);
+            Line axis = Plane.Intersect(a, b);
+            Vector3 origin = axis.Intersect(Ground);
+            Table = new Plane(origin, axis.Direction);
+            StandardA = a;
+            StandardB = b;
+            IsCalibrated = true;
+        }
+    }
+    public struct Line
+    {
+        public Vector3 Origin, Direction;
+        public Line(Vector3 origin, Vector3 direction)
+        {
+            Origin = origin;
+            Direction = direction;
+        }
+        public static Vector3 DistanceBetweenLines(Line a, Line b)
+        {
+            Vector3 d = Vector3.Cross(a.Direction, b.Direction);
+            d.Normalize();
+            return d * Vector3.Dot(b.Origin - a.Origin, d);
+        }
+
+        public static Vector3 Midpoint(Line a, Line b)
+        {
+            Vector3 d = Line.DistanceBetweenLines(a, b);
+            float t = ((a.Origin.Y + d.Y - b.Origin.Y) * b.Direction.X - (a.Origin.X + d.X - b.Origin.X) * b.Direction.Y) / (a.Direction.X * b.Direction.Y - a.Direction.Y * b.Direction.X);
+            return a.Origin + a.Direction * t + d / 2;
+        }
+
+        public Vector3 Intersect(Plane p)
+        {
+            float t = (Vector3.Dot(p.Origin, p.Normal) - Vector3.Dot(Origin, p.Normal)) / (Vector3.Dot(Direction, p.Normal));
+            return Origin + t * Direction;
+        }
+    }
+    public struct Plane
+    {
+        public Vector3 Origin, Normal;
+        public Plane(Vector3 origin, Vector3 normal)
+        {
+            Origin = origin;
+            Normal = normal;
+        }
+        public delegate Vector4 WorldPositionFunction(int x, int y, ushort depth);
+        public static Line Intersect(Plane a, Plane b)
+        {
+            Line L = new Line();
+            L.Direction = Vector3.Cross(a.Normal, b.Normal);
+            Line lA = new Line(a.Origin, Vector3.Cross(L.Direction, a.Normal));
+            Line lB = new Line(b.Origin, Vector3.Cross(L.Direction, b.Normal));
+            L.Origin = Line.Midpoint(lA, lB);
+            return L;
+        }
+        public static Plane FromDepthData(byte[] Data, int width, int height, RegionSelector region, WorldPositionFunction worldFunc)
+        {
+            Plane P = new Plane();
+            //Area selection
+            int minX = (region.MinX < 0 ? 0 : region.MinX);
+            int maxX = (region.MaxX > width ? width : region.MaxX);
+            int minY = (region.MinY < 0 ? 0 : region.MinY);
+            int maxY = (region.MaxY > height ? height : region.MaxY);
+            int jumpX = width - (maxX - minX);
+            int startX = minY * width + minX;
+            Vector4 pos = Vector4.Zero;
+            unsafe
+            {
+                fixed (byte* sData = &Data[0])
+                {
+                    //Calculate origin
+                    ushort* pData = (ushort*)sData + startX;
+                    for (int y = minY; y < maxY; y++)
+                    {
+                        for (int x = minX; x < maxX; x++)
+                        {
+                            pData++;
+                            if (region.Covered(x, y) && *pData != 2047)
+                            {
+                                pos += worldFunc(x, y, *pData);
+                            }
+                        }
+                        pData += jumpX;
+                    }
+                    pos /= pos.W;
+                    P.Origin = new Vector3(pos.X, pos.Y, pos.Z);
+
+                    //Calculate normal
+                    float a, b, c, d, e, f;
+                    a = b = c = d = e = f = 0;
+                    float rx, ry, rz;
+                    pData = (ushort*)sData + startX;
+                    for (int y = minY; y < maxY; y++)
+                    {
+                        for (int x = minX; x < maxX; x++)
+                        {
+                            pData++;
+                            if (region.Covered(x, y) && *pData != 2047)
+                            {
+                                pos = worldFunc(x, y, *pData);
+                                rx = pos.X - P.Origin.X;
+                                ry = pos.Y - P.Origin.Y;
+                                rz = pos.Z - P.Origin.Z;
+                                a += ry * ry;
+                                b += rz * ry;
+                                c -= rx * ry;
+                                d += ry * rz;
+                                e += rz * rz;
+                                f -= rx * rz;
+                            }
+                        }
+                        pData += jumpX;
+                    }
+                    float nz = (c * d - a * f) / (b * d - a * e);
+                    float ny = (f - e * nz) / d;
+                    P.Normal = new Vector3(1f, ny, nz);
+                    P.Normal.Normalize();
+                }
+            }
+            return P;
+        }
+    }
+
+    public abstract class RegionSelector
+    {
+        public int MinX { get; protected set; }
+        public int MinY { get; protected set; }
+        public int MaxX { get; protected set; }
+        public int MaxY { get; protected set; }
+        public abstract bool Covered(int x, int y);
+    }
+
+    public class EllipseRegion : RegionSelector
+    {
+        double ellipseX, ellipseY, ellipseA, ellipseB;
+        public EllipseRegion(Point a, Point b)
+        {
+            MinX = Math.Min(a.X, b.X);
+            MaxX = Math.Max(a.X, b.X);
+            MinY = Math.Min(a.Y, b.Y);
+            MaxY = Math.Max(a.Y, b.Y);
+
+            ellipseX = (b.X + a.X) / 2d;
+            ellipseY = (b.Y + a.Y) / 2d;
+            ellipseA = Math.Pow((b.X - a.X) / 2d, 2d);
+            ellipseB = Math.Pow((b.Y - a.Y) / 2d, 2d);
+        }
+        public override bool Covered(int x, int y)
+        {
+            return Math.Pow(x - ellipseX, 2) / ellipseA + Math.Pow(y - ellipseY, 2) / ellipseB < 1;
+        }
+    }
+
+    public class RectangleRegion : RegionSelector
+    {
+        public RectangleRegion(Point a, Point b)
+        {
+            MinX = Math.Min(a.X, b.X);
+            MaxX = Math.Max(a.X, b.X);
+            MinY = Math.Min(a.Y, b.Y);
+            MaxY = Math.Max(a.Y, b.Y);
+        }
+
+        public override bool Covered(int x, int y)
+        {
+            return x >= MinX && x <= MaxX && y >= MinY && y <= MaxY;
+        }
+    }
+    #endregion
 }

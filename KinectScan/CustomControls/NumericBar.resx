@@ -166,7 +166,7 @@
     <value>TB</value>
   </data>
   <data name="&gt;&gt;TB.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>CustomControls.NumericBar+NumericBarTrackBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;TB.Parent" xml:space="preserve">
     <value>$this</value>
@@ -193,7 +193,7 @@
     <value>NUD</value>
   </data>
   <data name="&gt;&gt;NUD.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>CustomControls.NumericBar+NumericBarNumericUpDown, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;NUD.Parent" xml:space="preserve">
     <value>$this</value>

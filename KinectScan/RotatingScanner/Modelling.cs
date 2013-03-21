@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Threading;
 namespace KinectScan
 {
     public abstract class Modeller : IServiceProvider, IGraphicsDeviceService, IDisposable
@@ -11,7 +12,7 @@ namespace KinectScan
         {
             Context = context;
             InitHardwareAcceleration();
-            
+            StopARE = new AutoResetEvent(false);
         }
 
         #region Depth cache
@@ -35,7 +36,7 @@ namespace KinectScan
             {
                 if (value < 1) return;
                 depthCacheSize = value;
-                if (DepthAveragingCacheSize % 2 == 1) depthCacheSize++;
+                if (DepthAveragingCacheSize % 2 == 0) depthCacheSize++;
                 DepthMainItem = DepthAveragingCacheSize / 2;
                 DepthCache = new DepthContainer[DepthAveragingCacheSize];
                 DepthIndex = DepthCacheUsed = 0;
@@ -49,6 +50,7 @@ namespace KinectScan
             DepthIndex++;
             if (DepthIndex == DepthAveragingCacheSize) DepthIndex = 0;
             if (DepthCacheUsed < DepthAveragingCacheSize) DepthCacheUsed++;
+            ProcessFrame();
         }
         #endregion
 
@@ -118,7 +120,7 @@ namespace KinectScan
 
         Texture2D TRawDepth, TDepth, TDepthCorrection;
         protected RenderTarget2D Vector2TargetA, Vector2TargetB, SingleTargetA, SingleTargetB, Vector4Target;
-        protected EffectParameter DepthSampler, DepthCorrectionSampler, ReprojectionTransform, SpaceTransform, TriangleRemoveLimit, MainSampler, DepthSamplerA, DepthSamplerB, SideSelector, SplitPlaneVector, FusionTranform, MinY, MaxHeight, DepthZLimit, ShadingColor, MaxClipRadius, MinClipRadius, ClipOn, MinAvgCount, DepthAvgLimit, MinClipY;
+        protected EffectParameter DepthSampler, DepthCorrectionSampler, ReprojectionTransform, SpaceTransform, TriangleRemoveLimit, MainSampler, DepthSamplerA, DepthSamplerB, SideSelector, SplitPlaneVector, FusionTransform, MinY, MaxHeight, DepthZLimit, ShadingColor, MaxClipRadius, MinClipRadius, ClipOn, MinAvgCount, DepthAvgLimit, MinClipY;
         protected EffectTechnique DepthAntiDistortTechnique, PerspectiveReprojectionTechnique, DepthVisualizationTechnique, SumTechnique, AvgTechnique, SignedDepthVisualizationTechnique, VGaussTechnique, HGaussTechnique;
 
         protected XPlane MiniPlane, MaxiPlane;
@@ -173,7 +175,7 @@ namespace KinectScan
             //Transforms
             ReprojectionTransform = XEffect.Parameters["ReprojectionTransform"];
             SpaceTransform = XEffect.Parameters["SpaceTransform"];
-            FusionTranform = XEffect.Parameters["FusionTranform"];
+            FusionTransform = XEffect.Parameters["FusionTransform"];
 
             //Parameters
             TriangleRemoveLimit = XEffect.Parameters["TriangleRemoveLimit"];
@@ -200,13 +202,27 @@ namespace KinectScan
             VGaussTechnique = XEffect.Techniques["DepthVGauss"];
             HGaussTechnique = XEffect.Techniques["DepthHGauss"];
 
+            //Constants
+            XEffect.Parameters["DepthCorrectionTextureSize"].SetValue(new Vector2(Context.DepthWidth, Context.DepthHeight));
+            XEffect.Parameters["DepthInverseIntrinsics"].SetValue(Context.DepthInverseIntrinsics);
+            XEffect.Parameters["NaN"].SetValue(float.NaN);
+            XEffect.SetGaussCoeffs(Context.DepthWidth, Context.DepthHeight, 9, 1, 1);
+
             //Models
             MiniPlane.SetDevice(XDevice);
             MaxiPlane.SetDevice(XDevice);
         }
 
+        AutoResetEvent StopARE;
+        bool StopPending;
+        int Processing = 0;
         public virtual void DestroyDevice()
         {
+            while (Processing > 0)
+            {
+                StopPending = true;
+                StopARE.WaitOne();
+            }
             TRawDepth.Dispose(); TRawDepth = null;
             TDepth.Dispose(); TDepth = null;
             TDepthCorrection.Dispose(); TDepthCorrection = null;
@@ -304,7 +320,7 @@ namespace KinectScan
             MainSampler.SetValue(texture);
             XEffect.CurrentTechnique = technique;
             XEffect.CurrentTechnique.Passes[0].Apply();
-            MiniPlane.Draw();
+            MiniPlane.Draw();            
             if (present) XDevice.Present();
         }
         #endregion
@@ -339,7 +355,7 @@ namespace KinectScan
             ReprojectionTransform.SetValue(reproj);
             SpaceTransform.SetValue(space);
             SplitPlaneVector.SetValue(new Vector4((float)Math.Cos(SplitPlaneAngle), 0f, (float)Math.Sin(SplitPlaneAngle), 0f));
-            FusionTranform.SetValue(Matrix.CreateRotationY(fusionRotation) * space);
+            FusionTransform.SetValue(Matrix.CreateRotationY(fusionRotation) * space);
         }
         #endregion
 
@@ -348,113 +364,130 @@ namespace KinectScan
         protected int FrameID;
         protected bool FusionTick = false;
         protected float mainRotation;
-        public virtual void ProcessFrame()
+        protected virtual void ProcessFrame()
         {
-            if (DepthCacheUsed >= DepthAveragingCacheSize)
+            if (XDevice == null) return;
+            
+            Processing++;
+            try
             {
-                if (FrameID % FusionSpacing == 0)
+                if (DepthCacheUsed >= DepthAveragingCacheSize)
                 {
-                    XDevice.SetRenderTarget(Vector2TargetA);
-                    XDevice.Clear(Color.Black);
-                    XDevice.SetRenderTarget(Vector2TargetB);
-                    XDevice.Clear(Color.Black);
-
-                    int mainIndex = (DepthIndex + DepthMainItem) % DepthAveragingCacheSize;
-                    mainRotation = DepthCache[mainIndex].Rotation;
-                    byte[] deltaData;
-                    float deltaRotation;
-                    bool tick = false;
-                    for (int i = 0; i < DepthAveragingCacheSize; i++)
+                    if (FrameID % FusionSpacing == 0)
                     {
-                        deltaData = DepthCache[i].Data;
-                        deltaRotation = DepthCache[i].Rotation - mainRotation;
-                        if (deltaRotation > MathHelper.Pi) deltaRotation -= MathHelper.TwoPi;
-                        if (deltaRotation < -MathHelper.Pi) deltaRotation += MathHelper.TwoPi;
-
-
-                        for (int j = 0; j < 16; j++)
-                            XDevice.Textures[j] = null;
-                        TRawDepth.SetData<byte>(deltaData);
-
-                        //Anti-distort
-                        XDevice.SetRenderTarget(SingleTargetA);
+                        XDevice.SetRenderTarget(Vector2TargetA);
                         XDevice.Clear(Color.Black);
-                        XDevice.RasterizerState = RasterizerState.CullNone;
-                        XDevice.BlendState = BlendState.Opaque;
-                        XDevice.DepthStencilState = DepthStencilState.None;
+                        XDevice.SetRenderTarget(Vector2TargetB);
+                        XDevice.Clear(Color.Black);
 
-                        DepthSampler.SetValue(TRawDepth);
-                        DepthCorrectionSampler.SetValue(TDepthCorrection);
-                        XEffect.CurrentTechnique = DepthAntiDistortTechnique; //<----
+                        int mainIndex = (DepthIndex + DepthMainItem) % DepthAveragingCacheSize;
+                        mainRotation = DepthCache[mainIndex].Rotation;
+                        byte[] deltaData;
+                        float deltaRotation;
+                        bool tick = false;
+                        for (int i = 0; i < DepthAveragingCacheSize; i++)
+                        {
+                            deltaData = DepthCache[i].Data;
+                            deltaRotation = DepthCache[i].Rotation - mainRotation;
+                            if (deltaRotation > MathHelper.Pi) deltaRotation -= MathHelper.TwoPi;
+                            if (deltaRotation < -MathHelper.Pi) deltaRotation += MathHelper.TwoPi;
+
+
+                            for (int j = 0; j < 16; j++)
+                                XDevice.Textures[j] = null;
+                            TRawDepth.SetData<byte>(deltaData);
+
+                            //Anti-distort
+                            XDevice.SetRenderTarget(SingleTargetA);
+                            XDevice.Clear(Color.Black);
+                            XDevice.RasterizerState = RasterizerState.CullNone;
+                            XDevice.BlendState = BlendState.Opaque;
+                            XDevice.DepthStencilState = DepthStencilState.None;
+
+                            DepthSampler.SetValue(TRawDepth);
+                            DepthCorrectionSampler.SetValue(TDepthCorrection);
+                            XEffect.CurrentTechnique = DepthAntiDistortTechnique; //<----
+                            XEffect.CurrentTechnique.Passes[0].Apply();
+                            MiniPlane.Draw();
+                            if (ViewMode == Views.AntiDistort) Visualize(SingleTargetA, DepthVisualizationTechnique);
+
+                            //Reprojection + transform
+                            SetReprojection(deltaRotation);
+                            TriangleRemoveLimit.SetValue(Context.TriangleRemoveLimit);
+                            XDevice.SetRenderTarget(SingleTargetB);
+                            XDevice.Clear(Color.Black);
+                            XDevice.BlendState = BlendState.Opaque;
+                            XDevice.RasterizerState = RasterizerState.CullCounterClockwise;
+                            XDevice.DepthStencilState = DepthStencilState.Default;
+
+                            DepthSampler.SetValue(SingleTargetA);
+                            XEffect.CurrentTechnique = PerspectiveReprojectionTechnique; //<----
+                            XEffect.CurrentTechnique.Passes[0].Apply();
+                            MaxiPlane.Draw();
+
+                            if (ViewMode == Views.Sum) Visualize(SingleTargetB, DepthVisualizationTechnique);
+
+                            //Sum
+                            XDevice.SetRenderTarget(tick ? Vector2TargetA : Vector2TargetB);
+                            XDevice.Clear(Color.Black);
+                            XDevice.RasterizerState = RasterizerState.CullNone;
+                            XDevice.BlendState = BlendState.Opaque;
+                            XDevice.DepthStencilState = DepthStencilState.None;
+
+                            DepthSamplerA.SetValue(SingleTargetB);
+                            DepthSamplerB.SetValue(tick ? Vector2TargetB : Vector2TargetA);
+                            XEffect.CurrentTechnique = SumTechnique; //<----
+                            XEffect.CurrentTechnique.Passes[0].Apply();
+                            MiniPlane.Draw();
+                            tick = !tick;
+                        }
+
+                        SideSelector.SetValue(-1f);
+
+                        //Fusion + transform
+                        SetFusionReprojection(0f, mainRotation);
+                        XDevice.SetRenderTarget(FusionTick ? SingleTargetA : SingleTargetB);
+                        DepthSampler.SetValue(tick ? Vector2TargetB : Vector2TargetA);
+                        XEffect.CurrentTechnique = AvgTechnique; //<----
                         XEffect.CurrentTechnique.Passes[0].Apply();
                         MiniPlane.Draw();
 
-                        //Reprojection + transform
-                        SetReprojection(deltaRotation);
-                        TriangleRemoveLimit.SetValue(Context.TriangleRemoveLimit);
-                        XDevice.SetRenderTarget(SingleTargetB);
-                        XDevice.Clear(Color.Black);
-                        XDevice.BlendState = BlendState.Opaque;
-                        XDevice.RasterizerState = RasterizerState.CullCounterClockwise;
-                        XDevice.DepthStencilState = DepthStencilState.Default;
+                        if (ViewMode == Views.Avg) Visualize(FusionTick ? SingleTargetA : SingleTargetB, SignedDepthVisualizationTechnique);
 
-                        DepthSampler.SetValue(SingleTargetA);
-                        XEffect.CurrentTechnique = PerspectiveReprojectionTechnique; //<----
-                        XEffect.CurrentTechnique.Passes[0].Apply();
-                        MaxiPlane.Draw();
-                        if (ViewMode == Views.AntiDistort) Visualize(SingleTargetA, DepthVisualizationTechnique);
-                        if (ViewMode == Views.Sum) Visualize(SingleTargetB, DepthVisualizationTechnique);
+                        //Gauss
+                        for (int i = 0; i < 4; i++)
+                        {
+                            XDevice.SetRenderTarget(FusionTick ? SingleTargetB : SingleTargetA);
+                            DepthSampler.SetValue(FusionTick ? SingleTargetA : SingleTargetB);
+                            XEffect.CurrentTechnique = VGaussTechnique;
+                            XEffect.CurrentTechnique.Passes[0].Apply();
+                            MiniPlane.Draw();
+                            FusionTick = !FusionTick;
 
-                        //Sum
-                        XDevice.SetRenderTarget(tick ? Vector2TargetA : Vector2TargetB);
-                        XDevice.Clear(Color.Black);
-                        XDevice.RasterizerState = RasterizerState.CullNone;
-                        XDevice.BlendState = BlendState.Opaque;
-                        XDevice.DepthStencilState = DepthStencilState.None;
+                            XDevice.SetRenderTarget(FusionTick ? SingleTargetB : SingleTargetA);
+                            DepthSampler.SetValue(FusionTick ? SingleTargetA : SingleTargetB);
+                            XEffect.CurrentTechnique = HGaussTechnique;
+                            XEffect.CurrentTechnique.Passes[0].Apply();
+                            MiniPlane.Draw();
+                            FusionTick = !FusionTick;
+                        }
 
-                        DepthSamplerA.SetValue(SingleTargetB);
-                        DepthSamplerB.SetValue(tick ? Vector2TargetB : Vector2TargetA);
-                        XEffect.CurrentTechnique = SumTechnique; //<----
-                        XEffect.CurrentTechnique.Passes[0].Apply();
-                        MiniPlane.Draw();
-                        tick = !tick;
+                        if (ViewMode == Views.Gauss) Visualize(FusionTick ? SingleTargetA : SingleTargetB, SignedDepthVisualizationTechnique);
+
                     }
-
-                    SideSelector.SetValue(-1f);
-
-                    //Fusion + transform
-                    SetFusionReprojection(0f, mainRotation);
-                    XDevice.SetRenderTarget(FusionTick ? SingleTargetA : SingleTargetB);
-                    DepthSampler.SetValue(tick ? Vector2TargetB : Vector2TargetA);
-                    XEffect.CurrentTechnique = AvgTechnique; //<----
-                    XEffect.CurrentTechnique.Passes[0].Apply();
-                    MiniPlane.Draw();
-
-                    if (ViewMode == Views.Avg) Visualize(FusionTick ? SingleTargetA : SingleTargetB, SignedDepthVisualizationTechnique);
-
-                    //Gauss
-                    for (int i = 0; i < 4; i++)
-                    {
-                        XDevice.SetRenderTarget(FusionTick ? SingleTargetB : SingleTargetA);
-                        DepthSampler.SetValue(FusionTick ? SingleTargetA : SingleTargetB);
-                        XEffect.CurrentTechnique = VGaussTechnique;
-                        XEffect.CurrentTechnique.Passes[0].Apply();
-                        MiniPlane.Draw();
-                        FusionTick = !FusionTick;
-
-                        XDevice.SetRenderTarget(FusionTick ? SingleTargetB : SingleTargetA);
-                        DepthSampler.SetValue(FusionTick ? SingleTargetA : SingleTargetB);
-                        XEffect.CurrentTechnique = HGaussTechnique;
-                        XEffect.CurrentTechnique.Passes[0].Apply();
-                        MiniPlane.Draw();
-                        FusionTick = !FusionTick;
-                    }
-
-                    if (ViewMode == Views.Gauss) Visualize(FusionTick ? SingleTargetA : SingleTargetB, SignedDepthVisualizationTechnique);
-                    
+                    FrameID++;
                 }
-                FrameID++;
+                if (StopPending)
+                {
+                    StopARE.Set();
+                    StopPending = false;
+                }
             }
+            catch 
+            {
+                System.Diagnostics.Debugger.Break();
+            }
+            Processing--;
         }
 
         public abstract void Save(string fileName);

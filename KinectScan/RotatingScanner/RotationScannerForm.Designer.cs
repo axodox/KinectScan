@@ -117,8 +117,8 @@
             // 
             // MIScan
             // 
-            this.MIScan.Index = 1;
             resources.ApplyResources(this.MIScan, "MIScan");
+            this.MIScan.Index = 1;
             this.MIScan.Click += new System.EventHandler(this.MIScan_Click);
             // 
             // MIStop

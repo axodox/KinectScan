@@ -18,7 +18,7 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="DepthLimit" Type="System.Single" Scope="User">
-      <Value Profile="(Default)">10</Value>
+      <Value Profile="(Default)">1.4</Value>
     </Setting>
     <Setting Name="MaxY" Type="System.Single" Scope="User">
       <Value Profile="(Default)">2</Value>
@@ -33,7 +33,7 @@
       <Value Profile="(Default)">2</Value>
     </Setting>
     <Setting Name="MaxClipRadius" Type="System.Single" Scope="User">
-      <Value Profile="(Default)">0.3</Value>
+      <Value Profile="(Default)">0.25</Value>
     </Setting>
     <Setting Name="DepthAvgLimit" Type="System.Single" Scope="User">
       <Value Profile="(Default)">0</Value>
@@ -57,10 +57,10 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="CoreX" Type="System.Single" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">0.11</Value>
     </Setting>
     <Setting Name="CoreY" Type="System.Single" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">-0.11</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -46,7 +46,7 @@ namespace KinectScan
                 MI.Tag = mode;
                 MIView.MenuItems.Add(MI);
             }
-            
+
             if (specialViewModes.Length > 0)
             {
                 int i = 0;
@@ -54,13 +54,13 @@ namespace KinectScan
                 foreach (string mode in specialViewModes)
                 {
                     MI = new MenuItem(mode.ToString());
-                    MI.Click += (object sender, EventArgs e) => 
+                    MI.Click += (object sender, EventArgs e) =>
                     {
                         if (MISelectedView != null) MISelectedView.Checked = false;
                         MISelectedView = (MenuItem)sender;
                         MISelectedView.Checked = true;
                         Modeller.ViewMode = KinectScan.Modeller.Views.Special;
-                        Modeller.SetSpecialViewMode((int)MISelectedView.Tag); 
+                        Modeller.SetSpecialViewMode((int)MISelectedView.Tag);
                     };
                     MI.Tag = i++;
                     MIView.MenuItems.Add(MI);
@@ -72,27 +72,42 @@ namespace KinectScan
             SF.LoadSettings();
             SF.SetModeller(Modeller);
 
-            //Turntables
-            Turntable.DeviceConnected += Turntable_DeviceConnected;
-
             //Scanning
             ScanUITimer = new Timer();
             ScanUITimer.Interval = 100;
-            ScanUITimer.Tick += (object sender, EventArgs e) => 
-            {
-                if (ScanningState == ScanningStates.Scanning)
+            ScanUITimer.Tick += (object sender, EventArgs e) =>
                 {
-                    int degrees = (int)Turntable.PositionInDegrees;
-                    TSPB.Value = degrees;
-                    TSSL.Text = string.Format(LocalizedResources.ScannerScanning, degrees);
-                }
-            };
+                    if (ScanningState == ScanningStates.Scanning)
+                    {
+                        int degrees = (int)Turntable.PositionInDegrees;
+                        TSPB.Value = degrees;
+                        TSSL.Text = string.Format(LocalizedResources.ScannerScanning, degrees);
+                    }
+                };
             SetState(ScanningStates.None);
+            Context.ScannerCreated += (object S, EventArgs E) =>
+                {
+                    Context.Scanner.RawFrameIn += (object sender, Scanner.RawFrameEventArgs e) =>
+                    {
+                        if (e.FrameType == Scanner.FrameTypes.Depth && ScanningState == ScanningStates.Scanning)
+                        {
+                            Modeller.LoadDepth(e.Data, -(float)Turntable.PositionInRadians);
+                        }
+                    };
+                };
+            Turntable.DeviceConnected += Turntable_DeviceConnected;
+            Turntable.DeviceDisconnected += Turntable_DeviceDisconnected;
+        }
+
+        void Turntable_DeviceDisconnected(object sender, EventArgs e)
+        {
+            MIScan.Enabled = Turntable != null; 
         }
 
         void Turntable_DeviceConnected(object sender, EventArgs e)
         {
             if (Turntable == null) InitScanning(Turntable.DefaultDevice);
+            MIScan.Enabled = Turntable != null; 
         }
         #endregion
 
@@ -103,7 +118,9 @@ namespace KinectScan
         private Turntable Turntable;
         public void InitScanning(Turntable turntable)
         {
+            if (turntable == null) return;
             Turntable = turntable;
+            Turntable.SendCommandAsync(Turntable.Commands.ToOrigin);
             Turntable.MotorStopped += (object sender, EventArgs e) => { SetState(ScanningStates.Done); };
             Turntable.TurnComplete += (object sender, EventArgs e) =>
             {
@@ -118,7 +135,12 @@ namespace KinectScan
 
         private void MIScan_Click(object sender, EventArgs e)
         {
-            SetState(ScanningStates.Scanning);
+            if (Context.Scanner == null)
+                Context.InitiateKinectDevice(Scanner.Modes.Depth480);
+            if (Context.Scanner == null)
+                MessageBox.Show(LocalizedResources.DeviceNotFound, LocalizedResources.TurntableTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+                SetState(ScanningStates.Scanning);
         }
 
         private void SetState(ScanningStates state)
@@ -131,7 +153,7 @@ namespace KinectScan
                     TSPB.Enabled = false;
                     TSPB.Value = 0;
                     TSPB.Style = ProgressBarStyle.Blocks;
-                    MIScan.Enabled = true;
+                    MIScan.Enabled = Turntable != null; 
                     MIStop.Enabled = false;
                     break;
                 case ScanningStates.MoveToOrigin:
@@ -155,7 +177,7 @@ namespace KinectScan
                     TSPB.Value = 360;
                     TSPB.Enabled = false;
                     TSSL.Text = LocalizedResources.ScannerDone;
-                    MIScan.Enabled = true;
+                    MIScan.Enabled = Turntable != null; 
                     MIStop.Enabled = false;
                     break;
             }
@@ -191,6 +213,8 @@ namespace KinectScan
 
         void CF_FormClosing(object sender, FormClosingEventArgs e)
         {
+            TurntableCalibrationForm TCF = sender as TurntableCalibrationForm;
+            SF.Calibrate(TCF.Calibrator);
             Context.SetUIMode(true);
             Show();
         }
@@ -206,6 +230,10 @@ namespace KinectScan
         #region Unload
         private void RotationScannerForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            
+            SetState(ScanningStates.None);
+            Turntable.DeviceConnected -= Turntable_DeviceConnected;
+            Turntable.DeviceDisconnected -= Turntable_DeviceDisconnected;
             if (Modeller != null)
             {
                 Modeller.Dispose();

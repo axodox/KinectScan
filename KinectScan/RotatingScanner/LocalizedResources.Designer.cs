@@ -257,5 +257,14 @@ namespace KinectScan {
                 return ResourceManager.GetString("TurntableNotFound", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Turntable scanner..
+        /// </summary>
+        internal static string TurntableTitle {
+            get {
+                return ResourceManager.GetString("TurntableTitle", resourceCulture);
+            }
+        }
     }
 }

@@ -652,9 +652,19 @@ namespace KinectScan
             texture.SetData<Byte4>(data);
         }
 
+        public static float Vector3Angle(Vector3 a, Vector3 b)
+        {
+            return (float)Math.Acos(Vector3.Dot(a, b) / a.Length() / b.Length());
+        }
+
         public static float ToRadians(this float angle)
         {
             return MathHelper.ToRadians(angle);
+        }
+
+        public static float ToDegrees(this float angle)
+        {
+            return MathHelper.ToDegrees(angle);
         }
 
         public static string[] EnumToStringArray<T>()

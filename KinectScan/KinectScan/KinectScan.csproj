@@ -288,6 +288,9 @@
     <Content Include="freenect.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="freenectdotnet.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="icon.ico" />
     <Content Include="Junkyard.txt" />
     <Content Include="HardwareSettings.xml">

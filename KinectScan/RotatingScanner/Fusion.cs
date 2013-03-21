@@ -69,14 +69,14 @@ namespace KinectScan
             ReprojectionTransform.SetValue(reproj);
             SpaceTransform.SetValue(space);
             SplitPlaneVector.SetValue(new Vector4((float)Math.Cos(SplitPlaneAngle), 0f, (float)Math.Sin(SplitPlaneAngle), 0f));
-            FusionTranform.SetValue(Matrix.CreateRotationY(fusionRotation) * space);
+            FusionTransform.SetValue(Matrix.CreateRotationY(fusionRotation) * space);
         }
         #endregion
 
         #region Processing
         public bool BuildModel { get; set; }
         float FusionRotation;
-        public override void ProcessFrame()
+        protected override void ProcessFrame()
         {
             base.ProcessFrame();
             if (FrameID != 0)

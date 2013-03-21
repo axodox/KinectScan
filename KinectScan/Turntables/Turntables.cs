@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO.Ports;
 using System.Threading;
+using System.IO;
 
 namespace Turntables
 {
@@ -95,7 +96,6 @@ namespace Turntables
             port.ReadTimeout = Timeout.Infinite;
             port.NewLine = "\r\n";
         }
-
         public static string[] GetDevices()
         {
             SerialPort SP = new SerialPort();
@@ -105,7 +105,7 @@ namespace Turntables
             string[] ports = SerialPort.GetPortNames();
 
             int i;
-            for (i = 1; i < ports.Length; i++)
+            for (i = 0; i < ports.Length; i++)
             {
                 SP.PortName = ports[i];
                 try
@@ -121,6 +121,7 @@ namespace Turntables
                     }
                 }
                 catch (UnauthorizedAccessException) { }
+                catch (IOException) { }
                 finally
                 {
                     if (SP.IsOpen) SP.Close();
@@ -145,6 +146,7 @@ namespace Turntables
             string command, answer;
             bool rotating;
             States statusWord;
+
             while (CommunicationThreadOn)
             {
                 SendARE.WaitOne(PositionRefreshPeriod);
@@ -241,6 +243,9 @@ namespace Turntables
             CommunicationThreadOn = true;
             CommunicationThread = new Thread(Communicate);
             CommunicationThread.Start();
+            SendCommandAsync(Commands.Stop);
+            SendCommandAsync(Commands.TurnOff);
+
         }
 
         public void SendCommandAsync(Commands command, int steps = 0)

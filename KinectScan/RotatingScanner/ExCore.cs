@@ -84,7 +84,7 @@ namespace KinectScan
             ReprojectionTransform.SetValue(reproj);
             SpaceTransform.SetValue(space);
             SplitPlaneVector.SetValue(new Vector4(0f, 0f, 1f, 0f));
-            FusionTranform.SetValue(Matrix.CreateRotationY(-SplitPlaneAngle + MathHelper.PiOver2) * space);
+            FusionTransform.SetValue(Matrix.CreateRotationY(-SplitPlaneAngle + MathHelper.PiOver2) * space);
         }
         #endregion
 
@@ -94,11 +94,10 @@ namespace KinectScan
 
         const int DisplayLines = 12;
         bool ExCoreTick, NextExCoreClear;
-        
-        public override void ProcessFrame()
+
+        protected override void ProcessFrame()
         {
             base.ProcessFrame();
-
             if (ViewMode == Views.Special && SpecialView == SpecialViews.CorePosition)
             {
                 Visualize(FusionTick ? SingleTargetA : SingleTargetB, SignedDepthVisualizationTechnique, false);

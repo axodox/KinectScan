@@ -85,7 +85,7 @@ namespace KinectScan {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1.4")]
         public float DepthLimit {
             get {
                 return ((float)(this["DepthLimit"]));
@@ -145,7 +145,7 @@ namespace KinectScan {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.3")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.25")]
         public float MaxClipRadius {
             get {
                 return ((float)(this["MaxClipRadius"]));
@@ -241,7 +241,7 @@ namespace KinectScan {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.11")]
         public float CoreX {
             get {
                 return ((float)(this["CoreX"]));
@@ -253,7 +253,7 @@ namespace KinectScan {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("-0.11")]
         public float CoreY {
             get {
                 return ((float)(this["CoreY"]));

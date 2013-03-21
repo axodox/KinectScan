@@ -183,4 +183,7 @@
   <data name="TurntableNotFound" xml:space="preserve">
     <value>Turntable not found!</value>
   </data>
+  <data name="TurntableTitle" xml:space="preserve">
+    <value>Turntable scanner.</value>
+  </data>
 </root>

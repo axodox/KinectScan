@@ -89,6 +89,18 @@ namespace KinectScan
             start = false;
         }
 
+        public void Calibrate(TurntableCalibrator calibrator)
+        {
+            if (calibrator.IsCalibrated)
+            {
+                NBTranslationX.Value = calibrator.TranslationX;
+                NBTranslationY.Value = calibrator.TranslationY;
+                NBTranslationZ.Value = calibrator.TranslationZ;
+                NBRotationX.Value = calibrator.RotationX;
+                NBRotationZ.Value = calibrator.RotationZ;
+            }
+        }
+
         Modeller Modeller;
         public void SetModeller(Modeller modeller)
         {

@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NumericBar));
             this.LTitle = new System.Windows.Forms.Label();
-            this.TB = new NumericBarTrackBar();
-            this.NUD = new NumericBarNumericUpDown();
+            this.TB = new CustomControls.NumericBar.NumericBarTrackBar();
+            this.NUD = new CustomControls.NumericBar.NumericBarNumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.TB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUD)).BeginInit();
             this.SuspendLayout();
