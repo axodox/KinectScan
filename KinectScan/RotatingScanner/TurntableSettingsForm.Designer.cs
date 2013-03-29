@@ -42,23 +42,24 @@
             this.NBTranslationX = new CustomControls.NumericBar();
             this.NBTranslationY = new CustomControls.NumericBar();
             this.NBTranslationZ = new CustomControls.NumericBar();
+            this.LProjection = new System.Windows.Forms.Label();
             this.NBProjectionYMax = new CustomControls.NumericBar();
             this.NBProjectionYMin = new CustomControls.NumericBar();
+            this.NBProjectionWidth = new CustomControls.NumericBar();
+            this.NBCoreX = new CustomControls.NumericBar();
+            this.NBCoreY = new CustomControls.NumericBar();
             this.LDepthAveraging = new System.Windows.Forms.Label();
             this.NBDepthAveragingCacheSize = new CustomControls.NumericBar();
             this.NBDepthAveragingLimit = new CustomControls.NumericBar();
             this.NBDepthAveragingMinCount = new CustomControls.NumericBar();
             this.NBFusionSpacing = new CustomControls.NumericBar();
-            this.NBProjectionWidth = new CustomControls.NumericBar();
-            this.NBCoreX = new CustomControls.NumericBar();
-            this.NBCoreY = new CustomControls.NumericBar();
-            this.LProjection = new System.Windows.Forms.Label();
             this.SSSettings = new System.Windows.Forms.StatusStrip();
             this.TSDDBSaveFile = new System.Windows.Forms.ToolStripDropDownButton();
             this.TSMIImport = new System.Windows.Forms.ToolStripMenuItem();
             this.TSMIExport = new System.Windows.Forms.ToolStripMenuItem();
             this.SFDExport = new System.Windows.Forms.SaveFileDialog();
             this.OFDImport = new System.Windows.Forms.OpenFileDialog();
+            this.NBGaussIterations = new CustomControls.NumericBar();
             this.FLPSettings.SuspendLayout();
             this.SSSettings.SuspendLayout();
             this.SuspendLayout();
@@ -88,7 +89,8 @@
             this.FLPSettings.Controls.Add(this.NBDepthAveragingCacheSize);
             this.FLPSettings.Controls.Add(this.NBDepthAveragingLimit);
             this.FLPSettings.Controls.Add(this.NBDepthAveragingMinCount);
-            this.FLPSettings.Controls.Add(this.NBFusionSpacing);   
+            this.FLPSettings.Controls.Add(this.NBFusionSpacing);
+            this.FLPSettings.Controls.Add(this.NBGaussIterations);
             this.FLPSettings.Name = "FLPSettings";
             this.FLPSettings.Resize += new System.EventHandler(this.FLPSettings_Resize);
             // 
@@ -293,6 +295,11 @@
             this.NBTranslationZ.Value = 0F;
             this.NBTranslationZ.ValueChangeEventEnabled = true;
             // 
+            // LProjection
+            // 
+            resources.ApplyResources(this.LProjection, "LProjection");
+            this.LProjection.Name = "LProjection";
+            // 
             // NBProjectionYMax
             // 
             this.NBProjectionYMax.ByteValue = ((byte)(0));
@@ -330,6 +337,63 @@
             this.NBProjectionYMin.Name = "NBProjectionYMin";
             this.NBProjectionYMin.Value = 0F;
             this.NBProjectionYMin.ValueChangeEventEnabled = true;
+            // 
+            // NBProjectionWidth
+            // 
+            this.NBProjectionWidth.ByteValue = ((byte)(0));
+            this.NBProjectionWidth.DecimalPlaces = 2;
+            this.NBProjectionWidth.DoubleValue = 0D;
+            this.NBProjectionWidth.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.NBProjectionWidth.Int32Value = 0;
+            this.NBProjectionWidth.IntegerValue = false;
+            resources.ApplyResources(this.NBProjectionWidth, "NBProjectionWidth");
+            this.NBProjectionWidth.Maximum = 4D;
+            this.NBProjectionWidth.Minimum = 0D;
+            this.NBProjectionWidth.Name = "NBProjectionWidth";
+            this.NBProjectionWidth.Value = 0F;
+            this.NBProjectionWidth.ValueChangeEventEnabled = true;
+            // 
+            // NBCoreX
+            // 
+            this.NBCoreX.ByteValue = ((byte)(0));
+            this.NBCoreX.DecimalPlaces = 2;
+            this.NBCoreX.DoubleValue = 0D;
+            this.NBCoreX.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.NBCoreX.Int32Value = 0;
+            this.NBCoreX.IntegerValue = false;
+            resources.ApplyResources(this.NBCoreX, "NBCoreX");
+            this.NBCoreX.Maximum = 0.3D;
+            this.NBCoreX.Minimum = 0D;
+            this.NBCoreX.Name = "NBCoreX";
+            this.NBCoreX.Value = 0F;
+            this.NBCoreX.ValueChangeEventEnabled = true;
+            // 
+            // NBCoreY
+            // 
+            this.NBCoreY.ByteValue = ((byte)(0));
+            this.NBCoreY.DecimalPlaces = 2;
+            this.NBCoreY.DoubleValue = 0D;
+            this.NBCoreY.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.NBCoreY.Int32Value = 0;
+            this.NBCoreY.IntegerValue = false;
+            resources.ApplyResources(this.NBCoreY, "NBCoreY");
+            this.NBCoreY.Maximum = 0.3D;
+            this.NBCoreY.Minimum = -0.3D;
+            this.NBCoreY.Name = "NBCoreY";
+            this.NBCoreY.Value = 0F;
+            this.NBCoreY.ValueChangeEventEnabled = true;
             // 
             // LDepthAveraging
             // 
@@ -412,68 +476,6 @@
             this.NBFusionSpacing.Value = 1F;
             this.NBFusionSpacing.ValueChangeEventEnabled = true;
             // 
-            // NBProjectionWidth
-            // 
-            this.NBProjectionWidth.ByteValue = ((byte)(0));
-            this.NBProjectionWidth.DecimalPlaces = 2;
-            this.NBProjectionWidth.DoubleValue = 0D;
-            this.NBProjectionWidth.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.NBProjectionWidth.Int32Value = 0;
-            this.NBProjectionWidth.IntegerValue = false;
-            resources.ApplyResources(this.NBProjectionWidth, "NBProjectionWidth");
-            this.NBProjectionWidth.Maximum = 4D;
-            this.NBProjectionWidth.Minimum = 0D;
-            this.NBProjectionWidth.Name = "NBProjectionWidth";
-            this.NBProjectionWidth.Value = 0F;
-            this.NBProjectionWidth.ValueChangeEventEnabled = true;
-            // 
-            // NBCoreX
-            // 
-            this.NBCoreX.ByteValue = ((byte)(0));
-            this.NBCoreX.DecimalPlaces = 2;
-            this.NBCoreX.DoubleValue = 0D;
-            this.NBCoreX.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.NBCoreX.Int32Value = 0;
-            this.NBCoreX.IntegerValue = false;
-            resources.ApplyResources(this.NBCoreX, "NBCoreX");
-            this.NBCoreX.Maximum = 0.3D;
-            this.NBCoreX.Minimum = 0D;
-            this.NBCoreX.Name = "NBCoreX";
-            this.NBCoreX.Value = 0F;
-            this.NBCoreX.ValueChangeEventEnabled = true;
-            // 
-            // NBCoreY
-            // 
-            this.NBCoreY.ByteValue = ((byte)(0));
-            this.NBCoreY.DecimalPlaces = 2;
-            this.NBCoreY.DoubleValue = 0D;
-            this.NBCoreY.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.NBCoreY.Int32Value = 0;
-            this.NBCoreY.IntegerValue = false;
-            resources.ApplyResources(this.NBCoreY, "NBCoreY");
-            this.NBCoreY.Maximum = 0.3D;
-            this.NBCoreY.Minimum = -0.3D;
-            this.NBCoreY.Name = "NBCoreY";
-            this.NBCoreY.Value = 0F;
-            this.NBCoreY.ValueChangeEventEnabled = true;
-            // 
-            // LProjection
-            // 
-            resources.ApplyResources(this.LProjection, "LProjection");
-            this.LProjection.Name = "LProjection";
-            // 
             // SSSettings
             // 
             this.SSSettings.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -515,6 +517,25 @@
             this.OFDImport.DefaultExt = "xml";
             resources.ApplyResources(this.OFDImport, "OFDImport");
             // 
+            // NBGaussIterations
+            // 
+            this.NBGaussIterations.ByteValue = ((byte)(0));
+            this.NBGaussIterations.DecimalPlaces = 2;
+            this.NBGaussIterations.DoubleValue = 0D;
+            this.NBGaussIterations.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.NBGaussIterations.Int32Value = 0;
+            this.NBGaussIterations.IntegerValue = true;
+            resources.ApplyResources(this.NBGaussIterations, "NBGaussIterations");
+            this.NBGaussIterations.Maximum = 16D;
+            this.NBGaussIterations.Minimum = 0D;
+            this.NBGaussIterations.Name = "NBGaussIterations";
+            this.NBGaussIterations.Value = 0F;
+            this.NBGaussIterations.ValueChangeEventEnabled = true;
+            // 
             // TurntableSettingsForm
             // 
             resources.ApplyResources(this, "$this");
@@ -547,29 +568,30 @@
         private System.Windows.Forms.ToolStripMenuItem TSMIExport;
         private System.Windows.Forms.SaveFileDialog SFDExport;
         private System.Windows.Forms.OpenFileDialog OFDImport;
-        public CustomControls.NumericBar NBTranslationZ;
-        public CustomControls.NumericBar NBClippingDepthMax;
-        public CustomControls.NumericBar NBRotationX;
-        public CustomControls.NumericBar NBRotationZ;
-        public CustomControls.NumericBar NBTranslationX;
-        public CustomControls.NumericBar NBTranslationY;
-        public CustomControls.NumericBar NBProjectionYMax;
-        public CustomControls.NumericBar NBSplitPlaneAngle;
-        public CustomControls.NumericBar NBProjectionYMin;
-        public CustomControls.NumericBar NBProjectionWidth;
-        public CustomControls.NumericBar NBClippingRadiusMax;
-        public CustomControls.NumericBar NBClippingRadiusMin;
-        public CustomControls.NumericBar NBDepthAveragingMinCount;
-        public CustomControls.NumericBar NBDepthAveragingLimit;
-        public System.Windows.Forms.CheckBox CBClippingEnabled;
-        public CustomControls.NumericBar NBDepthAveragingCacheSize;
-        public CustomControls.NumericBar NBFusionSpacing;
-        public CustomControls.NumericBar NBClippingYMin;
-        public CustomControls.NumericBar NBCoreX;
-        public CustomControls.NumericBar NBCoreY;
         private System.Windows.Forms.Label LTransformations;
         private System.Windows.Forms.Label LDepthAveraging;
         private System.Windows.Forms.Label LProjection;
+        private CustomControls.NumericBar NBGaussIterations;
+        private CustomControls.NumericBar NBTranslationZ;
+        private CustomControls.NumericBar NBClippingDepthMax;
+        private CustomControls.NumericBar NBRotationX;
+        private CustomControls.NumericBar NBRotationZ;
+        private CustomControls.NumericBar NBTranslationX;
+        private CustomControls.NumericBar NBTranslationY;
+        private CustomControls.NumericBar NBProjectionYMax;
+        private CustomControls.NumericBar NBSplitPlaneAngle;
+        private CustomControls.NumericBar NBProjectionYMin;
+        private CustomControls.NumericBar NBProjectionWidth;
+        private CustomControls.NumericBar NBClippingRadiusMax;
+        private CustomControls.NumericBar NBClippingRadiusMin;
+        private CustomControls.NumericBar NBDepthAveragingMinCount;
+        private CustomControls.NumericBar NBDepthAveragingLimit;
+        private System.Windows.Forms.CheckBox CBClippingEnabled;
+        private CustomControls.NumericBar NBDepthAveragingCacheSize;
+        private CustomControls.NumericBar NBFusionSpacing;
+        private CustomControls.NumericBar NBClippingYMin;
+        private CustomControls.NumericBar NBCoreX;
+        private CustomControls.NumericBar NBCoreY;
 
     }
 }

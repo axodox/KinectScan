@@ -37,6 +37,7 @@ namespace KinectScan
             NBDepthAveragingLimit.ValueChanged += (object o, EventArgs e) => { if (Modeller != null) Modeller.DepthAveragingLimit = NBDepthAveragingLimit.Value; };
             NBDepthAveragingMinCount.ValueChanged += (object o, EventArgs e) => { if (Modeller != null) Modeller.DepthAveragingMinCount = NBDepthAveragingMinCount.Int32Value; };
             NBFusionSpacing.ValueChanged += (object o, EventArgs e) => { if (Modeller != null) Modeller.FusionSpacing = NBFusionSpacing.Int32Value; };
+            NBGaussIterations.ValueChanged += (object o, EventArgs e) => { if (Modeller != null) Modeller.GaussIterations = NBGaussIterations.Int32Value; };
 
             //Projection
             NBProjectionYMax.ValueChanged += (object o, EventArgs e) => { if (Modeller != null) Modeller.ProjectionYMax = NBProjectionYMax.Value; };
@@ -126,6 +127,7 @@ namespace KinectScan
             Modeller.DepthAveragingLimit = NBDepthAveragingLimit.Value;
             Modeller.DepthAveragingMinCount = NBDepthAveragingMinCount.Int32Value;
             Modeller.FusionSpacing = NBFusionSpacing.Int32Value;
+            Modeller.GaussIterations = NBGaussIterations.Int32Value;
 
             //Projection
             Modeller.ProjectionYMax = NBProjectionYMax.Value;
@@ -176,6 +178,7 @@ namespace KinectScan
             NBFusionSpacing.Int32Value = Settings.Default.FusionSpacing;
             NBCoreX.Value = Settings.Default.CoreX;
             NBCoreY.Value = Settings.Default.CoreY;
+            NBGaussIterations.Int32Value = Settings.Default.GaussIterations;
             ClippingChanged(this, null);
             if (SettingsLoaded != null) SettingsLoaded(this, null);            
         }
@@ -201,6 +204,7 @@ namespace KinectScan
             Settings.Default.FusionSpacing = NBFusionSpacing.Int32Value;
             Settings.Default.CoreX = NBCoreX.Value;
             Settings.Default.CoreY = NBCoreY.Value;
+            Settings.Default.GaussIterations = NBGaussIterations.Int32Value;
             Settings.Default.Save();            
         }
 

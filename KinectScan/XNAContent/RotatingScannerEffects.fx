@@ -299,7 +299,7 @@ VertexPositionWorld PolarReprojectionVertexShader(VertexPositionTexture input)
 		spos=pos;
 		
 		float fi = atan2(pos.z, pos.x) / Pi;
-		if(dot(SplitPlaneVector, rpos) > 0)	
+		if(dot(SplitPlaneVector, rpos) * SideSelector > 0)	
 			fi = NaN;
 		else
 		{

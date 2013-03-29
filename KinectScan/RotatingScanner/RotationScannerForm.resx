@@ -120,9 +120,6 @@
   <metadata name="MM.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="MIFile.Text" xml:space="preserve">
-    <value>File</value>
-  </data>
   <data name="MINewProject.Text" xml:space="preserve">
     <value>New project...</value>
   </data>
@@ -147,6 +144,9 @@
   <data name="MIClose.Text" xml:space="preserve">
     <value>Close</value>
   </data>
+  <data name="MIFile.Text" xml:space="preserve">
+    <value>File</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="MIScan.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -156,6 +156,21 @@
   </data>
   <data name="MIStop.Text" xml:space="preserve">
     <value>Stop</value>
+  </data>
+  <data name="MIViewLeftLeg.Text" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="MIViewRightLeg.Text" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="MIViewBothLegs.Text" xml:space="preserve">
+    <value>Both</value>
+  </data>
+  <data name="MIViewLegs.Text" xml:space="preserve">
+    <value>Legs</value>
+  </data>
+  <data name="MISVView1.Text" xml:space="preserve">
+    <value>-</value>
   </data>
   <data name="MIView.Text" xml:space="preserve">
     <value>View</value>
@@ -170,6 +185,15 @@
     <value>91, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="TSSL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 17</value>
+  </data>
+  <data name="TSSL.Text" xml:space="preserve">
+    <value>Ready.</value>
+  </data>
+  <data name="TSPB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 16</value>
+  </data>
   <data name="SS.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 411</value>
   </data>
@@ -193,15 +217,6 @@
   </data>
   <data name="&gt;&gt;SS.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="TSSL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 17</value>
-  </data>
-  <data name="TSSL.Text" xml:space="preserve">
-    <value>Ready.</value>
-  </data>
-  <data name="TSPB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 16</value>
   </data>
   <metadata name="SaveDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>156, 17</value>
@@ -300,6 +315,36 @@
     <value>MIView</value>
   </data>
   <data name="&gt;&gt;MIView.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MIViewLegs.Name" xml:space="preserve">
+    <value>MIViewLegs</value>
+  </data>
+  <data name="&gt;&gt;MIViewLegs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MIViewLeftLeg.Name" xml:space="preserve">
+    <value>MIViewLeftLeg</value>
+  </data>
+  <data name="&gt;&gt;MIViewLeftLeg.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MIViewRightLeg.Name" xml:space="preserve">
+    <value>MIViewRightLeg</value>
+  </data>
+  <data name="&gt;&gt;MIViewRightLeg.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MIViewBothLegs.Name" xml:space="preserve">
+    <value>MIViewBothLegs</value>
+  </data>
+  <data name="&gt;&gt;MIViewBothLegs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MISVView1.Name" xml:space="preserve">
+    <value>MISVView1</value>
+  </data>
+  <data name="&gt;&gt;MISVView1.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;MICalibration.Name" xml:space="preserve">

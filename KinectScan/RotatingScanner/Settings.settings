@@ -62,5 +62,8 @@
     <Setting Name="CoreY" Type="System.Single" Scope="User">
       <Value Profile="(Default)">-0.11</Value>
     </Setting>
+    <Setting Name="GaussIterations" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

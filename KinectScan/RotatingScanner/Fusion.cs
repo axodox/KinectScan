@@ -22,9 +22,16 @@ namespace KinectScan
             get { return new string[0]; }
         }
 
-        public override void SetSpecialViewMode(int index)
+        public override int SpecialViewMode
         {
-            throw new NotImplementedException();
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
         }
         #endregion
 
@@ -76,7 +83,7 @@ namespace KinectScan
         #region Processing
         public bool BuildModel { get; set; }
         float FusionRotation;
-        protected override void ProcessLeg(int leg)
+        protected override void ProcessLeg(int leg, bool visualize, Viewport viewport, bool present, bool clear)
         {
             if (FrameID != 0)
             {
@@ -98,7 +105,7 @@ namespace KinectScan
                 XDevice.SetRenderTarget(Vector4Target);
                 XDevice.Clear(Color.Black);
                 SetFusionReprojection(0f, mainRotation);
-                DepthSampler.SetValue(FusionTick ? SingleTargetA : SingleTargetB);
+                DepthSampler.SetValue(SingleTargetTick ? SingleTargetA : SingleTargetB);
                 XEffect.CurrentTechnique.Passes[0].Apply();
                 MaxiPlane.Draw();
 

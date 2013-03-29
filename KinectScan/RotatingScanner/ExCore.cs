@@ -21,9 +21,16 @@ namespace KinectScan
         {
             get { return Extensions.EnumToStringArray<SpecialViews>(); }
         }
-        public override void SetSpecialViewMode(int index)
+        public override int SpecialViewMode
         {
-            SpecialView = (SpecialViews)index;
+            get
+            {
+                return (int)SpecialView;
+            }
+            set
+            {
+                SpecialView = (SpecialViews)value;
+            }
         }
 
         const float AngleStep = MathHelper.Pi / 36;
@@ -129,18 +136,19 @@ namespace KinectScan
             Matrix reproj = Context.DepthIntrinsics * T * R;
             ModelTransform.SetValue(reproj);
         }
-        private void SetModelVisualiozationProjection()
+        private void SetModelVisualizationProjection(int leg)
         {
             Vector3 cameraPosition = Distance * new Vector3(
                     (float)(Math.Cos(HorizantalAngle) * Math.Cos(VerticalAngle)), 
                     (float)(Math.Sin(HorizantalAngle) * Math.Cos(VerticalAngle)), 
                     (float)(Math.Sin(VerticalAngle)));
-            Matrix Projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver2, XDevice.DisplayMode.AspectRatio, 0.001f, 5);
+            Matrix Projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, XDevice.DisplayMode.AspectRatio, 0.001f, 5);
             Matrix View = Matrix.CreateLookAt(
                 cameraPosition,
                 Vector3.Zero,
                 Vector3.UnitZ);
-            Matrix World = Matrix.CreateRotationX(-MathHelper.PiOver2) * Matrix.CreateTranslation(0f, 0f,-(ProjectionYMax + ProjectionYMin) / 2f);
+            Matrix World = Matrix.CreateRotationX(-MathHelper.PiOver2)*Matrix.CreateRotationZ(-MathHelper.PiOver2)*Matrix.CreateScale(-1f,1f,1f);
+            World *= (leg == 2 ? Matrix.CreateTranslation(0f, 0f, -(ProjectionYMax + ProjectionYMin) / 2f) : Matrix.CreateTranslation(CoreX * (leg == 0 ? -1f : 1f), CoreY, -(ProjectionYMax + ProjectionYMin) / 2f));
 
             LightPosition.SetValue(cameraPosition);
             CameraPosition.SetValue(cameraPosition);
@@ -169,12 +177,12 @@ namespace KinectScan
         const int DisplayLines = 12;
         bool[] NextExCoreClear, ExCoreTick;
 
-        protected override void ProcessLeg(int leg)
+        protected override void ProcessLeg(int leg, bool visualize, Viewport viewport, bool present, bool clear)
         {
             //Visualizing axes
             if (ViewMode == Views.Special && SpecialView == SpecialViews.CorePosition && leg == VisualizedLeg)
             {
-                Visualize(FusionTick ? SingleTargetA : SingleTargetB, SignedDepthVisualizationTechnique, false);
+                Visualize(SingleTargetTick ? SingleTargetA : SingleTargetB, SignedDepthVisualizationTechnique, MainViewport, false);
                 VertexPositionColor[] VPC = new VertexPositionColor[10];
                 VPC[0] = new VertexPositionColor(new Vector3(0, -0.1f, 0), Color.Yellow);
                 VPC[1] = new VertexPositionColor(new Vector3(0, 0.1f, 0), Color.Yellow);
@@ -197,10 +205,10 @@ namespace KinectScan
 
             //Polar reprojection
             XDevice.RasterizerState = new RasterizerState() { ScissorTestEnable = true, CullMode = CullMode.CullCounterClockwiseFace };
-            XDevice.SetRenderTarget(FusionTick ? SingleTargetB : SingleTargetA);
+            XDevice.SetRenderTarget(SingleTargetTick ? SingleTargetB : SingleTargetA);
             XDevice.Clear(Color.Black);
-            DepthSampler.SetValue(FusionTick ? SingleTargetA : SingleTargetB);
-            CorePos.SetValue(new Vector3(CoreY, 0, -CoreX));
+            DepthSampler.SetValue(SingleTargetTick ? SingleTargetA : SingleTargetB);
+            CorePos.SetValue(new Vector3(CoreY, 0, leg == 0 ? -CoreX : CoreX));
             SetExCoreReprojection(mainRotation);
             XEffect.CurrentTechnique = PolarOutputTechnique;
             for (int half = 0; half < 2; half++)
@@ -211,10 +219,11 @@ namespace KinectScan
                 MaxiPlane.Draw();
             }
 
-            if (ViewMode == Views.Special && SpecialView == SpecialViews.CoreReprojection && leg == VisualizedLeg)
+            if (ViewMode == Views.Special && SpecialView == SpecialViews.CoreReprojection && visualize)
             {
                 XDevice.SetRenderTarget(null);
-                XDevice.Clear(Color.White);
+                XDevice.Viewport = viewport;
+                if (clear) XDevice.Clear(Color.White);
                 XEffect.CurrentTechnique = PolarDisplayTechnique;
                 for (int half = 0; half < 2; half++)
                 {
@@ -223,7 +232,8 @@ namespace KinectScan
                     XEffect.CurrentTechnique.Passes[0].Apply();
                     MaxiPlane.Draw();
                 }
-                XDevice.Present();
+                if (present) XDevice.Present();
+                XDevice.Viewport = MainViewport;
             }
 
             XDevice.RasterizerState = RasterizerState.CullCounterClockwise;
@@ -237,7 +247,7 @@ namespace KinectScan
             }
             else
             {
-                DepthSamplerA.SetValue(FusionTick ? SingleTargetB : SingleTargetA);
+                DepthSamplerA.SetValue(SingleTargetTick ? SingleTargetB : SingleTargetA);
                 DepthSamplerB.SetValue(ExCoreTick[leg] ? ExCoreTargetB[leg] : ExCoreTargetA[leg]);
                 XEffect.CurrentTechnique = PolarAddTechnique;
                 XEffect.CurrentTechnique.Passes[0].Apply();
@@ -245,15 +255,17 @@ namespace KinectScan
             }
 
             //Averaged visualization
-            if (ViewMode == Views.Special && SpecialView == SpecialViews.CorePolarDepth && leg == VisualizedLeg)
+            if (ViewMode == Views.Special && SpecialView == SpecialViews.CorePolarDepth && visualize)
             {
                 XDevice.SetRenderTarget(null);
-                XDevice.Clear(Color.White);
+                XDevice.Viewport = viewport;
+                if (clear) XDevice.Clear(Color.White);
                 DepthSampler.SetValue(ExCoreTick[leg] ? ExCoreTargetA[leg] : ExCoreTargetB[leg]);
                 XEffect.CurrentTechnique = PolarAvgDisplayTechnique;
                 XEffect.CurrentTechnique.Passes[0].Apply();
                 MiniPlane.Draw();
-                XDevice.Present();
+                if (present) XDevice.Present();
+                XDevice.Viewport = MainViewport;
             }
 
             VisualizeModel(leg);
@@ -263,15 +275,16 @@ namespace KinectScan
         protected override void OnRefresh()
         {
             VisualizeModel(0);
+            VisualizeModel(1);
         }
      
         private void VisualizeModel(int leg)
         {
             //Model visualization
-            if (ViewMode == Views.Special && SpecialView == SpecialViews.CoreModel && leg == VisualizedLeg)
+            if (ViewMode == Views.Special && SpecialView == SpecialViews.CoreModel &&(VisualizedLeg==2||VisualizedLeg==leg))
             {
                 //Averaging
-                XDevice.SetRenderTarget(FusionTick ? SingleTargetB : SingleTargetA);
+                XDevice.SetRenderTarget(SingleTargetTick ? SingleTargetB : SingleTargetA);
                 XDevice.Clear(Color.Black);
                 DepthSampler.SetValue(ExCoreTick[leg] ? ExCoreTargetA[leg] : ExCoreTargetB[leg]);
                 XEffect.CurrentTechnique = PolarAvgTechnique;
@@ -281,40 +294,40 @@ namespace KinectScan
                 //Gauss-filtering
                 for (int i = 0; i < 0; i++)
                 {
-                    XDevice.SetRenderTarget(FusionTick ? SingleTargetA : SingleTargetB);
-                    DepthSampler.SetValue(FusionTick ? SingleTargetB : SingleTargetA);
+                    XDevice.SetRenderTarget(SingleTargetTick ? SingleTargetA : SingleTargetB);
+                    DepthSampler.SetValue(SingleTargetTick ? SingleTargetB : SingleTargetA);
                     XEffect.CurrentTechnique = VGaussTechnique;
                     XEffect.CurrentTechnique.Passes[0].Apply();
                     MiniPlane.Draw();
-                    FusionTick = !FusionTick;
+                    SingleTargetTick = !SingleTargetTick;
 
-                    XDevice.SetRenderTarget(FusionTick ? SingleTargetA : SingleTargetB);
-                    DepthSampler.SetValue(FusionTick ? SingleTargetB : SingleTargetA);
+                    XDevice.SetRenderTarget(SingleTargetTick ? SingleTargetA : SingleTargetB);
+                    DepthSampler.SetValue(SingleTargetTick ? SingleTargetB : SingleTargetA);
                     XEffect.CurrentTechnique = HGaussTechnique;
                     XEffect.CurrentTechnique.Passes[0].Apply();
                     MiniPlane.Draw();
-                    FusionTick = !FusionTick;
+                    SingleTargetTick = !SingleTargetTick;
                 }
 
                 //Polar to Cartesian
                 XDevice.SetRenderTarget(Vector4Target);
                 XDevice.Clear(Color.Black);
-                DepthSampler.SetValue(FusionTick ? SingleTargetB : SingleTargetA);
+                DepthSampler.SetValue(SingleTargetTick ? SingleTargetB : SingleTargetA);
                 XEffect.CurrentTechnique = PolarToCartesianTechnique;
                 XEffect.CurrentTechnique.Passes[0].Apply();
                 MiniPlane.Draw();
 
                 //Draw model
                 XDevice.SetRenderTarget(null);
-                XDevice.Clear(Color.White);
+                if (leg == 0 || VisualizedLeg!=2) XDevice.Clear(Color.White);
                 XDevice.DepthStencilState = DepthStencilState.Default;
                 XDevice.RasterizerState = RasterizerState.CullNone;
                 MainSampler.SetValue(Vector4Target);
-                SetModelVisualiozationProjection();
+                SetModelVisualizationProjection(VisualizedLeg == 2 ? leg : 2);
                 XEffect.CurrentTechnique = PolarModelTechnique;
                 XEffect.CurrentTechnique.Passes[0].Apply();
                 MaxiPlane.Draw();
-                XDevice.Present();
+                if (leg == 1 || VisualizedLeg != 2) XDevice.Present();
             }
         }
 
@@ -351,7 +364,7 @@ namespace KinectScan
             for (int leg = 0; leg < 2; leg++)
             {
                 //Averaging
-                XDevice.SetRenderTarget(FusionTick ? SingleTargetB : SingleTargetA);
+                XDevice.SetRenderTarget(SingleTargetTick ? SingleTargetB : SingleTargetA);
                 XDevice.Clear(Color.Black);
                 DepthSampler.SetValue(ExCoreTick[leg] ? ExCoreTargetA[leg] : ExCoreTargetB[leg]);
                 XEffect.CurrentTechnique = PolarAvgTechnique;
@@ -361,23 +374,23 @@ namespace KinectScan
                 //Gauss-filtering :D
                 for (int i = 0; i < 16; i++)
                 {
-                    XDevice.SetRenderTarget(FusionTick ? SingleTargetA : SingleTargetB);
-                    DepthSampler.SetValue(FusionTick ? SingleTargetB : SingleTargetA);
+                    XDevice.SetRenderTarget(SingleTargetTick ? SingleTargetA : SingleTargetB);
+                    DepthSampler.SetValue(SingleTargetTick ? SingleTargetB : SingleTargetA);
                     XEffect.CurrentTechnique = VGaussTechnique;
                     XEffect.CurrentTechnique.Passes[0].Apply();
                     MiniPlane.Draw();
-                    FusionTick = !FusionTick;
+                    SingleTargetTick = !SingleTargetTick;
 
-                    XDevice.SetRenderTarget(FusionTick ? SingleTargetA : SingleTargetB);
-                    DepthSampler.SetValue(FusionTick ? SingleTargetB : SingleTargetA);
+                    XDevice.SetRenderTarget(SingleTargetTick ? SingleTargetA : SingleTargetB);
+                    DepthSampler.SetValue(SingleTargetTick ? SingleTargetB : SingleTargetA);
                     XEffect.CurrentTechnique = HGaussTechnique;
                     XEffect.CurrentTechnique.Passes[0].Apply();
                     MiniPlane.Draw();
-                    FusionTick = !FusionTick;
+                    SingleTargetTick = !SingleTargetTick;
                 }
 
                 XDevice.SetRenderTarget(null);
-                STLScreenshot(FusionTick ? SingleTargetB : SingleTargetA, Path.ChangeExtension(fileName,leg+".stl"), "Created by KinectScan.", MinY.GetValueSingle(), MaxHeight.GetValueSingle());
+                STLScreenshot(SingleTargetTick ? SingleTargetB : SingleTargetA, Path.ChangeExtension(fileName,leg+".stl"), "Created by KinectScan.", MinY.GetValueSingle(), MaxHeight.GetValueSingle());
             }
         }
 

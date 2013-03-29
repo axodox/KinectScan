@@ -43,6 +43,11 @@
             this.MIScan = new System.Windows.Forms.MenuItem();
             this.MIStop = new System.Windows.Forms.MenuItem();
             this.MIView = new System.Windows.Forms.MenuItem();
+            this.MIViewLegs = new System.Windows.Forms.MenuItem();
+            this.MIViewLeftLeg = new System.Windows.Forms.MenuItem();
+            this.MIViewRightLeg = new System.Windows.Forms.MenuItem();
+            this.MIViewBothLegs = new System.Windows.Forms.MenuItem();
+            this.MISVView1 = new System.Windows.Forms.MenuItem();
             this.MICalibration = new System.Windows.Forms.MenuItem();
             this.MISettings = new System.Windows.Forms.MenuItem();
             this.SS = new System.Windows.Forms.StatusStrip();
@@ -132,7 +137,48 @@
             // MIView
             // 
             this.MIView.Index = 3;
+            this.MIView.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.MIViewLegs,
+            this.MISVView1});
             resources.ApplyResources(this.MIView, "MIView");
+            // 
+            // MIViewLegs
+            // 
+            this.MIViewLegs.Index = 0;
+            this.MIViewLegs.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.MIViewLeftLeg,
+            this.MIViewRightLeg,
+            this.MIViewBothLegs});
+            resources.ApplyResources(this.MIViewLegs, "MIViewLegs");
+            // 
+            // MIViewLeftLeg
+            // 
+            this.MIViewLeftLeg.Index = 0;
+            this.MIViewLeftLeg.RadioCheck = true;
+            this.MIViewLeftLeg.Tag = 0;
+            resources.ApplyResources(this.MIViewLeftLeg, "MIViewLeftLeg");
+            this.MIViewLeftLeg.Click += new System.EventHandler(this.MIViewLeg_Click);
+            // 
+            // MIViewRightLeg
+            // 
+            this.MIViewRightLeg.Index = 1;
+            this.MIViewRightLeg.RadioCheck = true;
+            this.MIViewRightLeg.Tag = 1;
+            resources.ApplyResources(this.MIViewRightLeg, "MIViewRightLeg");
+            this.MIViewRightLeg.Click += new System.EventHandler(this.MIViewLeg_Click);
+            // 
+            // MIViewBothLegs
+            // 
+            this.MIViewBothLegs.Index = 2;
+            this.MIViewBothLegs.RadioCheck = true;
+            this.MIViewBothLegs.Tag = 2;
+            resources.ApplyResources(this.MIViewBothLegs, "MIViewBothLegs");
+            this.MIViewBothLegs.Click += new System.EventHandler(this.MIViewLeg_Click);
+            // 
+            // MISVView1
+            // 
+            this.MISVView1.Index = 1;
+            resources.ApplyResources(this.MISVView1, "MISVView1");
             // 
             // MICalibration
             // 
@@ -208,5 +254,10 @@
         private System.Windows.Forms.MenuItem MIView;
         private System.Windows.Forms.MenuItem MIStop;
         private System.Windows.Forms.SaveFileDialog SaveDialog;
+        private System.Windows.Forms.MenuItem MIViewLegs;
+        private System.Windows.Forms.MenuItem MIViewLeftLeg;
+        private System.Windows.Forms.MenuItem MIViewRightLeg;
+        private System.Windows.Forms.MenuItem MIViewBothLegs;
+        private System.Windows.Forms.MenuItem MISVView1;
     }
 }

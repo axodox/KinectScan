@@ -37,11 +37,17 @@ namespace KinectScan
             {
                 if (mode == KinectScan.Modeller.Views.Special && specialViewModes.Length > 0) continue;
                 MI = new MenuItem(mode.ToString());
+                MI.RadioCheck = true;
+                if (Modeller.ViewMode == mode)
+                {
+                    MI.Checked = true;
+                    MISelectedView = MI;
+                }
                 MI.Click += (object sender, EventArgs e) =>
                 {
                     if (MISelectedView != null) MISelectedView.Checked = false;
                     MISelectedView = (MenuItem)sender;
-                    MISelectedView.Checked = true;
+                    MISelectedView.Checked = true;                    
                     Modeller.ViewMode = (Modeller.Views)MISelectedView.Tag;
                 };
                 MI.Tag = mode;
@@ -55,18 +61,22 @@ namespace KinectScan
                 foreach (string mode in specialViewModes)
                 {
                     MI = new MenuItem(mode.ToString());
+                    MI.RadioCheck = true;
+                    MI.Checked = (Modeller.ViewMode == Modeller.Views.Special && Modeller.SpecialViewMode == i);
                     MI.Click += (object sender, EventArgs e) =>
                     {
                         if (MISelectedView != null) MISelectedView.Checked = false;
                         MISelectedView = (MenuItem)sender;
                         MISelectedView.Checked = true;
                         Modeller.ViewMode = KinectScan.Modeller.Views.Special;
-                        Modeller.SetSpecialViewMode((int)MISelectedView.Tag);
+                        Modeller.SpecialViewMode=(int)MISelectedView.Tag;
                     };
                     MI.Tag = i++;
                     MIView.MenuItems.Add(MI);
                 }
             }
+
+            MIViewLegs.MenuItems[Modeller.VisualizedLeg].Checked = true;
 
             //Settings
             SF = new TurntableSettingsForm();
@@ -174,11 +184,13 @@ namespace KinectScan
                     MIStop.Enabled = true;
                     TSPB.Style = ProgressBarStyle.Continuous;
                     Modeller.Clear();
+                    Modeller.Start();
                     Turntable.TurnOnce();                    
                     ScanUITimer.Start();
                     break;
                 case ScanningStates.Done:                    
                     ScanUITimer.Stop();
+                    Modeller.Stop();
                     TSPB.Value = 360;
                     TSPB.Enabled = false;
                     TSSL.Text = LocalizedResources.ScannerDone;
@@ -261,6 +273,14 @@ namespace KinectScan
             {
                 Modeller.Save(SaveDialog.FileName);
             }
+        }
+
+        private void MIViewLeg_Click(object sender, EventArgs e)
+        {
+            MenuItem MI = sender as MenuItem;
+            MIViewLegs.MenuItems[Modeller.VisualizedLeg].Checked = false;
+            Modeller.VisualizedLeg = (int)MI.Tag;
+            MIViewLegs.MenuItems[Modeller.VisualizedLeg].Checked = true;
         }
     }
 }

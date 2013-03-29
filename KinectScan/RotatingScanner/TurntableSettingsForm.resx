@@ -513,8 +513,35 @@
   <data name="&gt;&gt;NBTranslationZ.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
+  <data name="LProjection.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="LProjection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 596</value>
+  </data>
+  <data name="LProjection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 13</value>
+  </data>
+  <data name="LProjection.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="LProjection.Text" xml:space="preserve">
+    <value>Projection</value>
+  </data>
+  <data name="&gt;&gt;LProjection.Name" xml:space="preserve">
+    <value>LProjection</value>
+  </data>
+  <data name="&gt;&gt;LProjection.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LProjection.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="&gt;&gt;LProjection.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
   <data name="NBProjectionYMax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 596</value>
+    <value>0, 609</value>
   </data>
   <data name="NBProjectionYMax.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -544,10 +571,10 @@
     <value>FLPSettings</value>
   </data>
   <data name="&gt;&gt;NBProjectionYMax.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="NBProjectionYMin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 652</value>
+    <value>0, 665</value>
   </data>
   <data name="NBProjectionYMin.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -577,169 +604,10 @@
     <value>FLPSettings</value>
   </data>
   <data name="&gt;&gt;NBProjectionYMin.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="LDepthAveraging.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="LDepthAveraging.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 708</value>
-  </data>
-  <data name="LDepthAveraging.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 13</value>
-  </data>
-  <data name="LDepthAveraging.TabIndex" type="System.Int32, mscorlib">
-    <value>28</value>
-  </data>
-  <data name="LDepthAveraging.Text" xml:space="preserve">
-    <value>Depth averaging</value>
-  </data>
-  <data name="&gt;&gt;LDepthAveraging.Name" xml:space="preserve">
-    <value>LDepthAveraging</value>
-  </data>
-  <data name="&gt;&gt;LDepthAveraging.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LDepthAveraging.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;LDepthAveraging.ZOrder" xml:space="preserve">
     <value>14</value>
   </data>
-  <data name="NBDepthAveragingCacheSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 721</value>
-  </data>
-  <data name="NBDepthAveragingCacheSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="NBDepthAveragingCacheSize.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>4096, 56</value>
-  </data>
-  <data name="NBDepthAveragingCacheSize.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>128, 56</value>
-  </data>
-  <data name="NBDepthAveragingCacheSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 56</value>
-  </data>
-  <data name="NBDepthAveragingCacheSize.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="NBDepthAveragingCacheSize.Title" xml:space="preserve">
-    <value>Averaged frames</value>
-  </data>
-  <data name="&gt;&gt;NBDepthAveragingCacheSize.Name" xml:space="preserve">
-    <value>NBDepthAveragingCacheSize</value>
-  </data>
-  <data name="&gt;&gt;NBDepthAveragingCacheSize.Type" xml:space="preserve">
-    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;NBDepthAveragingCacheSize.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;NBDepthAveragingCacheSize.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="NBDepthAveragingLimit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 777</value>
-  </data>
-  <data name="NBDepthAveragingLimit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="NBDepthAveragingLimit.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>4096, 56</value>
-  </data>
-  <data name="NBDepthAveragingLimit.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>128, 56</value>
-  </data>
-  <data name="NBDepthAveragingLimit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 56</value>
-  </data>
-  <data name="NBDepthAveragingLimit.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="NBDepthAveragingLimit.Title" xml:space="preserve">
-    <value>Depth averaging limit (meter)</value>
-  </data>
-  <data name="&gt;&gt;NBDepthAveragingLimit.Name" xml:space="preserve">
-    <value>NBDepthAveragingLimit</value>
-  </data>
-  <data name="&gt;&gt;NBDepthAveragingLimit.Type" xml:space="preserve">
-    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;NBDepthAveragingLimit.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;NBDepthAveragingLimit.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="NBDepthAveragingMinCount.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 833</value>
-  </data>
-  <data name="NBDepthAveragingMinCount.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="NBDepthAveragingMinCount.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>4096, 56</value>
-  </data>
-  <data name="NBDepthAveragingMinCount.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>128, 56</value>
-  </data>
-  <data name="NBDepthAveragingMinCount.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 56</value>
-  </data>
-  <data name="NBDepthAveragingMinCount.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="NBDepthAveragingMinCount.Title" xml:space="preserve">
-    <value>Minimal averaged frames</value>
-  </data>
-  <data name="&gt;&gt;NBDepthAveragingMinCount.Name" xml:space="preserve">
-    <value>NBDepthAveragingMinCount</value>
-  </data>
-  <data name="&gt;&gt;NBDepthAveragingMinCount.Type" xml:space="preserve">
-    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;NBDepthAveragingMinCount.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;NBDepthAveragingMinCount.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="NBFusionSpacing.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 889</value>
-  </data>
-  <data name="NBFusionSpacing.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="NBFusionSpacing.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>4096, 56</value>
-  </data>
-  <data name="NBFusionSpacing.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>128, 56</value>
-  </data>
-  <data name="NBFusionSpacing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 56</value>
-  </data>
-  <data name="NBFusionSpacing.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="NBFusionSpacing.Title" xml:space="preserve">
-    <value>Fusion spacing</value>
-  </data>
-  <data name="&gt;&gt;NBFusionSpacing.Name" xml:space="preserve">
-    <value>NBFusionSpacing</value>
-  </data>
-  <data name="&gt;&gt;NBFusionSpacing.Type" xml:space="preserve">
-    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;NBFusionSpacing.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;NBFusionSpacing.ZOrder" xml:space="preserve">
-    <value>18</value>
-  </data>
   <data name="NBProjectionWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 945</value>
+    <value>0, 721</value>
   </data>
   <data name="NBProjectionWidth.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -769,10 +637,10 @@
     <value>FLPSettings</value>
   </data>
   <data name="&gt;&gt;NBProjectionWidth.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>15</value>
   </data>
   <data name="NBCoreX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 1001</value>
+    <value>0, 777</value>
   </data>
   <data name="NBCoreX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -802,10 +670,10 @@
     <value>FLPSettings</value>
   </data>
   <data name="&gt;&gt;NBCoreX.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>16</value>
   </data>
   <data name="NBCoreY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 1057</value>
+    <value>0, 833</value>
   </data>
   <data name="NBCoreY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -835,34 +703,199 @@
     <value>FLPSettings</value>
   </data>
   <data name="&gt;&gt;NBCoreY.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>17</value>
   </data>
-  <data name="LProjection.AutoSize" type="System.Boolean, mscorlib">
+  <data name="LDepthAveraging.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="LProjection.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 1113</value>
+  <data name="LDepthAveraging.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 889</value>
   </data>
-  <data name="LProjection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 13</value>
+  <data name="LDepthAveraging.Size" type="System.Drawing.Size, System.Drawing">
+    <value>86, 13</value>
   </data>
-  <data name="LProjection.TabIndex" type="System.Int32, mscorlib">
-    <value>29</value>
+  <data name="LDepthAveraging.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
   </data>
-  <data name="LProjection.Text" xml:space="preserve">
-    <value>Projection</value>
+  <data name="LDepthAveraging.Text" xml:space="preserve">
+    <value>Depth averaging</value>
   </data>
-  <data name="&gt;&gt;LProjection.Name" xml:space="preserve">
-    <value>LProjection</value>
+  <data name="&gt;&gt;LDepthAveraging.Name" xml:space="preserve">
+    <value>LDepthAveraging</value>
   </data>
-  <data name="&gt;&gt;LProjection.Type" xml:space="preserve">
+  <data name="&gt;&gt;LDepthAveraging.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;LProjection.Parent" xml:space="preserve">
+  <data name="&gt;&gt;LDepthAveraging.Parent" xml:space="preserve">
     <value>FLPSettings</value>
   </data>
-  <data name="&gt;&gt;LProjection.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;LDepthAveraging.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="NBDepthAveragingCacheSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 902</value>
+  </data>
+  <data name="NBDepthAveragingCacheSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="NBDepthAveragingCacheSize.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>4096, 56</value>
+  </data>
+  <data name="NBDepthAveragingCacheSize.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>128, 56</value>
+  </data>
+  <data name="NBDepthAveragingCacheSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 56</value>
+  </data>
+  <data name="NBDepthAveragingCacheSize.TabIndex" type="System.Int32, mscorlib">
     <value>22</value>
+  </data>
+  <data name="NBDepthAveragingCacheSize.Title" xml:space="preserve">
+    <value>Averaged frames</value>
+  </data>
+  <data name="&gt;&gt;NBDepthAveragingCacheSize.Name" xml:space="preserve">
+    <value>NBDepthAveragingCacheSize</value>
+  </data>
+  <data name="&gt;&gt;NBDepthAveragingCacheSize.Type" xml:space="preserve">
+    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;NBDepthAveragingCacheSize.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="&gt;&gt;NBDepthAveragingCacheSize.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="NBDepthAveragingLimit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 958</value>
+  </data>
+  <data name="NBDepthAveragingLimit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="NBDepthAveragingLimit.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>4096, 56</value>
+  </data>
+  <data name="NBDepthAveragingLimit.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>128, 56</value>
+  </data>
+  <data name="NBDepthAveragingLimit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 56</value>
+  </data>
+  <data name="NBDepthAveragingLimit.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="NBDepthAveragingLimit.Title" xml:space="preserve">
+    <value>Depth averaging limit (meter)</value>
+  </data>
+  <data name="&gt;&gt;NBDepthAveragingLimit.Name" xml:space="preserve">
+    <value>NBDepthAveragingLimit</value>
+  </data>
+  <data name="&gt;&gt;NBDepthAveragingLimit.Type" xml:space="preserve">
+    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;NBDepthAveragingLimit.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="&gt;&gt;NBDepthAveragingLimit.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="NBDepthAveragingMinCount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 1014</value>
+  </data>
+  <data name="NBDepthAveragingMinCount.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="NBDepthAveragingMinCount.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>4096, 56</value>
+  </data>
+  <data name="NBDepthAveragingMinCount.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>128, 56</value>
+  </data>
+  <data name="NBDepthAveragingMinCount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 56</value>
+  </data>
+  <data name="NBDepthAveragingMinCount.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="NBDepthAveragingMinCount.Title" xml:space="preserve">
+    <value>Minimal averaged frames</value>
+  </data>
+  <data name="&gt;&gt;NBDepthAveragingMinCount.Name" xml:space="preserve">
+    <value>NBDepthAveragingMinCount</value>
+  </data>
+  <data name="&gt;&gt;NBDepthAveragingMinCount.Type" xml:space="preserve">
+    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;NBDepthAveragingMinCount.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="&gt;&gt;NBDepthAveragingMinCount.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="NBFusionSpacing.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 1070</value>
+  </data>
+  <data name="NBFusionSpacing.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="NBFusionSpacing.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>4096, 56</value>
+  </data>
+  <data name="NBFusionSpacing.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>128, 56</value>
+  </data>
+  <data name="NBFusionSpacing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 56</value>
+  </data>
+  <data name="NBFusionSpacing.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="NBFusionSpacing.Title" xml:space="preserve">
+    <value>Fusion spacing</value>
+  </data>
+  <data name="&gt;&gt;NBFusionSpacing.Name" xml:space="preserve">
+    <value>NBFusionSpacing</value>
+  </data>
+  <data name="&gt;&gt;NBFusionSpacing.Type" xml:space="preserve">
+    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;NBFusionSpacing.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="&gt;&gt;NBFusionSpacing.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="NBGaussIterations.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 1126</value>
+  </data>
+  <data name="NBGaussIterations.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="NBGaussIterations.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>4096, 56</value>
+  </data>
+  <data name="NBGaussIterations.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>128, 56</value>
+  </data>
+  <data name="NBGaussIterations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 56</value>
+  </data>
+  <data name="NBGaussIterations.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="NBGaussIterations.Title" xml:space="preserve">
+    <value>Gauss iterations</value>
+  </data>
+  <data name="&gt;&gt;NBGaussIterations.Name" xml:space="preserve">
+    <value>NBGaussIterations</value>
+  </data>
+  <data name="&gt;&gt;NBGaussIterations.Type" xml:space="preserve">
+    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;NBGaussIterations.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="&gt;&gt;NBGaussIterations.ZOrder" xml:space="preserve">
+    <value>23</value>
   </data>
   <data name="FLPSettings.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
