@@ -18,26 +18,21 @@ namespace TurntableTest2
         public Form1()
         {
             InitializeComponent();
-            string[] devices=Turntable.GetDevices();
-            if (devices.Length > 0)
+            T = Turntable.DefaultDevice;
+            if (T == null)
             {
-
-                T = new Turntable(devices[0]);
-
+                MessageBox.Show("No device found!");
+                Close();
             }
             else
-                MessageBox.Show("No device found!");
-            
+            {
+                T.SendCommandAsync(Turntable.Commands.ClearCounter);
+            }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (T != null) T.Dispose();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            if (T != null) T.SendCommandAsync(Turntable.Commands.ClearCounter);
         }
 
         private void button1_Click(object sender, EventArgs e)

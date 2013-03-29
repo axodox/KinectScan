@@ -48,6 +48,7 @@
             this.SS = new System.Windows.Forms.StatusStrip();
             this.TSSL = new System.Windows.Forms.ToolStripStatusLabel();
             this.TSPB = new System.Windows.Forms.ToolStripProgressBar();
+            this.SaveDialog = new System.Windows.Forms.SaveFileDialog();
             this.SS.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,6 +95,7 @@
             // 
             this.MISaveAs.Index = 3;
             resources.ApplyResources(this.MISaveAs, "MISaveAs");
+            this.MISaveAs.Click += new System.EventHandler(this.MISaveAs_Click);
             // 
             // MIS2
             // 
@@ -165,6 +167,11 @@
             this.TSPB.Name = "TSPB";
             resources.ApplyResources(this.TSPB, "TSPB");
             // 
+            // SaveDialog
+            // 
+            this.SaveDialog.DefaultExt = "stl";
+            resources.ApplyResources(this.SaveDialog, "SaveDialog");
+            // 
             // RotationScannerForm
             // 
             resources.ApplyResources(this, "$this");
@@ -200,5 +207,6 @@
         private System.Windows.Forms.ToolStripProgressBar TSPB;
         private System.Windows.Forms.MenuItem MIView;
         private System.Windows.Forms.MenuItem MIStop;
+        private System.Windows.Forms.SaveFileDialog SaveDialog;
     }
 }

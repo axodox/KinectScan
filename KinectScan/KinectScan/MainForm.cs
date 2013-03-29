@@ -346,7 +346,7 @@ namespace KinectScan
                                     switch (SaveMode)
                                     {
                                         case SaveModes.Vector4:
-                                            OnIOEvent(this, DepthOutput.Vector4Screenshot(path + ".vector4"));
+                                            OnIOEvent(this, DepthOutput.VectorScreenshot(path + ".vector4"));
                                             break;
                                         case SaveModes.STL:
                                             OnIOEvent(this, DepthOutput.STLScreenshot(path + ".stl", TSTBLabel.Text));

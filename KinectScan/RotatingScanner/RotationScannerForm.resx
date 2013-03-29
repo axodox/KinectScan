@@ -120,6 +120,9 @@
   <metadata name="MM.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="MIFile.Text" xml:space="preserve">
+    <value>File</value>
+  </data>
   <data name="MINewProject.Text" xml:space="preserve">
     <value>New project...</value>
   </data>
@@ -144,9 +147,6 @@
   <data name="MIClose.Text" xml:space="preserve">
     <value>Close</value>
   </data>
-  <data name="MIFile.Text" xml:space="preserve">
-    <value>File</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="MIScan.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -170,15 +170,6 @@
     <value>91, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="TSSL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 17</value>
-  </data>
-  <data name="TSSL.Text" xml:space="preserve">
-    <value>Ready.</value>
-  </data>
-  <data name="TSPB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 16</value>
-  </data>
   <data name="SS.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 411</value>
   </data>
@@ -202,6 +193,24 @@
   </data>
   <data name="&gt;&gt;SS.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="TSSL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 17</value>
+  </data>
+  <data name="TSSL.Text" xml:space="preserve">
+    <value>Ready.</value>
+  </data>
+  <data name="TSPB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 16</value>
+  </data>
+  <metadata name="SaveDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>156, 17</value>
+  </metadata>
+  <data name="SaveDialog.Filter" xml:space="preserve">
+    <value>STL files (*.stl)|*.stl</value>
+  </data>
+  <data name="SaveDialog.Title" xml:space="preserve">
+    <value>Save model</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -316,6 +325,12 @@
   </data>
   <data name="&gt;&gt;TSPB.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;SaveDialog.Name" xml:space="preserve">
+    <value>SaveDialog</value>
+  </data>
+  <data name="&gt;&gt;SaveDialog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SaveFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>RotationScannerForm</value>

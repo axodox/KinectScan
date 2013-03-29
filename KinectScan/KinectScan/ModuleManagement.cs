@@ -90,6 +90,7 @@ namespace KinectScan
         public event EventHandler DepthZLimitChanged, TriangleRemoveLimitChanged, ReprojectionChanged;
         public int DepthWidth { get; internal set; }
         public int DepthHeight { get; internal set; }
+        public int DepthLength { get { return DepthWidth * DepthHeight; } }
         public int DepthCalibrationWidth { get; internal set; }
         public int DepthCalibrationHeight { get; internal set; }
         public Matrix DepthIntrinsics { get; internal set; }

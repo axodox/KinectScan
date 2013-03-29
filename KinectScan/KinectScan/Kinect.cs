@@ -545,6 +545,7 @@ namespace KinectScan
             
         }
 
+        
         void DataReceived(object sender, BaseCamera.DataReceivedEventArgs e)
         {
             if (!BufferUsageDisabled)
@@ -572,6 +573,9 @@ namespace KinectScan
                 BufferReleaseARE.Set();
             }
             FrameID++;
+
+            
+
             OnRawFrameIn(e.Data.Data, FrameTypes.Color);
             if (RawSaveDataNext)
             {
@@ -588,8 +592,6 @@ namespace KinectScan
                 RawSaveDataNext = false;
             }
         }
-
-
 
         void DepthDataReceived(object sender, BaseCamera.DataReceivedEventArgs e)
         {
@@ -634,6 +636,7 @@ namespace KinectScan
             {
                 BufferReleaseARE.Set();
             }
+
             OnRawFrameIn(e.Data.Data, FrameTypes.Depth);
             if (RawSaveDepthNext)
             {

@@ -25,7 +25,8 @@ namespace KinectScan
 
             //Modeller
             Modeller = new ExCoreModeller(Context);
-            Modeller.CreateDevice(Handle);
+            Modeller.CreateDevice(this);
+            Modeller.DebugLoad();
 
             //GUI
             Array ViewModes = Enum.GetValues(typeof(Modeller.Views));
@@ -129,7 +130,11 @@ namespace KinectScan
                     case ScanningStates.MoveToOrigin:
                         SetState(ScanningStates.Scanning);
                         break;
+                    case ScanningStates.Scanning:
+                        Modeller.DebugSave();
+                        break;
                 }
+                
             };
         }
 
@@ -172,7 +177,7 @@ namespace KinectScan
                     Turntable.TurnOnce();                    
                     ScanUITimer.Start();
                     break;
-                case ScanningStates.Done:
+                case ScanningStates.Done:                    
                     ScanUITimer.Stop();
                     TSPB.Value = 360;
                     TSPB.Enabled = false;
@@ -249,5 +254,13 @@ namespace KinectScan
             SF = null;
         }
         #endregion
+
+        private void MISaveAs_Click(object sender, EventArgs e)
+        {
+            if (SaveDialog.ShowDialog() == DialogResult.OK)
+            {
+                Modeller.Save(SaveDialog.FileName);
+            }
+        }
     }
 }

@@ -76,12 +76,6 @@
     <Compile Include="ExCore.cs" />
     <Compile Include="Fusion.cs" />
     <Compile Include="Modelling.cs" />
-    <Compile Include="ProcessorForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProcessorForm.Designer.cs">
-      <DependentUpon>ProcessorForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="LocalizedResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -104,12 +98,6 @@
     </Compile>
     <Compile Include="RotationScannerForm.Designer.cs">
       <DependentUpon>RotationScannerForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ScanningForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ScanningForm.Designer.cs">
-      <DependentUpon>ScanningForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -157,9 +145,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LocalizedResources.hu-HU.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProcessorForm.resx">
-      <DependentUpon>ProcessorForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="LocalizedResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LocalizedResources.Designer.cs</LastGenOutput>
@@ -173,9 +158,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RotationScannerForm.resx">
       <DependentUpon>RotationScannerForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ScanningForm.resx">
-      <DependentUpon>ScanningForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TurntableSettingsForm.hu-HU.resx">
       <DependentUpon>TurntableSettingsForm.cs</DependentUpon>

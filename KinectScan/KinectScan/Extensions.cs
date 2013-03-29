@@ -164,13 +164,13 @@ namespace KinectScan
             }
         }
 
-        public static IOEventArgs Vector4Screenshot(this RenderTarget2D target, string path)
+        public static IOEventArgs VectorScreenshot(this RenderTarget2D target, string path, int dimensions = 4)
         {
             try
             {
                 int width = target.Width;
                 int height = target.Height;
-                float[] buffer = new float[width * height * 4];
+                float[] buffer = new float[width * height * dimensions];
                 target.GetData<float>(buffer);
                 using (FileStream FS = new FileStream(path, FileMode.Create, FileAccess.Write))
                 using (BinaryWriter BW = new BinaryWriter(FS))
@@ -185,6 +185,19 @@ namespace KinectScan
                 return new IOEventArgs(path, true, null);
             }
             catch(Exception e)
+            {
+                return new IOEventArgs(path, false, e.Message);
+            }
+        }
+
+        public static IOEventArgs LoadFromFile(this RenderTarget2D target, string path)
+        {
+            try
+            {
+                target.SetData<byte>(File.ReadAllBytes(path));
+                return new IOEventArgs(path, true, null);
+            }
+            catch (Exception e)
             {
                 return new IOEventArgs(path, false, e.Message);
             }
@@ -660,6 +673,20 @@ namespace KinectScan
         public static float ToRadians(this float angle)
         {
             return MathHelper.ToRadians(angle);
+        }
+
+        public unsafe static void FastCopy4To(this byte[] source, byte[] target)
+        {
+            if (source == null || target == null || source.Length != target.Length || source.Length % 4 != 0) throw new ArgumentException();
+            fixed (byte* sSource = &source[0])
+            fixed (byte* sTarget = &target[0])
+            {
+                int* pSource = (int*)sSource;
+                int* pTarget = (int*)sTarget;
+                int* eSource = pSource + source.Length / 4;
+                while (pSource < eSource)
+                    *pTarget++ = *pSource++;
+            }
         }
 
         public static float ToDegrees(this float angle)

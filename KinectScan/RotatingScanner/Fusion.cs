@@ -31,9 +31,9 @@ namespace KinectScan
         #region Hardware acceleration
         EffectTechnique FusionDisplayTechnique, FusionOutputTechnique, FusionLinesTechnique;
         EffectParameter LinesTransform, SegmentLength, ProjXMin, ProjWidthMax;
-        public override void CreateDevice(System.IntPtr windowHandle)
+        public override void CreateDevice(Control control)
         {
-            base.CreateDevice(windowHandle);
+            base.CreateDevice(control);
 
             //Techniques
             FusionDisplayTechnique = XEffect.Techniques["FusionDisplay"];
@@ -76,9 +76,8 @@ namespace KinectScan
         #region Processing
         public bool BuildModel { get; set; }
         float FusionRotation;
-        protected override void ProcessFrame()
+        protected override void ProcessLeg(int leg)
         {
-            base.ProcessFrame();
             if (FrameID != 0)
             {
                 XDevice.BlendState = BlendState.Opaque;

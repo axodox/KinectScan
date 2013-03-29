@@ -15,6 +15,13 @@ struct VertexPositionColor
 	float4 Color : COLOR0;
 };
 
+struct VertexPositionNormal
+{
+    float4 Position : POSITION0;	
+	float3 Normal : NORMAL0;
+	float3 WorldPosition : TEXCOORD0;
+};
+
 struct VertexPositionTexture
 {
     float4 Position : POSITION0;
@@ -76,6 +83,8 @@ uniform extern float4x4 LinesTransform;
 uniform extern float4x4 ReprojectionTransform;
 uniform extern float4x4 SpaceTransform;
 uniform extern float4x4 ModelTransform;
+uniform extern float4x4 WorldTransform;
+uniform extern float4x4 NormalTransform;
 
 uniform extern float4 ShadingColor;
 uniform extern float SegmentLength;
@@ -84,12 +93,18 @@ uniform extern float4 SplitPlaneVector = float4(1, 0, 0, 0);
 uniform extern float2 TargetSize = float2(640, 480);
 uniform extern float TriangleRemoveLimit = 0.05;
 uniform extern float3 CorePos;
+uniform extern float FiShift = 0;
 
 uniform extern float GaussWeightsH[GaussCoeffCount], GaussWeightsV[GaussCoeffCount];
 uniform extern float GaussPosH[GaussCoeffCount], GaussPosV[GaussCoeffCount];
 
 uniform float DepthDiffMax = 0.01;
 
+uniform extern float3 LightPosition = 0;
+uniform extern float2 LightProperty = float2(1, 0.5);
+uniform extern float Ambient = 0.1, SpecularPower=40;
+uniform extern float3 DiffuseColor=0.5, SpecularColor=1;
+uniform extern float3 CameraPosition=0;
 //Textures---------------------------------------------------------------------
 uniform extern texture DepthCorrectionTexture;	
 uniform extern texture DepthTexture;
@@ -284,8 +299,18 @@ VertexPositionWorld PolarReprojectionVertexShader(VertexPositionTexture input)
 		spos=pos;
 		
 		float fi = atan2(pos.z, pos.x) / Pi;
-		if(abs(fi)>0.97 || dot(SplitPlaneVector, rpos) > 0)	fi=NaN;
-
+		if(dot(SplitPlaneVector, rpos) > 0)	
+			fi = NaN;
+		else
+		{
+			fi -= FiShift;
+			if (fi < -1) fi += 2;	 
+			if (fi > 0.25)
+				if(fi < 0.75) 
+					fi = NaN;
+				else fi -= 2;
+			fi += FiShift;
+		}
 		pos.x = fi;
 		pos.y = -(pos.y - ProjYMin) / ProjHeightMax * 2 + 1;
 		pos.z = sqrt(pos.z*pos.z+pos.x*pos.x);
@@ -315,6 +340,36 @@ VertexPositionSegmentDepth ModelLinesVertexShader(VertexPositionSegment input)
 	return output;
 }
 
+VertexPositionNormal PolarModelVertexShader(float2 uv : TEXCOORD)
+{
+	float3 x11 = tex2Dlod(MainSampler, float4(uv.x - DepthStepH, uv.y - DepthStepV, 0, 0)).xyz; 
+	float3 x12 = tex2Dlod(MainSampler, float4(uv.x, uv.y - DepthStepV, 0, 0)).xyz; 
+	float3 x13 = tex2Dlod(MainSampler, float4(uv.x + DepthStepH, uv.y - DepthStepV, 0, 0)).xyz; 
+
+	float3 x21 = tex2Dlod(MainSampler, float4(uv.x - DepthStepH, uv.y, 0, 0)).xyz; 
+	float3 x22 = tex2Dlod(MainSampler, float4(uv.x, uv.y, 0, 0)).xyz; 
+	float3 x23 = tex2Dlod(MainSampler, float4(uv.x + DepthStepH, uv.y, 0, 0)).xyz; 
+
+	float3 x31 = tex2Dlod(MainSampler, float4(uv.x - DepthStepH, uv.y + DepthStepV, 0, 0)).xyz; 
+	float3 x32 = tex2Dlod(MainSampler, float4(uv.x, uv.y + DepthStepV, 0, 0)).xyz; 
+	float3 x33 = tex2Dlod(MainSampler, float4(uv.x + DepthStepH, uv.y + DepthStepV, 0, 0)).xyz; 
+
+	float3 dh = x13 + 2 * x23 + x33 - (x11 + 2 * x21 + x31);
+	float3 dv = x31 + 2 * x32 + x33 - (x11 + 2 * x12 + x13);
+	float4 n = float4(normalize(cross(dh, dv)), 1);
+	
+	float4 pos = mul(float4(x22, 1), ModelTransform);
+	float3 worldpos = mul(x22, WorldTransform);
+	float3 worldnormal = mul(n, NormalTransform).xyz;
+
+	VertexPositionNormal output;
+	if(x22.x==0 && x22.z==0) output.Position = NaN;
+	else output.Position = pos;
+	output.Normal = worldnormal;
+	output.WorldPosition = worldpos;
+	return output;
+}
+
 //Pixel shaders - Visualization------------------------------------------------
 float4 SimplePixelShader(float2 uv : TEXCOORD) : COLOR0
 {
@@ -339,6 +394,36 @@ float4 SignedDepthVisualizationPixelShader(float2 uv : TEXCOORD) : COLOR0
 		return float4(x, 0, 0, 1);
 	else
 		return float4(0, -x, 0, 1);
+}
+
+float4 PolarToCartesianPixelShader(float2 uv : TEXCOORD) : COLOR0
+{
+	float r = tex2D(DepthSampler, uv);
+	return float4(r * cos(uv.x * 2 * Pi), uv.y * ProjHeightMax, r * sin(uv.x * 2 * Pi), 1);
+}
+
+float4 PolarModelPixelShader(VertexPositionNormal input) : COLOR0
+{
+	//return float4(1,0,0,1);
+	//return float4(input.WorldPosition.x,input.WorldPosition.y,input.WorldPosition.z,0.1)*10;
+	//float s = max(dot(input.Normal, -normalize(CameraPosition-input.WorldPosition)),0);
+
+	//return float4(s,s,s,1);
+	float4 color = 1;
+	float3 specular = 0, diffuse = 0, normal = input.Normal;
+	float3 V = normalize(input.WorldPosition - CameraPosition);
+	float l, nl, d;
+	
+		float3 L = normalize(input.WorldPosition - LightPosition);
+		l = L.x * L.x + L.y * L.y + L.z * L.z;
+		nl = dot(normal, L); 
+		d = max(nl * LightProperty.x, 0) / l;
+		diffuse += d;
+		if(d > 0)
+		{
+			specular += max(0, pow(dot(normalize(V + L), normal), SpecularPower) * LightProperty.y / l);
+		}
+	return float4(color.rgb * (Ambient + diffuse * DiffuseColor + specular * SpecularColor), 1);
 }
 //Pixel shaders - Processing---------------------------------------------------
 float4 DepthHGaussShader(float4 uv : TEXCOORD) : COLOR0
@@ -547,6 +632,24 @@ technique SignedDepthVisualization
 		PixelShader = compile ps_3_0 SignedDepthVisualizationPixelShader();
 	}
 }
+
+technique PolarToCartesian
+{
+	pass P0
+	{
+		VertexShader = compile vs_3_0 MiniPlaneVertexShader();
+		PixelShader = compile ps_3_0 PolarToCartesianPixelShader();
+	}
+}
+
+technique PolarModel
+{
+	pass P0
+	{
+		VertexShader = compile vs_3_0 PolarModelVertexShader();
+		PixelShader = compile ps_3_0 PolarModelPixelShader();
+	}
+}
 //Techniques - Processing------------------------------------------------------
 technique DepthAntiDistort
 {
@@ -739,7 +842,8 @@ float4 PolarAddPixelShader(float2 texCoord: TEXCOORD0) : COLOR0
 float4 PolarAvgPixelShader(float2 texCoord: TEXCOORD0) : COLOR0
 {
 	float2 acc = tex2D(DepthSampler, texCoord).xy;
-	return float4(acc.x / acc.y, 0, 0, 1);
+	if(acc.y==0) return float4(0, 0, 0, 1);
+	else return float4(acc.x / acc.y, 0, 0, 1);
 }
 
 float4 PolarAvgDisplayPixelShader(float2 texCoord: TEXCOORD0) : COLOR0

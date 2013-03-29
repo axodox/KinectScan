@@ -56,13 +56,13 @@ namespace Turntables
         }
 
         [Flags]
-        private enum States : ushort { None = 0, Rotating = 0x0001, RotatingUp = 0x0002}
+        private enum States : ushort { None = 0, Rotating = 0x0100, RotatingUp = 0x0200, MagneticSwitch = 0x0004}
         public enum Commands : int { About = 0, Stop, StartUp, StartDown, Status, Step, StepBack, ClearCounter, TurnOff, ToOrigin }
         private static readonly string[] CommandStrings = new string[] { "?", "S", "U", "D", "C", "A", "V", "Z", "E", "O" };
         private const string DeviceSignal = "Basch-step";
         private SerialPort Port;
         private int Origin;
-        public int ToStep { get; private set; }
+        public int TargetStep { get; private set; }
         public int PositionInSteps { get; private set; }
         public double PositionInRadians 
         {
@@ -82,7 +82,7 @@ namespace Turntables
             }
         }
 
-        public const int PiSteps = 11000;
+        public const int PiSteps = 10989;
 
         private static void InitPort(SerialPort port)
         {
@@ -166,33 +166,36 @@ namespace Turntables
                 int h;
 
                 int ss = Convert.ToInt32(answer.Substring(6, 6), 16);
-                if (ToStep > 0)
+                if (TargetStep > 0)
                 {
                     if (ss > 32767)
-                        h = ToStep - (65536 - ss);
+                        h = TargetStep - (65536 - ss);
                     else
-                        h = ToStep - ss;
-                    if (h <= ToStep)
+                        h = TargetStep - ss;
+                    if (h <= TargetStep)
                         PositionInSteps = Origin + h;
                 }
                 else
                 {
                     if (ss > 32767)
-                        h = ToStep + (65536 - ss);
+                        h = TargetStep + (65536 - ss);
                     else
-                        h = ToStep + ss;
-                    if (h >= ToStep)
+                        h = TargetStep + ss;
+                    if (h >= TargetStep)
                         PositionInSteps = Origin + h;
                 }
-                if (PositionInSteps >= stopOn)
+                
+                StatusWord = answer;
+                statusWord = (States)Convert.ToInt16(answer.Replace(" ","").Substring(0, 4), 16);
+                rotating = statusWord.HasFlag(States.Rotating);
+                MagneticSwitch = statusWord.HasFlag(States.MagneticSwitch);
+                if (PositionInSteps >= stopOn || (!MagneticSwitch && StopAtMagneticSwitch))
                 {
                     stopOn = int.MaxValue;
                     CommandQueue.Enqueue(CommandStrings[(int)Commands.Stop]);
                     SendARE.Set();
                     SyncContext.Post(TurnCompleteCallback, null);
                 }
-                statusWord = (States)Convert.ToInt16(answer.Substring(0, 2), 16);
-                rotating = statusWord.HasFlag(States.Rotating);
                 if (Rotating && !rotating) SyncContext.Post(MotorStoppedCallback, null);
                 Rotating = rotating;
                 RotationDirection = statusWord.HasFlag(States.RotatingUp);
@@ -207,6 +210,16 @@ namespace Turntables
             stopOn = PiSteps * 2;
             SendCommandAsync(Commands.ClearCounter);
             SendCommandAsync(Commands.StartUp);
+        }
+
+        public void Rotate()
+        {
+            SendCommandAsync(Commands.StartUp);
+        }
+
+        public void ResetCounter()
+        {
+            SendCommandAsync(Commands.ClearCounter);
         }
 
         public event EventHandler MotorStopped;
@@ -225,8 +238,9 @@ namespace Turntables
         public int StepCount { get; private set; }
         public bool Rotating { get; private set; }
         public bool RotationDirection { get; private set; }
-        public bool HighEmergencyStop { get; private set; }
-        public bool LowEmergencyStop { get; private set; }
+        public bool MagneticSwitch { get; private set; }
+        public bool StopAtMagneticSwitch { get; set; }
+        public string StatusWord { get; private set; }
         public Turntable(string portName)
         {
             Port = new SerialPort();
@@ -238,14 +252,14 @@ namespace Turntables
             CommandQueue = new Queue<string>();
             SendARE = new AutoResetEvent(true);
             SyncContext = SynchronizationContext.Current;
-            PositionRefreshPeriod = 1;
+            PositionRefreshPeriod = 10;
+            StopAtMagneticSwitch = false;
 
             CommunicationThreadOn = true;
             CommunicationThread = new Thread(Communicate);
             CommunicationThread.Start();
             SendCommandAsync(Commands.Stop);
             SendCommandAsync(Commands.TurnOff);
-
         }
 
         public void SendCommandAsync(Commands command, int steps = 0)
@@ -258,11 +272,11 @@ namespace Turntables
                 {
                     case Commands.Step:
                         Origin = PositionInSteps;
-                        ToStep = steps;
+                        TargetStep = steps;
                         break;
                     case Commands.StepBack:
                         Origin = PositionInSteps;
-                        ToStep = -steps;
+                        TargetStep = -steps;
                         break;
                 }
             }
@@ -277,6 +291,20 @@ namespace Turntables
                 SendCommandAsync(Turntable.Commands.Step, steps);
             else
                 SendCommandAsync(Turntable.Commands.StepBack, -steps);
+        }
+
+        public void RotateTo(int step)
+        {
+            int steps = step - PositionInSteps;
+            if (steps > 0)
+                SendCommandAsync(Turntable.Commands.Step, steps);
+            else
+                SendCommandAsync(Turntable.Commands.StepBack, -steps);
+        }
+
+        public void ToOrigin()
+        {
+            SendCommandAsync(Commands.ToOrigin);
         }
 
         bool disposed = false;
@@ -295,5 +323,7 @@ namespace Turntables
         {
             if (!disposed) Dispose();
         }
+
+        private States statusWord1 { get; set; }
     }
 }
