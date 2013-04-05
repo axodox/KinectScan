@@ -214,6 +214,9 @@
   <data name="MISettings.Text" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="MIModules.Text" xml:space="preserve">
+    <value>Modules</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="SBStatus.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1744,6 +1747,12 @@
     <value>MISettings</value>
   </data>
   <data name="&gt;&gt;MISettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MIModules.Name" xml:space="preserve">
+    <value>MIModules</value>
+  </data>
+  <data name="&gt;&gt;MIModules.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;TSBStartStop.Name" xml:space="preserve">

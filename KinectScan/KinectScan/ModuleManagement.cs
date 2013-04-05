@@ -37,7 +37,21 @@ namespace KinectScan
             KSC.ChangeUIMode += KSC_ChangeUIMode;
             KSC.MessageReceived += KSC_MessageReceived;
             MM = new ModuleManager(KSC);
-            MM.Load(@"..\..\..\RotatingScanner\bin\Release\RotatingScanner.dll");
+            MM.LoadAvailableModules();
+            MIModules.Enabled = MM.AvailableModules.Count > 0;
+            foreach (ModuleManager.ModuleInfo module in MM.AvailableModules)
+            {
+                MenuItem MIModule = new MenuItem(module.Name);
+                MIModule.Tag = module;
+                MIModule.Click += MIModule_Click;
+                MIModules.MenuItems.Add(MIModule);
+            }
+            
+        }
+
+        void MIModule_Click(object sender, EventArgs e)
+        {
+            MM.Load(((sender as MenuItem).Tag as ModuleManager.ModuleInfo).FileName);
         }
 
         void KSC_MessageReceived(object sender, KinectScanContext.MessageEventArgs e)

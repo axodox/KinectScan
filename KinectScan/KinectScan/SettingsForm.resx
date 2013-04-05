@@ -118,721 +118,824 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="FLPSettings.AutoScroll" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="NBZLimit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="NBZLimit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="NBZLimit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 56</value>
-  </data>
-  <data name="NBZLimit.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="NBZLimit.Title" xml:space="preserve">
-    <value>Depth limit (meters)</value>
-  </data>
-  <data name="&gt;&gt;NBZLimit.Name" xml:space="preserve">
-    <value>NBZLimit</value>
-  </data>
-  <data name="&gt;&gt;NBZLimit.Type" xml:space="preserve">
-    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;NBZLimit.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;NBZLimit.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="NBRainbowPeriod.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 56</value>
-  </data>
-  <data name="NBRainbowPeriod.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="NBRainbowPeriod.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 56</value>
-  </data>
-  <data name="NBRainbowPeriod.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="NBRainbowPeriod.Title" xml:space="preserve">
-    <value>Periodic length of the coloring function (meters)</value>
-  </data>
-  <data name="&gt;&gt;NBRainbowPeriod.Name" xml:space="preserve">
-    <value>NBRainbowPeriod</value>
-  </data>
-  <data name="&gt;&gt;NBRainbowPeriod.Type" xml:space="preserve">
-    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;NBRainbowPeriod.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;NBRainbowPeriod.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="CBReproject.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="CBReproject.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 115</value>
-  </data>
-  <data name="CBReproject.Size" type="System.Drawing.Size, System.Drawing">
-    <value>104, 24</value>
-  </data>
   <data name="CBReproject.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
-  </data>
-  <data name="CBReproject.Text" xml:space="preserve">
-    <value>Reprojection</value>
-  </data>
-  <data name="&gt;&gt;CBReproject.Name" xml:space="preserve">
-    <value>CBReproject</value>
-  </data>
-  <data name="&gt;&gt;CBReproject.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;CBReproject.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;CBReproject.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="NBReprojectionRotationX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 142</value>
-  </data>
-  <data name="NBReprojectionRotationX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="NBReprojectionRotationX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 56</value>
-  </data>
-  <data name="NBReprojectionRotationX.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="NBReprojectionRotationX.Title" xml:space="preserve">
-    <value>Rotation X (degrees)</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionRotationX.Name" xml:space="preserve">
-    <value>NBReprojectionRotationX</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionRotationX.Type" xml:space="preserve">
-    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionRotationX.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionRotationX.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="NBReprojectionRotationY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 198</value>
-  </data>
-  <data name="NBReprojectionRotationY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="NBReprojectionRotationY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 56</value>
-  </data>
-  <data name="NBReprojectionRotationY.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="NBReprojectionRotationY.Title" xml:space="preserve">
-    <value>Rotation Y (degrees)</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionRotationY.Name" xml:space="preserve">
-    <value>NBReprojectionRotationY</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionRotationY.Type" xml:space="preserve">
-    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionRotationY.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionRotationY.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="NBReprojectionRotationZ.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 254</value>
-  </data>
-  <data name="NBReprojectionRotationZ.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="NBReprojectionRotationZ.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 56</value>
-  </data>
-  <data name="NBReprojectionRotationZ.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="NBReprojectionRotationZ.Title" xml:space="preserve">
-    <value>Rotation Z (degrees)</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionRotationZ.Name" xml:space="preserve">
-    <value>NBReprojectionRotationZ</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionRotationZ.Type" xml:space="preserve">
-    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionRotationZ.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionRotationZ.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="NBReprojectionTranslationX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 310</value>
-  </data>
-  <data name="NBReprojectionTranslationX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="NBReprojectionTranslationX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 56</value>
-  </data>
-  <data name="NBReprojectionTranslationX.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="NBReprojectionTranslationX.Title" xml:space="preserve">
-    <value>Translation X (meter)</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionTranslationX.Name" xml:space="preserve">
-    <value>NBReprojectionTranslationX</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionTranslationX.Type" xml:space="preserve">
-    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionTranslationX.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionTranslationX.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="NBReprojectionTranslationY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 366</value>
-  </data>
-  <data name="NBReprojectionTranslationY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="NBReprojectionTranslationY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 56</value>
-  </data>
-  <data name="NBReprojectionTranslationY.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="NBReprojectionTranslationY.Title" xml:space="preserve">
-    <value>Translation Y (meter)</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionTranslationY.Name" xml:space="preserve">
-    <value>NBReprojectionTranslationY</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionTranslationY.Type" xml:space="preserve">
-    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionTranslationY.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionTranslationY.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="NBReprojectionTranslationZ.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 422</value>
-  </data>
-  <data name="NBReprojectionTranslationZ.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="NBReprojectionTranslationZ.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 56</value>
-  </data>
-  <data name="NBReprojectionTranslationZ.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="NBReprojectionTranslationZ.Title" xml:space="preserve">
-    <value>Translation Z (meter)</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionTranslationZ.Name" xml:space="preserve">
-    <value>NBReprojectionTranslationZ</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionTranslationZ.Type" xml:space="preserve">
-    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionTranslationZ.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;NBReprojectionTranslationZ.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="NBGaussFilterPasses.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 478</value>
-  </data>
-  <data name="NBGaussFilterPasses.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="NBGaussFilterPasses.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 56</value>
-  </data>
-  <data name="NBGaussFilterPasses.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="NBGaussFilterPasses.Title" xml:space="preserve">
-    <value>Iterations of Gauss filter</value>
-  </data>
-  <data name="&gt;&gt;NBGaussFilterPasses.Name" xml:space="preserve">
-    <value>NBGaussFilterPasses</value>
-  </data>
-  <data name="&gt;&gt;NBGaussFilterPasses.Type" xml:space="preserve">
-    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;NBGaussFilterPasses.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;NBGaussFilterPasses.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="LShadingMode.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="LShadingMode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="LShadingMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 534</value>
-  </data>
-  <data name="LShadingMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 13</value>
-  </data>
-  <data name="LShadingMode.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="LShadingMode.Text" xml:space="preserve">
-    <value>Shading mode</value>
-  </data>
-  <data name="&gt;&gt;LShadingMode.Name" xml:space="preserve">
-    <value>LShadingMode</value>
-  </data>
-  <data name="&gt;&gt;LShadingMode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LShadingMode.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;LShadingMode.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="DDBShadingMode.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vAAADrwBlbxySQAAAElJREFUOE9j+P//PwMlmCLNIItHDcARBgzAoMGF0WMMayB++PDBHmjAfjRD9oPE
-        iTIApAjNEKyaCUYj1JAGbDbDXDKaDgZDXgAA+TDcLJIy5ZIAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="DDBShadingMode.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
-  </data>
-  <data name="DDBShadingMode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="DDBShadingMode.Items" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAARAQAAAAQAAAAGAgAAAAhUZXh0dXJlZAYDAAAAB1JhaW5ib3cGBAAAAA5T
-        aGFkZWQgcmFpbmJvdwYFAAAABVplYnJhCw==
-</value>
-  </data>
-  <data name="DDBShadingMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>84, 537</value>
-  </data>
-  <data name="DDBShadingMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="DDBShadingMode.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="DDBShadingMode.Text" xml:space="preserve">
-    <value>Textured</value>
-  </data>
-  <data name="DDBShadingMode.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;DDBShadingMode.Name" xml:space="preserve">
-    <value>DDBShadingMode</value>
-  </data>
-  <data name="&gt;&gt;DDBShadingMode.Type" xml:space="preserve">
-    <value>CustomControls.DropDownButton, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;DDBShadingMode.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;DDBShadingMode.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="NBAveragedFrames.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 563</value>
-  </data>
-  <data name="NBAveragedFrames.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="NBAveragedFrames.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 56</value>
-  </data>
-  <data name="NBAveragedFrames.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="NBAveragedFrames.Title" xml:space="preserve">
-    <value>Frame averaging buffer size (requires connection reset)</value>
-  </data>
-  <data name="&gt;&gt;NBAveragedFrames.Name" xml:space="preserve">
-    <value>NBAveragedFrames</value>
-  </data>
-  <data name="&gt;&gt;NBAveragedFrames.Type" xml:space="preserve">
-    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;NBAveragedFrames.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;NBAveragedFrames.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="NBMinColoringDepth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 619</value>
-  </data>
-  <data name="NBMinColoringDepth.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="NBMinColoringDepth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 56</value>
-  </data>
-  <data name="NBMinColoringDepth.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="NBMinColoringDepth.Title" xml:space="preserve">
-    <value>Min. coloring depth</value>
-  </data>
-  <data name="&gt;&gt;NBMinColoringDepth.Name" xml:space="preserve">
-    <value>NBMinColoringDepth</value>
-  </data>
-  <data name="&gt;&gt;NBMinColoringDepth.Type" xml:space="preserve">
-    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;NBMinColoringDepth.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;NBMinColoringDepth.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="LLShowAdvancedSettings.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="LLShowAdvancedSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 675</value>
-  </data>
-  <data name="LLShowAdvancedSettings.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 10, 0, 5</value>
-  </data>
-  <data name="LLShowAdvancedSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 28</value>
-  </data>
-  <data name="LLShowAdvancedSettings.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="LLShowAdvancedSettings.Text" xml:space="preserve">
-    <value>Show advanced settings</value>
   </data>
   <data name="&gt;&gt;LLShowAdvancedSettings.Name" xml:space="preserve">
     <value>LLShowAdvancedSettings</value>
   </data>
-  <data name="&gt;&gt;LLShowAdvancedSettings.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;NBDepthScaleY.Name" xml:space="preserve">
+    <value>NBDepthScaleY</value>
   </data>
-  <data name="&gt;&gt;LLShowAdvancedSettings.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;LLShowAdvancedSettings.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="NBGaussSigma.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 703</value>
-  </data>
-  <data name="NBGaussSigma.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="NBReprojectionTranslationY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="NBGaussSigma.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 56</value>
+  <data name="NBMinColoringDepth.Title" xml:space="preserve">
+    <value>Min. coloring depth</value>
   </data>
-  <data name="NBGaussSigma.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="NBGaussSigma.Title" xml:space="preserve">
-    <value>Gauss filter sigma (pixels)</value>
-  </data>
-  <data name="NBGaussSigma.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;NBGaussSigma.Name" xml:space="preserve">
-    <value>NBGaussSigma</value>
-  </data>
-  <data name="&gt;&gt;NBGaussSigma.Type" xml:space="preserve">
-    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;NBGaussSigma.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;NBGaussSigma.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="NBTriangleRemove.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 759</value>
-  </data>
-  <data name="NBTriangleRemove.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="NBTriangleRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 56</value>
-  </data>
-  <data name="NBTriangleRemove.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="NBTriangleRemove.Title" xml:space="preserve">
-    <value>Triangle discarding limit (~0.0024)</value>
-  </data>
-  <data name="NBTriangleRemove.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;NBTriangleRemove.Name" xml:space="preserve">
-    <value>NBTriangleRemove</value>
-  </data>
-  <data name="&gt;&gt;NBTriangleRemove.Type" xml:space="preserve">
-    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;NBTriangleRemove.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;NBTriangleRemove.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="LLShowTestSettings.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="LLShowTestSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 815</value>
-  </data>
-  <data name="LLShowTestSettings.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 10, 0, 5</value>
-  </data>
-  <data name="LLShowTestSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 28</value>
-  </data>
-  <data name="LLShowTestSettings.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
-  </data>
-  <data name="LLShowTestSettings.Text" xml:space="preserve">
-    <value>Show test settings</value>
-  </data>
-  <data name="&gt;&gt;LLShowTestSettings.Name" xml:space="preserve">
-    <value>LLShowTestSettings</value>
-  </data>
-  <data name="&gt;&gt;LLShowTestSettings.Type" xml:space="preserve">
-    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;LLShowTestSettings.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;LLShowTestSettings.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="NBDepthDispX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 843</value>
-  </data>
-  <data name="NBDepthDispX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="NBDepthDispX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 56</value>
-  </data>
-  <data name="NBDepthDispX.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="NBDepthDispX.Title" xml:space="preserve">
-    <value>Depth disposition X (pixel)</value>
-  </data>
-  <data name="NBDepthDispX.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;NBDepthDispX.Name" xml:space="preserve">
-    <value>NBDepthDispX</value>
-  </data>
-  <data name="&gt;&gt;NBDepthDispX.Type" xml:space="preserve">
-    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;NBDepthDispX.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;NBDepthDispX.ZOrder" xml:space="preserve">
-    <value>18</value>
-  </data>
-  <data name="NBDepthDispY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 899</value>
-  </data>
-  <data name="NBDepthDispY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="NBDepthDispY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 56</value>
-  </data>
-  <data name="NBDepthDispY.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="NBDepthDispY.Title" xml:space="preserve">
-    <value>Depth disposition Y (pixel)</value>
-  </data>
-  <data name="NBDepthDispY.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;NBDepthDispY.Name" xml:space="preserve">
-    <value>NBDepthDispY</value>
-  </data>
-  <data name="&gt;&gt;NBDepthDispY.Type" xml:space="preserve">
-    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;NBDepthDispY.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;NBDepthDispY.ZOrder" xml:space="preserve">
-    <value>19</value>
-  </data>
-  <data name="NBDepthScaleX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 955</value>
-  </data>
-  <data name="NBDepthScaleX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="NBDepthScaleX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 56</value>
-  </data>
-  <data name="NBDepthScaleX.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="NBDepthScaleX.Title" xml:space="preserve">
-    <value>Depth scale X</value>
-  </data>
-  <data name="NBDepthScaleX.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;NBDepthScaleX.Name" xml:space="preserve">
-    <value>NBDepthScaleX</value>
-  </data>
-  <data name="&gt;&gt;NBDepthScaleX.Type" xml:space="preserve">
-    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;NBDepthScaleX.Parent" xml:space="preserve">
+  <data name="&gt;&gt;NBReprojectionRotationZ.Parent" xml:space="preserve">
     <value>FLPSettings</value>
   </data>
   <data name="&gt;&gt;NBDepthScaleX.ZOrder" xml:space="preserve">
     <value>20</value>
   </data>
+  <data name="&gt;&gt;NBReprojectionRotationZ.Name" xml:space="preserve">
+    <value>NBReprojectionRotationZ</value>
+  </data>
+  <data name="DDBShadingMode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="NBAveragedFrames.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>4096, 56</value>
+  </data>
+  <data name="NBDepthDispX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 56</value>
+  </data>
+  <data name="NBReprojectionTranslationX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="NBReprojectionRotationY.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="NBRainbowPeriod.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="NBRainbowPeriod.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>4096, 56</value>
+  </data>
+  <data name="NBReprojectionTranslationY.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 366</value>
+  </data>
+  <data name="NBReprojectionRotationZ.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 254</value>
+  </data>
+  <data name="&gt;&gt;NBDepthScaleX.Type" xml:space="preserve">
+    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="LShadingMode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;NBReprojectionTranslationY.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;DDBShadingMode.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;NBAveragedFrames.Type" xml:space="preserve">
+    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
   <data name="NBDepthScaleY.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 1011</value>
   </data>
-  <data name="NBDepthScaleY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="DDBShadingMode.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="CBAntidistortTest.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="NBGaussFilterPasses.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="NBDepthScaleY.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="NBReprojectionRotationZ.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;NBReprojectionRotationX.Type" xml:space="preserve">
+    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="NBMinColoringDepth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 56</value>
+  </data>
+  <data name="&gt;&gt;NBReprojectionTranslationX.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="&gt;&gt;NBReprojectionRotationX.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="NBReprojectionTranslationZ.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>4096, 56</value>
+  </data>
+  <data name="NBZLimit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 56</value>
+  </data>
+  <data name="&gt;&gt;NBDepthScaleY.Type" xml:space="preserve">
+    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="NBGaussSigma.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="LLShowTestSettings.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;NBAveragedFrames.Name" xml:space="preserve">
+    <value>NBAveragedFrames</value>
+  </data>
+  <data name="NBReprojectionRotationX.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>4096, 56</value>
+  </data>
+  <data name="FLPSettings.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;NBGaussFilterPasses.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="&gt;&gt;DDBShadingMode.Name" xml:space="preserve">
+    <value>DDBShadingMode</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="NBReprojectionRotationZ.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="NBReprojectionTranslationZ.Title" xml:space="preserve">
+    <value>Translation Z (meter)</value>
+  </data>
+  <data name="NBReprojectionRotationZ.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>4096, 56</value>
+  </data>
+  <data name="&gt;&gt;NBDepthDispY.Name" xml:space="preserve">
+    <value>NBDepthDispY</value>
+  </data>
+  <data name="&gt;&gt;DDBShadingMode.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="&gt;&gt;NBDepthDispX.Type" xml:space="preserve">
+    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="NBReprojectionRotationY.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>4096, 56</value>
+  </data>
+  <data name="NBReprojectionTranslationY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 56</value>
+  </data>
+  <data name="DDBShadingMode.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="NBDepthScaleY.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;NBDepthScaleX.Name" xml:space="preserve">
+    <value>NBDepthScaleX</value>
+  </data>
+  <data name="&gt;&gt;LLShowAdvancedSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="&gt;&gt;NBReprojectionRotationZ.Type" xml:space="preserve">
+    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;NBZLimit.Name" xml:space="preserve">
+    <value>NBZLimit</value>
+  </data>
+  <data name="NBReprojectionRotationX.Title" xml:space="preserve">
+    <value>Rotation X (degrees)</value>
+  </data>
+  <data name="&gt;&gt;NBTriangleRemove.Name" xml:space="preserve">
+    <value>NBTriangleRemove</value>
+  </data>
+  <data name="CBAntidistortTest.Size" type="System.Drawing.Size, System.Drawing">
+    <value>217, 17</value>
+  </data>
+  <data name="LShadingMode.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="NBGaussFilterPasses.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 56</value>
+  </data>
+  <data name="NBTriangleRemove.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 56</value>
+  </data>
+  <data name="&gt;&gt;NBDepthScaleY.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="&gt;&gt;LShadingMode.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="NBReprojectionRotationX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 56</value>
+  </data>
+  <data name="&gt;&gt;NBReprojectionTranslationZ.Name" xml:space="preserve">
+    <value>NBReprojectionTranslationZ</value>
+  </data>
+  <data name="&gt;&gt;NBDepthScaleX.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="&gt;&gt;LLShowTestSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NBGaussSigma.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="LLShowAdvancedSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 28</value>
+  </data>
+  <data name="NBZLimit.Title" xml:space="preserve">
+    <value>Depth limit (meters)</value>
+  </data>
+  <data name="&gt;&gt;FLPSettings.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="FLPSettings.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="NBDepthDispY.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>4096, 56</value>
+  </data>
+  <data name="NBReprojectionTranslationX.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>128, 56</value>
+  </data>
+  <data name="NBGaussSigma.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>4096, 56</value>
+  </data>
+  <data name="NBMinColoringDepth.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="CBReproject.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 115</value>
+  </data>
+  <data name="LShadingMode.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="NBRainbowPeriod.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>128, 56</value>
+  </data>
+  <data name="&gt;&gt;NBAveragedFrames.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="&gt;&gt;NBGaussFilterPasses.Name" xml:space="preserve">
+    <value>NBGaussFilterPasses</value>
+  </data>
+  <data name="LLShowAdvancedSettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 675</value>
+  </data>
+  <data name="NBZLimit.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>4096, 56</value>
+  </data>
+  <data name="NBReprojectionRotationY.Title" xml:space="preserve">
+    <value>Rotation Y (degrees)</value>
+  </data>
+  <data name="NBReprojectionTranslationZ.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="NBReprojectionTranslationX.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>4096, 56</value>
+  </data>
+  <data name="NBReprojectionRotationZ.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 56</value>
+  </data>
+  <data name="NBDepthDispX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="NBReprojectionRotationY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 56</value>
+  </data>
+  <data name="&gt;&gt;NBReprojectionTranslationX.Type" xml:space="preserve">
+    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="CBAntidistortTest.Text" xml:space="preserve">
+    <value>Remove distortion in RGB and IR modes</value>
+  </data>
+  <data name="&gt;&gt;NBGaussSigma.Name" xml:space="preserve">
+    <value>NBGaussSigma</value>
+  </data>
+  <data name="DDBShadingMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>84, 537</value>
+  </data>
+  <data name="NBTriangleRemove.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>4096, 56</value>
+  </data>
+  <data name="NBDepthDispX.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>4096, 56</value>
+  </data>
+  <data name="NBMinColoringDepth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 619</value>
+  </data>
+  <data name="NBGaussSigma.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 56</value>
+  </data>
+  <data name="NBReprojectionRotationX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>SettingsForm</value>
+  </data>
+  <data name="DDBShadingMode.Text" xml:space="preserve">
+    <value>Textured</value>
+  </data>
+  <data name="&gt;&gt;CBAntidistortTest.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NBReprojectionRotationY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="NBZLimit.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;NBReprojectionTranslationX.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;NBMinColoringDepth.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="NBRainbowPeriod.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="NBDepthDispX.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>128, 56</value>
+  </data>
+  <data name="NBMinColoringDepth.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;NBReprojectionTranslationZ.Type" xml:space="preserve">
+    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;CBReproject.Name" xml:space="preserve">
+    <value>CBReproject</value>
+  </data>
+  <data name="&gt;&gt;NBZLimit.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;NBAveragedFrames.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="NBZLimit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="LShadingMode.Text" xml:space="preserve">
+    <value>Shading mode</value>
+  </data>
+  <data name="NBReprojectionTranslationX.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;NBReprojectionRotationZ.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="NBDepthScaleY.Title" xml:space="preserve">
+    <value>Depth scale Y</value>
+  </data>
+  <data name="NBReprojectionTranslationY.Title" xml:space="preserve">
+    <value>Translation Y (meter)</value>
+  </data>
+  <data name="NBDepthScaleX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 955</value>
+  </data>
+  <data name="&gt;&gt;NBReprojectionRotationY.Type" xml:space="preserve">
+    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="NBAveragedFrames.Title" xml:space="preserve">
+    <value>Frame averaging buffer size (requires connection reset)</value>
+  </data>
+  <data name="LLShowAdvancedSettings.Text" xml:space="preserve">
+    <value>Show advanced settings</value>
+  </data>
+  <data name="NBReprojectionTranslationX.Size" type="System.Drawing.Size, System.Drawing">
     <value>256, 56</value>
   </data>
   <data name="NBDepthScaleY.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
   </data>
-  <data name="NBDepthScaleY.Title" xml:space="preserve">
-    <value>Depth scale Y</value>
+  <data name="NBZLimit.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>128, 56</value>
   </data>
-  <data name="NBDepthScaleY.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;NBDepthScaleY.Name" xml:space="preserve">
-    <value>NBDepthScaleY</value>
-  </data>
-  <data name="&gt;&gt;NBDepthScaleY.Type" xml:space="preserve">
-    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;NBDepthScaleY.Parent" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;NBDepthScaleY.ZOrder" xml:space="preserve">
-    <value>21</value>
-  </data>
-  <data name="CBAntidistortTest.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="CBAntidistortTest.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 1070</value>
-  </data>
-  <data name="CBAntidistortTest.Size" type="System.Drawing.Size, System.Drawing">
-    <value>217, 17</value>
-  </data>
-  <data name="CBAntidistortTest.TabIndex" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="CBAntidistortTest.Text" xml:space="preserve">
-    <value>Remove distortion in RGB and IR modes</value>
-  </data>
-  <data name="CBAntidistortTest.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;CBAntidistortTest.Name" xml:space="preserve">
-    <value>CBAntidistortTest</value>
-  </data>
-  <data name="&gt;&gt;CBAntidistortTest.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="NBGaussFilterPasses.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>4096, 56</value>
   </data>
   <data name="&gt;&gt;CBAntidistortTest.Parent" xml:space="preserve">
     <value>FLPSettings</value>
   </data>
-  <data name="&gt;&gt;CBAntidistortTest.ZOrder" xml:space="preserve">
-    <value>22</value>
+  <data name="NBDepthDispX.Title" xml:space="preserve">
+    <value>Depth disposition X (pixel)</value>
   </data>
-  <data name="FLPSettings.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="LShadingMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 13</value>
   </data>
-  <data name="FLPSettings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="NBGaussFilterPasses.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 478</value>
   </data>
-  <data name="FLPSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>257, 555</value>
+  <data name="&gt;&gt;NBReprojectionTranslationX.Name" xml:space="preserve">
+    <value>NBReprojectionTranslationX</value>
   </data>
-  <data name="FLPSettings.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;FLPSettings.Name" xml:space="preserve">
-    <value>FLPSettings</value>
-  </data>
-  <data name="&gt;&gt;FLPSettings.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;FLPSettings.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="LLShowTestSettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 815</value>
   </data>
   <data name="&gt;&gt;FLPSettings.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="FLPSettings.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="DDBShadingMode.Items" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAARAQAAAAUAAAAGAgAAAAhUZXh0dXJlZAYDAAAAB1JhaW5ib3cGBAAAAA5T
+        aGFkZWQgcmFpbmJvdwYFAAAABVplYnJhBgYAAAAFQmxpbm4L
+</value>
+  </data>
+  <data name="NBDepthScaleX.Title" xml:space="preserve">
+    <value>Depth scale X</value>
+  </data>
+  <data name="NBAveragedFrames.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 56</value>
+  </data>
+  <data name="NBDepthScaleX.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="NBDepthScaleX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;LLShowAdvancedSettings.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="&gt;&gt;NBGaussSigma.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="NBTriangleRemove.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="NBReprojectionTranslationZ.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="NBGaussFilterPasses.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>128, 56</value>
+  </data>
+  <data name="&gt;&gt;NBTriangleRemove.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="NBDepthDispX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 843</value>
+  </data>
+  <data name="CBReproject.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;NBTriangleRemove.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="NBMinColoringDepth.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>128, 56</value>
+  </data>
+  <data name="&gt;&gt;NBZLimit.Type" xml:space="preserve">
+    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;CBReproject.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="&gt;&gt;NBGaussSigma.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;NBReprojectionTranslationY.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="&gt;&gt;LShadingMode.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;NBGaussSigma.Type" xml:space="preserve">
+    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;CBAntidistortTest.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="&gt;&gt;NBDepthScaleY.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="NBMinColoringDepth.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>4096, 56</value>
+  </data>
+  <data name="NBTriangleRemove.Title" xml:space="preserve">
+    <value>Triangle discarding limit (~0.0024)</value>
+  </data>
+  <data name="LLShowTestSettings.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="NBReprojectionTranslationZ.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 56</value>
+  </data>
+  <data name="NBReprojectionTranslationZ.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>128, 56</value>
+  </data>
+  <data name="LShadingMode.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 534</value>
+  </data>
+  <data name="NBDepthScaleY.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>4096, 56</value>
+  </data>
+  <data name="LLShowAdvancedSettings.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>257, 555</value>
+  <data name="&gt;&gt;LLShowTestSettings.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Settings</value>
+  <data name="NBAveragedFrames.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>SettingsForm</value>
+  <data name="&gt;&gt;NBMinColoringDepth.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="NBTriangleRemove.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 759</value>
+  </data>
+  <data name="&gt;&gt;NBRainbowPeriod.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;NBTriangleRemove.Type" xml:space="preserve">
+    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;NBGaussFilterPasses.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="NBAveragedFrames.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 563</value>
+  </data>
+  <data name="&gt;&gt;NBReprojectionTranslationZ.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;NBGaussFilterPasses.Type" xml:space="preserve">
+    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="DDBShadingMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="&gt;&gt;NBRainbowPeriod.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="NBDepthDispY.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 899</value>
+  </data>
+  <data name="&gt;&gt;NBReprojectionRotationY.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="NBDepthScaleY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 56</value>
+  </data>
+  <data name="&gt;&gt;NBDepthDispY.Type" xml:space="preserve">
+    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="NBTriangleRemove.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;NBMinColoringDepth.Name" xml:space="preserve">
+    <value>NBMinColoringDepth</value>
+  </data>
+  <data name="NBReprojectionTranslationX.Title" xml:space="preserve">
+    <value>Translation X (meter)</value>
+  </data>
+  <data name="&gt;&gt;FLPSettings.Name" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="&gt;&gt;LLShowTestSettings.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;DDBShadingMode.Type" xml:space="preserve">
+    <value>CustomControls.DropDownButton, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="LLShowAdvancedSettings.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;NBReprojectionTranslationY.Name" xml:space="preserve">
+    <value>NBReprojectionTranslationY</value>
+  </data>
+  <data name="&gt;&gt;NBMinColoringDepth.Type" xml:space="preserve">
+    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;NBDepthDispY.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="NBDepthDispY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 56</value>
+  </data>
+  <data name="LLShowTestSettings.Text" xml:space="preserve">
+    <value>Show test settings</value>
+  </data>
+  <data name="NBGaussFilterPasses.Title" xml:space="preserve">
+    <value>Iterations of Gauss filter</value>
+  </data>
+  <data name="NBDepthDispY.Title" xml:space="preserve">
+    <value>Depth disposition Y (pixel)</value>
+  </data>
+  <data name="NBRainbowPeriod.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 56</value>
+  </data>
+  <data name="DDBShadingMode.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;NBZLimit.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="&gt;&gt;CBReproject.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;NBReprojectionRotationY.Name" xml:space="preserve">
+    <value>NBReprojectionRotationY</value>
+  </data>
+  <data name="NBDepthScaleY.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>128, 56</value>
+  </data>
+  <data name="NBGaussFilterPasses.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="NBGaussSigma.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="NBReprojectionRotationZ.Title" xml:space="preserve">
+    <value>Rotation Z (degrees)</value>
+  </data>
+  <data name="&gt;&gt;NBRainbowPeriod.Name" xml:space="preserve">
+    <value>NBRainbowPeriod</value>
+  </data>
+  <data name="CBReproject.Size" type="System.Drawing.Size, System.Drawing">
+    <value>104, 24</value>
+  </data>
+  <data name="NBDepthScaleX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 56</value>
+  </data>
+  <data name="LLShowAdvancedSettings.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 10, 0, 5</value>
+  </data>
+  <data name="LLShowTestSettings.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 10, 0, 5</value>
+  </data>
+  <data name="NBDepthScaleX.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>4096, 56</value>
+  </data>
+  <data name="NBReprojectionTranslationY.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="NBRainbowPeriod.Title" xml:space="preserve">
+    <value>Periodic length of the coloring function (meters)</value>
+  </data>
+  <data name="NBReprojectionRotationX.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="NBDepthDispY.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="NBGaussSigma.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>128, 56</value>
+  </data>
+  <data name="CBAntidistortTest.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="NBGaussSigma.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 703</value>
+  </data>
+  <data name="NBReprojectionTranslationY.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>4096, 56</value>
+  </data>
+  <data name="NBDepthScaleX.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;NBDepthDispX.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="NBReprojectionRotationZ.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>128, 56</value>
+  </data>
+  <data name="NBDepthDispX.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;LShadingMode.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;LShadingMode.Name" xml:space="preserve">
+    <value>LShadingMode</value>
+  </data>
+  <data name="FLPSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>257, 555</value>
+  </data>
+  <data name="LLShowTestSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 28</value>
+  </data>
+  <data name="NBZLimit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;NBReprojectionRotationX.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="CBAntidistortTest.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="NBDepthDispY.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="DDBShadingMode.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAAFxJREFUOE+lzMENACEIBVE729bszJboACHZg4tj4s8e3oEJ0Nz9F4wKjAqMCowK
+        jAqOkU+23RqSmT2xPMrxyF53P8OqPMHjtIXV+6SfjhNGBUYFRgVGBUYFxnveJvkw3CxpsLG4AAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>257, 555</value>
+  </data>
+  <data name="NBReprojectionRotationX.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>128, 56</value>
+  </data>
+  <data name="&gt;&gt;NBReprojectionRotationX.Name" xml:space="preserve">
+    <value>NBReprojectionRotationX</value>
+  </data>
+  <data name="NBReprojectionRotationY.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>128, 56</value>
+  </data>
+  <data name="FLPSettings.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="CBReproject.Text" xml:space="preserve">
+    <value>Reprojection</value>
+  </data>
+  <data name="&gt;&gt;NBReprojectionTranslationZ.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="NBDepthScaleY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="NBRainbowPeriod.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 56</value>
+  </data>
+  <data name="NBTriangleRemove.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;LLShowAdvancedSettings.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="NBReprojectionRotationY.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 198</value>
+  </data>
+  <data name="NBReprojectionTranslationY.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>128, 56</value>
+  </data>
+  <data name="NBGaussSigma.Title" xml:space="preserve">
+    <value>Gauss filter sigma (pixels)</value>
+  </data>
+  <data name="&gt;&gt;FLPSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NBDepthDispY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;NBRainbowPeriod.Type" xml:space="preserve">
+    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="NBTriangleRemove.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>128, 56</value>
+  </data>
+  <data name="NBReprojectionRotationX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 142</value>
+  </data>
+  <data name="NBDepthDispX.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="NBAveragedFrames.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;NBReprojectionRotationY.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="&gt;&gt;NBDepthDispX.Parent" xml:space="preserve">
+    <value>FLPSettings</value>
+  </data>
+  <data name="&gt;&gt;CBReproject.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="NBDepthScaleX.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>128, 56</value>
+  </data>
+  <data name="NBDepthDispY.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>128, 56</value>
+  </data>
+  <data name="CBAntidistortTest.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 1070</value>
+  </data>
+  <data name="&gt;&gt;NBDepthDispY.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="NBReprojectionTranslationX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 310</value>
+  </data>
+  <data name="&gt;&gt;NBReprojectionTranslationY.Type" xml:space="preserve">
+    <value>CustomControls.NumericBar, CustomControls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;CBAntidistortTest.Name" xml:space="preserve">
+    <value>CBAntidistortTest</value>
+  </data>
+  <data name="NBAveragedFrames.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>128, 56</value>
+  </data>
+  <data name="NBReprojectionTranslationZ.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 422</value>
+  </data>
+  <data name="&gt;&gt;LLShowTestSettings.Name" xml:space="preserve">
+    <value>LLShowTestSettings</value>
+  </data>
+  <data name="&gt;&gt;NBDepthDispX.Name" xml:space="preserve">
+    <value>NBDepthDispX</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

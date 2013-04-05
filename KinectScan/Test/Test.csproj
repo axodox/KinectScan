@@ -41,15 +41,20 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KinectScan\KinectScan.csproj">
+      <Project>{292d7ea4-d941-4c3b-ba56-34ee7a62d3ee}</Project>
+      <Name>KinectScan</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RotatingScanner\RotatingScanner.csproj">
+      <Project>{1064519d-ef86-4d52-9a9a-ac7871b00b97}</Project>
+      <Name>RotatingScanner</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

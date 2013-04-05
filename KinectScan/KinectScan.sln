@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinectScan", "KinectScan\KinectScan.csproj", "{292D7EA4-D941-4C3B-BA56-34EE7A62D3EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XNAContent", "XNAContent\XNAContent.contentproj", "{D5722B23-08B5-45EC-9276-88AA2D52A6AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KinectScanContent", "XNAContent\KinectScanContent.contentproj", "{D5722B23-08B5-45EC-9276-88AA2D52A6AC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistortionMapCreator", "DistortionMapCreator\DistortionMapCreator.csproj", "{A99FDA68-5B23-494A-81B9-F97E05FA1B5A}"
 EndProject
@@ -12,8 +12,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntiDistortion", "AntiDistortion\AntiDistortion.csproj", "{A3E1D868-34C7-46E1-A7ED-6125C2E53A14}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleManager", "ModuleManager\ModuleManager.csproj", "{8062A5E7-8A85-4CBB-9975-E3F983F9C691}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{F7DE10AB-56D7-4BE7-B664-CD56B8275B0E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RotatingScanner", "RotatingScanner\RotatingScanner.csproj", "{1064519D-EF86-4D52-9A9A-AC7871B00B97}"
 EndProject
@@ -29,9 +27,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Turntables", "Turntables\Tu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurntableTest2", "TurntableTest2\TurntableTest2.csproj", "{524B792A-02CC-428A-BC3F-53A3A5BD1AF8}"
 EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "RotatingScannerContent", "RotatingScannerContent\RotatingScannerContent.contentproj", "{CA6016EE-F781-4BB6-A976-77AA10B48B87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_Master", "_Master\_Master.csproj", "{1BE16ABE-329E-46E4-B25B-B095056957A4}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 15
+		SccNumberOfProjects = 16
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://axodox.visualstudio.com/defaultcollection
 		SccLocalPath0 = .
@@ -65,18 +67,21 @@ Global
 		SccProjectUniqueName10 = STLTest\\STLTest.csproj
 		SccProjectName10 = STLTest
 		SccLocalPath10 = STLTest
-		SccProjectUniqueName11 = Test\\Test.csproj
-		SccProjectName11 = Test
-		SccLocalPath11 = Test
-		SccProjectUniqueName12 = Turntables\\Turntables.csproj
-		SccProjectName12 = Turntables
-		SccLocalPath12 = Turntables
-		SccProjectUniqueName13 = TurntableTest2\\TurntableTest2.csproj
-		SccProjectName13 = TurntableTest2
-		SccLocalPath13 = TurntableTest2
-		SccProjectUniqueName14 = XNAContent\\XNAContent.contentproj
+		SccProjectUniqueName11 = Turntables\\Turntables.csproj
+		SccProjectName11 = Turntables
+		SccLocalPath11 = Turntables
+		SccProjectUniqueName12 = TurntableTest2\\TurntableTest2.csproj
+		SccProjectName12 = TurntableTest2
+		SccLocalPath12 = TurntableTest2
+		SccProjectUniqueName13 = RotatingScannerContent\\RotatingScannerContent.contentproj
+		SccProjectName13 = RotatingScannerContent
+		SccLocalPath13 = RotatingScannerContent
+		SccProjectUniqueName14 = XNAContent\\KinectScanContent.contentproj
 		SccProjectName14 = XNAContent
 		SccLocalPath14 = XNAContent
+		SccProjectUniqueName15 = _Master\\_Master.csproj
+		SccProjectName15 = _Master
+		SccLocalPath15 = _Master
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -157,18 +162,6 @@ Global
 		{8062A5E7-8A85-4CBB-9975-E3F983F9C691}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{8062A5E7-8A85-4CBB-9975-E3F983F9C691}.Release|Win32.ActiveCfg = Release|Any CPU
 		{8062A5E7-8A85-4CBB-9975-E3F983F9C691}.Release|x86.ActiveCfg = Release|Any CPU
-		{F7DE10AB-56D7-4BE7-B664-CD56B8275B0E}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{F7DE10AB-56D7-4BE7-B664-CD56B8275B0E}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{F7DE10AB-56D7-4BE7-B664-CD56B8275B0E}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{F7DE10AB-56D7-4BE7-B664-CD56B8275B0E}.Debug|Win32.ActiveCfg = Debug|x86
-		{F7DE10AB-56D7-4BE7-B664-CD56B8275B0E}.Debug|x86.ActiveCfg = Debug|x86
-		{F7DE10AB-56D7-4BE7-B664-CD56B8275B0E}.Debug|x86.Build.0 = Debug|x86
-		{F7DE10AB-56D7-4BE7-B664-CD56B8275B0E}.Release|Any CPU.ActiveCfg = Release|x86
-		{F7DE10AB-56D7-4BE7-B664-CD56B8275B0E}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{F7DE10AB-56D7-4BE7-B664-CD56B8275B0E}.Release|Mixed Platforms.Build.0 = Release|x86
-		{F7DE10AB-56D7-4BE7-B664-CD56B8275B0E}.Release|Win32.ActiveCfg = Release|x86
-		{F7DE10AB-56D7-4BE7-B664-CD56B8275B0E}.Release|x86.ActiveCfg = Release|x86
-		{F7DE10AB-56D7-4BE7-B664-CD56B8275B0E}.Release|x86.Build.0 = Release|x86
 		{1064519D-EF86-4D52-9A9A-AC7871B00B97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1064519D-EF86-4D52-9A9A-AC7871B00B97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1064519D-EF86-4D52-9A9A-AC7871B00B97}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -203,6 +196,7 @@ Global
 		{74EFF223-D844-4B0D-83E8-FDA526EC5C6B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{74EFF223-D844-4B0D-83E8-FDA526EC5C6B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{74EFF223-D844-4B0D-83E8-FDA526EC5C6B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{74EFF223-D844-4B0D-83E8-FDA526EC5C6B}.Release|Mixed Platforms.Deploy.0 = Release|Any CPU
 		{74EFF223-D844-4B0D-83E8-FDA526EC5C6B}.Release|Win32.ActiveCfg = Release|Any CPU
 		{74EFF223-D844-4B0D-83E8-FDA526EC5C6B}.Release|x86.ActiveCfg = Release|Any CPU
 		{FA19C9CB-AF44-4686-8FC7-ECE6FDD384A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -253,8 +247,31 @@ Global
 		{524B792A-02CC-428A-BC3F-53A3A5BD1AF8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{524B792A-02CC-428A-BC3F-53A3A5BD1AF8}.Release|Win32.ActiveCfg = Release|Any CPU
 		{524B792A-02CC-428A-BC3F-53A3A5BD1AF8}.Release|x86.ActiveCfg = Release|Any CPU
+		{CA6016EE-F781-4BB6-A976-77AA10B48B87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA6016EE-F781-4BB6-A976-77AA10B48B87}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{CA6016EE-F781-4BB6-A976-77AA10B48B87}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{CA6016EE-F781-4BB6-A976-77AA10B48B87}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CA6016EE-F781-4BB6-A976-77AA10B48B87}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA6016EE-F781-4BB6-A976-77AA10B48B87}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{CA6016EE-F781-4BB6-A976-77AA10B48B87}.Release|Win32.ActiveCfg = Debug|Any CPU
+		{CA6016EE-F781-4BB6-A976-77AA10B48B87}.Release|x86.ActiveCfg = Debug|Any CPU
+		{1BE16ABE-329E-46E4-B25B-B095056957A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BE16ABE-329E-46E4-B25B-B095056957A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BE16ABE-329E-46E4-B25B-B095056957A4}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1BE16ABE-329E-46E4-B25B-B095056957A4}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1BE16ABE-329E-46E4-B25B-B095056957A4}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{1BE16ABE-329E-46E4-B25B-B095056957A4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1BE16ABE-329E-46E4-B25B-B095056957A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BE16ABE-329E-46E4-B25B-B095056957A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BE16ABE-329E-46E4-B25B-B095056957A4}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{1BE16ABE-329E-46E4-B25B-B095056957A4}.Release|Mixed Platforms.Build.0 = Release|x86
+		{1BE16ABE-329E-46E4-B25B-B095056957A4}.Release|Win32.ActiveCfg = Release|Any CPU
+		{1BE16ABE-329E-46E4-B25B-B095056957A4}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
 	EndGlobalSection
 EndGlobal

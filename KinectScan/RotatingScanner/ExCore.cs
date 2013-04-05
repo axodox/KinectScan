@@ -64,7 +64,7 @@ namespace KinectScan
 
         #region Hardware acceleration
         RenderTarget2D[] ExCoreTargetA, ExCoreTargetB;
-        EffectTechnique ColorModelTechnique, PolarAddTechnique, PolarAvgTechnique, PolarOutputTechnique, PolarAvgDisplayTechnique, PolarDisplayTechnique, PolarToCartesianTechnique, PolarModelTechnique;
+        EffectTechnique ColorModelTechnique, SimpleColorModelTechnique, PolarAddTechnique, PolarAvgTechnique, PolarOutputTechnique, PolarAvgDisplayTechnique, PolarDisplayTechnique, PolarToCartesianTechnique, PolarModelTechnique;
         EffectParameter ModelTransform, NormalTransform, WorldTransform, CorePos, CameraPosition, LightPosition, FiShift;
         VertexBuffer LinesVertexBuffer;
         Rectangle[] ExCoreTargetClippingRectangles, MainTargetClippingRectangles;
@@ -102,6 +102,7 @@ namespace KinectScan
             PolarDisplayTechnique = XEffect.Techniques["PolarDisplay"];
             PolarToCartesianTechnique = XEffect.Techniques["PolarToCartesian"];
             PolarModelTechnique = XEffect.Techniques["PolarModel"];
+            SimpleColorModelTechnique = XEffect.Techniques["SimpleColorModel"];
 
             //Vertex buffers
             LinesVertexBuffer = new VertexBuffer(XDevice, VertexPositionColor.VertexDeclaration, DisplayLines, BufferUsage.WriteOnly);
@@ -136,7 +137,7 @@ namespace KinectScan
             Matrix reproj = Context.DepthIntrinsics * T * R;
             ModelTransform.SetValue(reproj);
         }
-        private void SetModelVisualizationProjection(int leg)
+        private Matrix SetModelVisualizationProjection(int leg)
         {
             Vector3 cameraPosition = Distance * new Vector3(
                     (float)(Math.Cos(HorizantalAngle) * Math.Cos(VerticalAngle)), 
@@ -148,6 +149,7 @@ namespace KinectScan
                 Vector3.Zero,
                 Vector3.UnitZ);
             Matrix World = Matrix.CreateRotationX(-MathHelper.PiOver2)*Matrix.CreateRotationZ(-MathHelper.PiOver2)*Matrix.CreateScale(-1f,1f,1f);
+            Matrix MainWorld = World;
             World *= (leg == 2 ? Matrix.CreateTranslation(0f, 0f, -(ProjectionYMax + ProjectionYMin) / 2f) : Matrix.CreateTranslation(CoreX * (leg == 0 ? -1f : 1f), CoreY, -(ProjectionYMax + ProjectionYMin) / 2f));
 
             LightPosition.SetValue(cameraPosition);
@@ -155,6 +157,7 @@ namespace KinectScan
             WorldTransform.SetValue(World);
             ModelTransform.SetValue(World*View*Projection);
             NormalTransform.SetValue(Matrix.Transpose(Matrix.Invert(World)));
+            return MainWorld * View * Projection;
         }
         private void SetExCoreReprojection(float rotation)
         {
@@ -183,23 +186,8 @@ namespace KinectScan
             if (ViewMode == Views.Special && SpecialView == SpecialViews.CorePosition && leg == VisualizedLeg)
             {
                 Visualize(SingleTargetTick ? SingleTargetA : SingleTargetB, SignedDepthVisualizationTechnique, MainViewport, false);
-                VertexPositionColor[] VPC = new VertexPositionColor[10];
-                VPC[0] = new VertexPositionColor(new Vector3(0, -0.1f, 0), Color.Yellow);
-                VPC[1] = new VertexPositionColor(new Vector3(0, 0.1f, 0), Color.Yellow);
-                VPC[2] = new VertexPositionColor(new Vector3(0.1f, 0f, 0), Color.Yellow);
-                VPC[3] = new VertexPositionColor(new Vector3(-0.1f, 0f, 0), Color.Yellow);
-                VPC[4] = new VertexPositionColor(new Vector3(0, 0f, 0.1f), Color.Yellow);
-                VPC[5] = new VertexPositionColor(new Vector3(0, 0f, -0.1f), Color.Yellow);
-                VPC[6] = new VertexPositionColor(new Vector3(-CoreY, -1, CoreX), Color.Green);
-                VPC[7] = new VertexPositionColor(new Vector3(-CoreY, 1, CoreX), Color.Green);
-                VPC[8] = new VertexPositionColor(new Vector3(-CoreY, -1, -CoreX), Color.Red);
-                VPC[9] = new VertexPositionColor(new Vector3(-CoreY, 1, -CoreX), Color.Red);
                 SetModelProjection(-mainRotation + SplitPlaneAngle + MathHelper.PiOver2);
-                LinesVertexBuffer.SetData<VertexPositionColor>(VPC);
-                XDevice.SetVertexBuffer(LinesVertexBuffer);
-                XEffect.CurrentTechnique = ColorModelTechnique;
-                XEffect.CurrentTechnique.Passes[0].Apply();
-                XDevice.DrawPrimitives(PrimitiveType.LineList, 0, 5);
+                VisualizeAxes(ColorModelTechnique);
                 XDevice.Present();
             }
 
@@ -272,6 +260,26 @@ namespace KinectScan
             ExCoreTick[leg] = !ExCoreTick[leg];
         }
 
+        private void VisualizeAxes(EffectTechnique technique)
+        {
+            VertexPositionColor[] VPC = new VertexPositionColor[10];
+            VPC[0] = new VertexPositionColor(new Vector3(0, -0.1f, 0), Color.Yellow);
+            VPC[1] = new VertexPositionColor(new Vector3(0, 0.1f, 0), Color.Yellow);
+            VPC[2] = new VertexPositionColor(new Vector3(0.1f, 0f, 0), Color.Yellow);
+            VPC[3] = new VertexPositionColor(new Vector3(-0.1f, 0f, 0), Color.Yellow);
+            VPC[4] = new VertexPositionColor(new Vector3(0, 0f, 0.1f), Color.Yellow);
+            VPC[5] = new VertexPositionColor(new Vector3(0, 0f, -0.1f), Color.Yellow);
+            VPC[6] = new VertexPositionColor(new Vector3(-CoreY, -1, CoreX), Color.Green);
+            VPC[7] = new VertexPositionColor(new Vector3(-CoreY, 1, CoreX), Color.Green);
+            VPC[8] = new VertexPositionColor(new Vector3(-CoreY, -1, -CoreX), Color.Red);
+            VPC[9] = new VertexPositionColor(new Vector3(-CoreY, 1, -CoreX), Color.Red);            
+            LinesVertexBuffer.SetData<VertexPositionColor>(VPC);
+            XDevice.SetVertexBuffer(LinesVertexBuffer);
+            XEffect.CurrentTechnique = technique;
+            XEffect.CurrentTechnique.Passes[0].Apply();
+            XDevice.DrawPrimitives(PrimitiveType.LineList, 0, 5);
+        }
+
         protected override void OnRefresh()
         {
             VisualizeModel(0);
@@ -323,11 +331,15 @@ namespace KinectScan
                 XDevice.DepthStencilState = DepthStencilState.Default;
                 XDevice.RasterizerState = RasterizerState.CullNone;
                 MainSampler.SetValue(Vector4Target);
-                SetModelVisualizationProjection(VisualizedLeg == 2 ? leg : 2);
+                Matrix gridWorldViewProj = SetModelVisualizationProjection(VisualizedLeg == 2 ? leg : 2);
                 XEffect.CurrentTechnique = PolarModelTechnique;
                 XEffect.CurrentTechnique.Passes[0].Apply();
+                
                 MaxiPlane.Draw();
-                if (leg == 1 || VisualizedLeg != 2) XDevice.Present();
+                ModelTransform.SetValue(gridWorldViewProj);
+                VisualizeAxes(SimpleColorModelTechnique);
+                if (leg == 1 || VisualizedLeg != 2)
+                    XDevice.Present();
             }
         }
 

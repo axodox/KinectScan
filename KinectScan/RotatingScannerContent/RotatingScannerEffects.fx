@@ -165,7 +165,7 @@ float3 AbsPosOf(float x, float y)
 }
 
 //Vertex shaders---------------------------------------------------------------
-VertexPositionColor SimpleVertexShader(VertexPositionColor i)
+VertexPositionColor SimpleMapVertexShader(VertexPositionColor i)
 {
 	VertexPositionColor o;
 	float4 pos =  mul(ModelTransform, i.Position);
@@ -173,6 +173,14 @@ VertexPositionColor SimpleVertexShader(VertexPositionColor i)
 	pos.y = (-pos.y / pos.z / 480 * 2 + 1);
 	pos.z = 1;	
 	o.Position = pos;
+	o.Color = i.Color;
+	return o;
+}
+
+VertexPositionColor SimpleVertexShader(VertexPositionColor i)
+{
+	VertexPositionColor o;
+	o.Position =  mul(i.Position, ModelTransform);
 	o.Color = i.Color;
 	return o;
 }
@@ -790,6 +798,15 @@ float4 ColorModelPixelShader(VertexPositionColor i) : COLOR0
 } 
 
 technique ColorModel
+{
+	pass P0
+	{
+		VertexShader = compile vs_3_0 SimpleMapVertexShader();
+		PixelShader = compile ps_3_0 ColorModelPixelShader();
+	}
+}
+
+technique SimpleColorModel
 {
 	pass P0
 	{

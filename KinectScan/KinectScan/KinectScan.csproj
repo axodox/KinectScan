@@ -238,14 +238,6 @@
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <Content Include="Copy %282%29 of HardwareSettings.xml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Copy of HardwareSettings.xml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="DistortionMaps\color.dismap" />
     <Content Include="DistortionMaps\depth.dismap" />
     <None Include="App.config" />
@@ -278,9 +270,9 @@
       <Project>{8062A5E7-8A85-4CBB-9975-E3F983F9C691}</Project>
       <Name>ModuleManager</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XNAContent\XNAContent.contentproj">
+    <ProjectReference Include="..\XNAContent\KinectScanContent.contentproj">
       <Project>{D5722B23-08B5-45EC-9276-88AA2D52A6AC}</Project>
-      <Name>XNAContent</Name>
+      <Name>KinectScanContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>
     </ProjectReference>
   </ItemGroup>
@@ -314,9 +306,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
       <Visible>False</Visible>
-      <ProductName>Windows Installer 3.1</ProductName>
+      <ProductName>Windows Installer 4.5</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Xna.Framework.4.0">

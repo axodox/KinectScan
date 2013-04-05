@@ -106,8 +106,10 @@ struct VertexPositionTextureColor
 struct VertexPositionTextureDepth
 {
     float4 Position : POSITION0;
+	float3 WorldPosition : POSITION1;
+	float3 Normal: NORMAL0;
 	float Depth : NORMAL1;
-	float2 TextureCoordinate : TEXCOORD0;	
+	float2 TextureCoordinate : TEXCOORD0;
 };
 
 struct VertexPosition2
@@ -115,6 +117,13 @@ struct VertexPosition2
     float4 Position : POSITION0;
 	float3 RealPosition : POSITION1;
 	float RawDepth: NORMAL0;
+};
+
+struct VertexPositionNormal
+{
+    float4 Position : POSITION0;
+	float3 WorldPosition : POSITION1;
+	float3 Normal: NORMAL0;
 };
 
 struct VertexPositionColor
@@ -261,7 +270,7 @@ uniform extern float DepthZLimit = 1.1;
 uniform extern float DepthAvgCount;
 uniform extern float DepthHSLColoringPeriod = 0.5;
 
-uniform extern float4x4 ReprojectionTransform;
+uniform extern float4x4 ReprojectionTransform, NormalTransform, WorldTransform;
 
 float3 PosOf(float x, float y)
 {
@@ -319,18 +328,21 @@ technique DepthNormalShading
 VertexPositionTextureDepth ReprojectionVertexShader(VertexPositionTexture input)
 {
 	VertexPositionTextureDepth output;
-	output.TextureCoordinate = NaN;
+	output.Position = NaN;
+	output.WorldPosition = 0;
+	output.Normal = 0;
+	output.Depth = 0;
+	output.TextureCoordinate = 0;
+
 	float3 posx = PosOf(input.TextureCoordinate.x, input.TextureCoordinate.y);
 	float3 posu = PosOf(input.TextureCoordinate.x, input.TextureCoordinate.y + DepthVStep);
 	float3 posd = PosOf(input.TextureCoordinate.x, input.TextureCoordinate.y - DepthVStep);
 	float3 posl = PosOf(input.TextureCoordinate.x - DepthHStep, input.TextureCoordinate.y);
 	float3 posr = PosOf(input.TextureCoordinate.x + DepthHStep, input.TextureCoordinate.y);
-	if(pow(length(posu - posd) / posx.z, 2) + pow(length(posr - posl) / posx.z, 2) > TriangleRemoveLimit)
-	{		
-		output.Position = NaN;
-		output.Depth = NaN;		
+	float3 normal = normalize(cross(posu - posd, posr - posl));
+	//if(1- abs(normal.z) > TriangleRemoveLimit)
+	if(pow(length(posu - posd) / posx.z, 2) + pow(length(posr - posl) / posx.z, 2) > TriangleRemoveLimit)	
 		return output;
-	}
 
 	float2 uv = input.TextureCoordinate;
 	float4 source = tex2Dlod(DepthSampler, float4(uv.x, uv.y, 0, 0));
@@ -353,11 +365,14 @@ VertexPositionTextureDepth ReprojectionVertexShader(VertexPositionTexture input)
 		tpos.xyz /= tpos.z;
 		tpos.x /= 640;
 		tpos.y /= 480;
-		output.TextureCoordinate = tpos.xy;
+		
 	}
 	output.Position = pos;
 	output.Position.z/=10;
+	output.WorldPosition = mul(posx, WorldTransform);
+	output.Normal = normalize(mul(NormalTransform, normal));
 	output.Depth = pos.z;
+	output.TextureCoordinate = tpos.xy;
     return output;
 }
 
@@ -379,9 +394,9 @@ float4 ReprojectionRainbowPixelShader(VertexPositionTextureDepth input) : COLOR
 
 float4 ReprojectionRainbowShadowPixelShader(VertexPositionTextureDepth input) : COLOR
 {
-	float shade = tex2D(DepthNormalSampler, input.TextureCoordinate).x;
+	float shade = abs(input.Normal.z);//tex2D(DepthNormalSampler, input.TextureCoordinate).x;
 	if(isnan(shade)||shade<0||shade>1)
-		return HSLToRGB(float4(input.Depth % DepthHSLColoringPeriod / DepthHSLColoringPeriod, 1, 0.5, 1));
+		return 0;//HSLToRGB(float4(input.Depth % DepthHSLColoringPeriod / DepthHSLColoringPeriod, 1, 0.5, 1));
 	else
 		return HSLToRGB(float4(input.Depth % DepthHSLColoringPeriod / DepthHSLColoringPeriod, 1, 0.25+shade/4, 1));
 }
@@ -449,6 +464,28 @@ float4 ReprojectionOutputPixelShader(VertexPosition2 input) : COLOR
 	return float4(input.RealPosition, input.RawDepth);
 }
 
+uniform extern float2 LightProperty = float2(1, 0.5);
+uniform extern float Ambient = 0.1, SpecularPower=40;
+uniform extern float3 DiffuseColor=0.5, SpecularColor=1;
+uniform extern float3 CameraPosition = 0,  LightPosition = 0;
+float4 ReprojectionBlinnPixelShader(VertexPositionTextureDepth input) : COLOR
+{
+	float4 color = 1;
+	float3 specular = 0, diffuse = 0, normal = input.Normal/sign(input.Normal.z);
+	float3 V = normalize(input.WorldPosition - CameraPosition);
+	float l, nl, d;
+	float3 L = normalize(input.WorldPosition - LightPosition);
+	l = L.x * L.x + L.y * L.y + L.z * L.z;
+	nl = dot(normal, L); 
+	d = max(nl * LightProperty.x, 0) / l;
+	diffuse += d;
+	if(d > 0)
+	{
+		specular += max(0, pow(dot(normalize(V + L), normal), SpecularPower) * LightProperty.y / l);
+	}
+	return float4(color.rgb * (Ambient + diffuse * DiffuseColor + specular * SpecularColor), 1);
+}
+
 uniform extern float4x4 ReprojectionModelTransform;
 VertexPositionTextureDepth ReprojectionModelVertexShader(VertexPositionTexture input)
 {
@@ -462,6 +499,8 @@ VertexPositionTextureDepth ReprojectionModelVertexShader(VertexPositionTexture i
 	pos.xy = (pos.xy + Move) * Scale;
 	pos.w = DepthZLimit;
     output.Position = pos;
+	output.WorldPosition = 0;
+	output.Normal = 0;
 	output.Depth = pos.z;
     return output;
 }
@@ -493,6 +532,11 @@ technique DepthReprojection
 		VertexShader = compile vs_3_0 ReprojectionVertexShader();
 		PixelShader = compile ps_3_0 ReprojectionScalePixelShader();
 	}
+	pass P5
+	{
+		VertexShader = compile vs_3_0 ReprojectionVertexShader();
+		PixelShader = compile ps_3_0 ReprojectionBlinnPixelShader();
+	}
 }
 
 technique DepthReprojectionOutput
@@ -519,7 +563,7 @@ technique ModelReprojection
 	pass P2
 	{
 		VertexShader = compile vs_3_0 ReprojectionModelVertexShader();
-		PixelShader = compile ps_3_0 ReprojectionRainbowShadowPixelShader();
+		PixelShader = compile ps_3_0 ReprojectionRainbowPixelShader();
 	}
 	pass P3
 	{
@@ -528,8 +572,13 @@ technique ModelReprojection
 	}
 	pass P4
 	{
-		VertexShader = compile vs_3_0 ReprojectionVertexShader();
+		VertexShader = compile vs_3_0 ReprojectionModelVertexShader();
 		PixelShader = compile ps_3_0 ReprojectionScalePixelShader();
+	}
+	pass P5
+	{
+		VertexShader = compile vs_3_0 ReprojectionModelVertexShader();
+		PixelShader = compile ps_3_0 ReprojectionBlinnPixelShader();
 	}
 }
 
@@ -850,6 +899,11 @@ float4 AnaglyphReprojectionScalePixelShader(VertexPositionTextureDepth input) : 
 	return ToAnaglyph(ReprojectionScalePixelShader(input));
 }
 
+float4 AnaglyphReprojectionBlinnShader(VertexPositionTextureDepth input) : COLOR
+{
+	return ToAnaglyph(ReprojectionBlinnPixelShader(input));
+}
+
 
 technique AnaglyphDepthReprojection
 {
@@ -877,5 +931,10 @@ technique AnaglyphDepthReprojection
 	{
 		VertexShader = compile vs_3_0 ReprojectionVertexShader();
 		PixelShader = compile ps_3_0 AnaglyphReprojectionScalePixelShader();
+	}
+	pass P5
+	{
+		VertexShader = compile vs_3_0 ReprojectionVertexShader();
+		PixelShader = compile ps_3_0 AnaglyphReprojectionBlinnShader();
 	}
 }

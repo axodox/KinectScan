@@ -62,13 +62,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RotatingScannerEffects.fx">
-      <Name>RotatingScannerEffects</Name>
-      <Importer>EffectImporter</Importer>
-      <Processor>EffectProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="logo.png">
       <Name>logo</Name>
       <Importer>TextureImporter</Importer>

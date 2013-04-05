@@ -39,7 +39,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\KinectScan\bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -124,14 +124,14 @@
       <Project>{8062A5E7-8A85-4CBB-9975-E3F983F9C691}</Project>
       <Name>ModuleManager</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RotatingScannerContent\RotatingScannerContent.contentproj">
+      <Project>{CA6016EE-F781-4BB6-A976-77AA10B48B87}</Project>
+      <Name>RotatingScannerContent</Name>
+      <XnaReferenceType>Content</XnaReferenceType>
+    </ProjectReference>
     <ProjectReference Include="..\Turntables\Turntables.csproj">
       <Project>{126148cb-fabd-4b3b-a813-caabbe42acb7}</Project>
       <Name>Turntables</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\XNAContent\XNAContent.contentproj">
-      <Project>{D5722B23-08B5-45EC-9276-88AA2D52A6AC}</Project>
-      <Name>XNAContent %28Content%29</Name>
-      <XnaReferenceType>Content</XnaReferenceType>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +180,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Notes.txt" />
+    <None Include="RotatingScanner.plugin">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\settingsfile16.png" />
     <None Include="Resources\resetview16.png" />
     <None Include="Resources\buildmodel16.png" />

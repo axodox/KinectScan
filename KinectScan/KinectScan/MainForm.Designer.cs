@@ -57,6 +57,7 @@ namespace KinectScan
             this.MIRotateLeft = new System.Windows.Forms.MenuItem();
             this.MIResetView = new System.Windows.Forms.MenuItem();
             this.MISettings = new System.Windows.Forms.MenuItem();
+            this.MIModules = new System.Windows.Forms.MenuItem();
             this.SBStatus = new System.Windows.Forms.StatusBar();
             this.TSMain = new System.Windows.Forms.ToolStrip();
             this.TSBStartStop = new System.Windows.Forms.ToolStripButton();
@@ -102,7 +103,8 @@ namespace KinectScan
             this.MIFile,
             this.MIDevices,
             this.MIView,
-            this.MISettings});
+            this.MISettings,
+            this.MIModules});
             // 
             // MIFile
             // 
@@ -271,6 +273,11 @@ namespace KinectScan
             this.MISettings.Index = 3;
             resources.ApplyResources(this.MISettings, "MISettings");
             this.MISettings.Click += new System.EventHandler(this.MISettings_Click);
+            // 
+            // MIModules
+            // 
+            this.MIModules.Index = 4;
+            resources.ApplyResources(this.MIModules, "MIModules");
             // 
             // SBStatus
             // 
@@ -608,6 +615,7 @@ namespace KinectScan
         private System.Windows.Forms.ToolStripButton TSBFileNext;
         private System.Windows.Forms.MenuItem MICalibration;
         private System.Windows.Forms.NotifyIcon NotifyIcon;
+        private System.Windows.Forms.MenuItem MIModules;
     }
 }
 

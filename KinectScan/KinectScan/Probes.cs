@@ -8,6 +8,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using KinectScan.Properties;
 using System.Threading;
+using System.IO;
+using System.Globalization;
 
 namespace KinectScan
 {
@@ -32,6 +34,7 @@ namespace KinectScan
             PF.TSBAddProbe.Click += new EventHandler(TSBAddProbe_Click);
             PF.TSBMoveProbe.Click += new EventHandler(TSBMoveProbe_Click);
             PF.TSBRemoveProbe.Click += new EventHandler(TSBRemoveProbe_Click);
+            PF.TSBLog.Click += TSBLog_Click;
             Probes = new ProbeCollection(PF.LVProbes);
             ProbeMode = ProbeModes.None;
 
@@ -69,6 +72,21 @@ namespace KinectScan
             GPUDownloadARE = new AutoResetEvent(false);
             GPUDownloadOn = true;
             GPUDownloadThread.Start();
+        }
+
+        void TSBLog_Click(object sender, EventArgs e)
+        {
+            if (Probes.Logging)
+            {
+                Probes.StopLogging();
+                if (PF.SFDLog.ShowDialog() == DialogResult.OK)
+                {
+                    Probes.SaveLog(PF.SFDLog.FileName);
+                }
+            }
+            else
+                Probes.StartLogging();
+            PF.TSBLog.Checked = Probes.Logging;    
         }
 
         void XPanel_MouseMove(object sender, MouseEventArgs e)
@@ -274,9 +292,9 @@ namespace KinectScan
             {
                 if (!P.Initalized) continue;
                 v = new Vector4(P.X0, P.Y0, P.Z0, 1f);
-                v = Vector4.Transform(v, Matrix.Transpose( m));
-                v.X = (v.X / v.Z / 1280 * 2 - 1) * scale.X;
-                v.Y = (v.Y / v.Z / 1024 * 2 - 1) * scale.Y;
+                v = Vector4.Transform(v, Matrix.Transpose(m));
+                v.X = (v.X / v.Z / 640 * 2 - 1) * scale.X;
+                v.Y = (v.Y / v.Z / 480 * 2 - 1) * scale.Y;
                 v.X = (v.X + 1f)/2f * width;
                 v.Y = (v.Y + 1f)/2f * height;
                 P.Transform((int)Math.Round(v.X), (int)Math.Round(v.Y));
@@ -291,6 +309,8 @@ namespace KinectScan
         GraphicsDevice XDevice;
         SpriteBatch XSprite;
         public Probe SelectedProbe { get; private set; }
+        private List<DateTime> Log;
+        public bool Logging { get; private set; }
 
         public ProbeCollection(ListView listView)
         {
@@ -298,6 +318,46 @@ namespace KinectScan
             LV = listView;
             LV.ItemSelectionChanged += new ListViewItemSelectionChangedEventHandler(LV_ItemSelectionChanged);
             SelectedProbe = null;
+            Log = new List<DateTime>();
+        }
+
+        public void StartLogging()
+        {
+            foreach (Probe P in Probes) P.ClearLog();
+            Logging = true;
+        }
+
+        public void StopLogging()
+        {
+            Logging = false;
+        }
+
+        public void SaveLog(string path)
+        {
+            StreamWriter SW = new StreamWriter(path, false);
+            SW.Write("Number;Time");
+            for (int i = 0; i < Probes.Count; i++)
+            {
+                SW.Write(";X{0};Y{0};Z{0}", i);
+            }
+            SW.WriteLine();
+            for (int i = 0; i < Log.Count;i++ )
+            {
+                SW.Write(i.ToString()+";"+Log[i].ToString("o"));
+                foreach (Probe P in Probes)
+                {
+                    if (P.Log.ContainsKey(i + 1))
+                    {
+                        Vector3 v = P.Log[i + 1];
+                        SW.Write(";{0};{1};{2}", v.X, v.Y, v.Z);
+                    }
+                    else SW.Write(";;;");
+                }
+                SW.WriteLine();
+            }
+            SW.Close();
+            SW.Dispose();
+            foreach (Probe P in Probes) P.ClearLog();
         }
 
         void LV_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
@@ -376,6 +436,7 @@ namespace KinectScan
             Vector4[] pos = new Vector4[1];
             Probe P;
             int w=source.Width,h=source.Height;
+            if (Logging) Log.Add(DateTime.Now);
             for (int i = 0; i < Probes.Count; i++)
             {
                 P = Probes[i];
@@ -393,6 +454,7 @@ namespace KinectScan
                 {
                     P.Update(float.NaN, float.NaN, float.NaN, -1);
                 }
+                if (Logging) P.LogPosition(Log.Count);
             }
         }
     }
@@ -411,6 +473,7 @@ namespace KinectScan
         public float X0 { get; private set; }
         public float Y0 { get; private set; }
         public float Z0 { get; private set; }
+        public Dictionary<int, Vector3> Log;
         private string[] StringData;
         private bool selected;
         public bool Selected 
@@ -456,6 +519,17 @@ namespace KinectScan
             LVI.Tag = this;
             Move(x, y);
             Selected = false;
+            Log = new Dictionary<int, Vector3>();
+        }
+
+        public void ClearLog()
+        {
+            Log.Clear();
+        }
+
+        public void LogPosition(int i)
+        {
+            Log.Add(i, new Vector3(X, Y, Z));
         }
 
         public void Move(int x, int y)

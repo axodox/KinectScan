@@ -191,14 +191,14 @@ namespace KinectScan
         SpriteFont XFont;
         XPlane Plane, MiniPlane;
         RasterizerState WireFrame;
-        RenderTarget2D DepthTarget, DepthNormals, VideoOutput, DepthOutput, SecondaryTarget;
+        RenderTarget2D DepthTarget, /*DepthNormals,*/ VideoOutput, DepthOutput, SecondaryTarget;
         Texture2D DepthCorrectionTexture, VideoCorrectionTexture, ScaleTexture, LogoTexture;
         Vector2 LogoPosition, LogoOrigin;
         const float LogoSpacing = 0.8f;
         float LogoScale;
         Matrix DepthIntrinsics, DepthInverseIntrinsics, DepthInverseExtrinsics, VideoIntrinsics, VideoExtrinsics, DepthToColorTransfrom;
         BlendState BSAdd;
-        EffectParameter EPDepthTextureA, EPDepthTextureB, EFDepthTexture, EFDepthNormalTexture, EFVideoTexture, EFMove, EFScale, EPDepthScale, EPDepthDisp, EFReprojectionTransform, EFStereoFocus;
+        EffectParameter EPDepthTextureA, EPDepthTextureB, EFDepthTexture, EFDepthNormalTexture, EFVideoTexture, EFMove, EFScale, EPDepthScale, EPDepthDisp, EFReprojectionTransform, EFStereoFocus, EFWorldTransform, EFNormalTransform, EFModelTransform, EFModelScale;
         EffectTechnique SimpleTechnique, DepthAddTechnique, DepthAntiDistortAndAverageTechnique, DepthAverageTechnique, DepthHGaussTechnique, DepthVGaussTechnique, PositionOutputShadingTechnique, DepthNormalShadingTechnique, DepthReprojectionTechnique, AnaglyphDepthReprojectionTechnique, DepthDisplayTechnique, ModelReprojectionTechnique, ReprojectionOutputTechnique;
 
         public enum StereoModes { LeftRight, UpDown, Anaglyph };
@@ -355,14 +355,14 @@ namespace KinectScan
                                     OnIOEvent(this, VideoOutput.Screenshot(path + "_tex.png"));
                                 }
 
-                                if (ShadingMode == 2)
-                                {
-                                    XDevice.SetRenderTarget(DepthNormals);
-                                    EFDepthTexture.SetValue(tick ? DepthVectorTarget1 : DepthVectorTarget2);
-                                    XEffect.CurrentTechnique = DepthNormalShadingTechnique;
-                                    XEffect.CurrentTechnique.Passes[0].Apply();
-                                    MiniPlane.Draw();
-                                }
+                                //if (ShadingMode == 2)
+                                //{
+                                //    XDevice.SetRenderTarget(DepthNormals);
+                                //    EFDepthTexture.SetValue(tick ? DepthVectorTarget1 : DepthVectorTarget2);
+                                //    XEffect.CurrentTechnique = DepthNormalShadingTechnique;
+                                //    XEffect.CurrentTechnique.Passes[0].Apply();
+                                //    MiniPlane.Draw();
+                                //}
 
                                 ProcessProbes(tick ? DepthVectorTarget1 : DepthVectorTarget2);
 
@@ -378,7 +378,7 @@ namespace KinectScan
                                 XEffect.CurrentTechnique = DepthReprojectionTechnique;
                                                                 
                                 EFDepthTexture.SetValue(tick ? DepthVectorTarget1 : DepthVectorTarget2);
-                                EFDepthNormalTexture.SetValue(DepthNormals);
+                                //EFDepthNormalTexture.SetValue(DepthNormals);
                                 EFVideoTexture.SetValue(KS.VideoTexture);
                                 if (StereoReady)
                                 {
@@ -646,6 +646,10 @@ namespace KinectScan
             EFReprojectionTransform = XEffect.Parameters["ReprojectionTransform"];
             EFStereoFocus = XEffect.Parameters["StereoFocus"];
             EPAnaglyphColor = XEffect.Parameters["AnaglyphColor"];
+            EFWorldTransform = XEffect.Parameters["WorldTransform"];
+            EFNormalTransform = XEffect.Parameters["NormalTransform"];
+            EFModelTransform = XEffect.Parameters["ReprojectionModelTransform"];
+            EFModelScale = XEffect.Parameters["ModelScale"];
 
             ModelReprojectionTechnique = XEffect.Techniques["ModelReprojection"];
             DepthAddTechnique = XEffect.Techniques["DepthAdd"];
@@ -694,7 +698,7 @@ namespace KinectScan
             DepthCorrectionTexture.SetData<float>(DepthCorrection);
             DepthVectorTarget1 = new RenderTarget2D(XDevice, KS.DepthWidth, KS.DepthHeight, false, SurfaceFormat.Vector2, DepthFormat.None, 0, RenderTargetUsage.PreserveContents);
             DepthVectorTarget2 = new RenderTarget2D(XDevice, KS.DepthWidth, KS.DepthHeight, false, SurfaceFormat.Vector2, DepthFormat.None, 0, RenderTargetUsage.PreserveContents);
-            DepthNormals = new RenderTarget2D(XDevice, KS.DepthWidth, KS.DepthHeight, false, SurfaceFormat.Vector4, DepthFormat.None);            
+            //DepthNormals = new RenderTarget2D(XDevice, KS.DepthWidth, KS.DepthHeight, false, SurfaceFormat.Vector4, DepthFormat.None);            
             DepthOutput = new RenderTarget2D(XDevice, KS.DepthWidth, KS.DepthHeight, false, SurfaceFormat.Vector4, DepthFormat.None);
 
             XEffect.Parameters["NaN"].SetValue(float.NaN);
@@ -750,11 +754,11 @@ namespace KinectScan
                 DepthVectorTarget2.Dispose();
                 DepthVectorTarget2 = null;
             }
-            if (DepthNormals != null)
-            {
-                DepthNormals.Dispose();
-                DepthNormals = null;
-            }
+            //if (DepthNormals != null)
+            //{
+            //    DepthNormals.Dispose();
+            //    DepthNormals = null;
+            //}
             if (DepthOutput!=null)
             {
                 DepthOutput.Dispose();
@@ -890,13 +894,16 @@ namespace KinectScan
                     Matrix.CreateRotationX(ReprojectionRotationX / 180 * MathHelper.Pi) *
                     Matrix.CreateRotationY(ReprojectionRotationY / 180 * MathHelper.Pi) *
                     Matrix.CreateRotationZ(-Rotation * MathHelper.PiOver2);
+                Matrix world = Ti * R * T * T2;
                 Matrix reproj = DepthIntrinsics * Ti * R * T* T2 * DepthInverseIntrinsics;
                 Matrix reprojModel = DepthIntrinsics * Ti * R * T;
                 LeftReprojection = DepthIntrinsics * Ti * R * T * T2 * Matrix.Transpose(Matrix.CreateTranslation(CameraOffset, 0f, 0f)) * DepthInverseIntrinsics;
                 RightReprojection = DepthIntrinsics * Ti * R * T * T2 * Matrix.Transpose(Matrix.CreateTranslation(-CameraOffset, 0f, 0f)) * DepthInverseIntrinsics;
                 StereoFocus = new Vector2(FocusedDepth, 0);
-                XEffect.Parameters["ReprojectionTransform"].SetValue(reproj);
-                XEffect.Parameters["ReprojectionModelTransform"].SetValue(reprojModel);
+                EFReprojectionTransform.SetValue(reproj);
+                EFModelTransform.SetValue(reprojModel);
+                EFWorldTransform.SetValue(world);
+                EFNormalTransform.SetValue(Matrix.Transpose(Matrix.Invert(world)));
                 Vector2 ModelScale;
                 float AspectRatio = (float)XDevice.PresentationParameters.BackBufferWidth / XDevice.PresentationParameters.BackBufferHeight;
                 if (Rotation % 2 == 0)
@@ -925,8 +932,8 @@ namespace KinectScan
                         ModelScale.Y = AspectRatio;
                     }
                 }
-                XEffect.Parameters["ModelScale"].SetValue(ModelScale);
-
+                EFModelScale.SetValue(ModelScale);
+                
                 ReprojectProbes(reprojModel, ModelScale);
                 if (KSC != null) KSC.OnReprojectionChanged(SF.NBReprojectionTranslationX.Value, SF.NBReprojectionTranslationY.Value, SF.NBReprojectionTranslationZ.Value, SF.NBReprojectionRotationX.Value, SF.NBReprojectionRotationY.Value, SF.NBReprojectionRotationZ.Value);
             }

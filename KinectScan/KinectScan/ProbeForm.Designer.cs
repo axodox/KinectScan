@@ -42,6 +42,9 @@
             this.TSBAddProbe = new System.Windows.Forms.ToolStripButton();
             this.TSBMoveProbe = new System.Windows.Forms.ToolStripButton();
             this.TSBRemoveProbe = new System.Windows.Forms.ToolStripButton();
+            this.TSS = new System.Windows.Forms.ToolStripSeparator();
+            this.TSBLog = new System.Windows.Forms.ToolStripButton();
+            this.SFDLog = new System.Windows.Forms.SaveFileDialog();
             this.TSProbes.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,28 +103,46 @@
             this.TSProbes.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TSBAddProbe,
             this.TSBMoveProbe,
-            this.TSBRemoveProbe});
+            this.TSBRemoveProbe,
+            this.TSS,
+            this.TSBLog});
             resources.ApplyResources(this.TSProbes, "TSProbes");
             this.TSProbes.Name = "TSProbes";
             this.TSProbes.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             // 
             // TSBAddProbe
             // 
+            this.TSBAddProbe.Image = global::KinectScan.Properties.Resources.probe16add;
             resources.ApplyResources(this.TSBAddProbe, "TSBAddProbe");
-            this.TSBAddProbe.Image = Properties.Resources.probe16add;
             this.TSBAddProbe.Name = "TSBAddProbe";
             // 
             // TSBMoveProbe
             // 
+            this.TSBMoveProbe.Image = global::KinectScan.Properties.Resources.probe16move;
             resources.ApplyResources(this.TSBMoveProbe, "TSBMoveProbe");
-            this.TSBMoveProbe.Image = Properties.Resources.probe16move;
             this.TSBMoveProbe.Name = "TSBMoveProbe";
             // 
             // TSBRemoveProbe
             // 
+            this.TSBRemoveProbe.Image = global::KinectScan.Properties.Resources.probe16remove;
             resources.ApplyResources(this.TSBRemoveProbe, "TSBRemoveProbe");
-            this.TSBRemoveProbe.Image = Properties.Resources.probe16remove;
             this.TSBRemoveProbe.Name = "TSBRemoveProbe";
+            // 
+            // TSS
+            // 
+            this.TSS.Name = "TSS";
+            resources.ApplyResources(this.TSS, "TSS");
+            // 
+            // TSBLog
+            // 
+            this.TSBLog.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.TSBLog, "TSBLog");
+            this.TSBLog.Name = "TSBLog";
+            // 
+            // SFDLog
+            // 
+            this.SFDLog.DefaultExt = "csv";
+            resources.ApplyResources(this.SFDLog, "SFDLog");
             // 
             // ProbeForm
             // 
@@ -159,5 +180,8 @@
         public System.Windows.Forms.ToolStripButton TSBRemoveProbe;
         public System.Windows.Forms.ToolStripButton TSBMoveProbe;
         public System.Windows.Forms.StatusBar SBStatus;
+        private System.Windows.Forms.ToolStripSeparator TSS;
+        public System.Windows.Forms.ToolStripButton TSBLog;
+        public System.Windows.Forms.SaveFileDialog SFDLog;
     }
 }
