@@ -117,4 +117,127 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="TBSerial.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 27</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="TBSerial.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;TBSerial.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="LHelp.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;BActivate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="BActivate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="&gt;&gt;LHelp.Name" xml:space="preserve">
+    <value>LHelp</value>
+  </data>
+  <data name="&gt;&gt;LMessage.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LMessage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 52</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Enter serial code</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>ActivationForm</value>
+  </data>
+  <data name="LHelp.Text" xml:space="preserve">
+    <value>Enter serial code here: (The activation process requires internet connection!)</value>
+  </data>
+  <data name="&gt;&gt;BActivate.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;TBSerial.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="LHelp.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>433, 111</value>
+  </data>
+  <data name="&gt;&gt;LHelp.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="&gt;&gt;LMessage.Name" xml:space="preserve">
+    <value>LMessage</value>
+  </data>
+  <data name="&gt;&gt;BActivate.Name" xml:space="preserve">
+    <value>BActivate</value>
+  </data>
+  <data name="&gt;&gt;LHelp.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="LHelp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 9</value>
+  </data>
+  <data name="BActivate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>346, 25</value>
+  </data>
+  <data name="BActivate.Text" xml:space="preserve">
+    <value>Activate</value>
+  </data>
+  <data name="TBSerial.Text" xml:space="preserve">
+    <value>93976-54037-65365-12054-31682</value>
+  </data>
+  <data name="&gt;&gt;BActivate.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;LHelp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TBSerial.Name" xml:space="preserve">
+    <value>TBSerial</value>
+  </data>
+  <data name="LMessage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>412, 58</value>
+  </data>
+  <data name="&gt;&gt;TBSerial.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LHelp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>367, 13</value>
+  </data>
+  <data name="TBSerial.Size" type="System.Drawing.Size, System.Drawing">
+    <value>328, 20</value>
+  </data>
+  <data name="&gt;&gt;LMessage.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;LMessage.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="LMessage.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="LMessage.Text" xml:space="preserve">
+    <value>Attention! This default serial code is valid only for 90 days. If you have a serial code you should write that here. If you use the trial code, after 90 days you must request a new serial code. If you already purchased this software you should write to drtamaspeter@gmail.com.</value>
+  </data>
+  <data name="BActivate.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

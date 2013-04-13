@@ -42,12 +42,14 @@ namespace Modules
         {
             public string Name { get; private set; }
             public string FileName { get; private set; }
+            public string ID { get; private set; }
             private ModuleInfo() { }
             public static ModuleInfo FromFile(string pluginFile)
             {
                 try
                 {
                     ModuleInfo MI = new ModuleInfo();
+                    MI.ID = Path.GetFileNameWithoutExtension(pluginFile).ToUpper();
                     string[] infoLines = File.ReadAllLines(pluginFile);
                     string[] infoLine;
                     foreach (string info in infoLines)

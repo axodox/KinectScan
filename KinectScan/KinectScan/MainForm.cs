@@ -13,13 +13,28 @@ using System.Drawing;
 using Kinect = freenect.Kinect;
 using KinectScan.Properties;
 using Modules;
+using System.Reflection;
+using ExcaliburSecurity;
 
 namespace KinectScan
 {
     public partial class MainForm : Form, IServiceProvider, IGraphicsDeviceService
     {
+        private static SecurityClient SC;
+        public static bool IsActivated { get; private set; }
+        public static void Activate()
+        {
+            SC = new SecurityClient();
+#if NODRM
+            Activated = true;           
+#else
+            IsActivated = SC.HasPermissionToRun;
+#endif
+        }
+
         public MainForm(string file = null)
         {
+            if (!IsActivated) throw new Exception("Software is not activated!");
             //new XPlane(2, 2);
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("hu-HU");
             NextMode = KinectScanner.Modes.Depth480;
@@ -127,6 +142,16 @@ namespace KinectScan
                 TSMI.Tag = mode;
                 TSBSave.DropDownItems.Add(TSMI);
             }
+
+            ModeToolStripItems = new ToolStripItem[] { TSBProbes, TSBResetView, TSDDBShading, TSBSequenceSave, TSBRotateLeft, TSBRotateRight };
+            DepthModeToolStripItems = new ToolStripItem[] { TSBProbes, TSBResetView, TSDDBShading, TSBSequenceSave, TSBRotateLeft, TSBRotateRight };
+            ModelModeToolStripItems = new ToolStripItem[] { TSBResetView, TSDDBShading, TSBRotateLeft, TSBRotateRight };
+            DefaultToolStripItems = new ToolStripItem[] { TSBRotateLeft, TSBRotateRight };
+            HideModeControls();
+
+            Assembly us = Assembly.GetExecutingAssembly();
+            Version v = us.GetName().Version;
+            TSLVersion.Text = string.Format("KinectScan {0}.{1}", v.Major, v.Minor);
         }
 
         private void SetMode(KinectScanner.Modes mode)
@@ -1062,6 +1087,7 @@ namespace KinectScan
                         SetStatus(LocalizedStrings.OpeningVideoStream);
                         KS.Start(NextMode);
                         KSC.OnProcessingStarted();
+                        ShowControlsForMode(NextMode);
                         Processing = true;
                         FrameID = 0; 
                         SetStatus(LocalizedStrings.ProcessingStarted);
@@ -1087,8 +1113,9 @@ namespace KinectScan
         {
             if (Processing)
             {
-                KSC.OnProcessingStopping();
+                HideModeControls();
                 SaveButtonsEnabled(false);
+                KSC.OnProcessingStopping();
                 MIStart.Enabled = true;
                 MIStop.Enabled = false;
                 SetStatus(LocalizedStrings.PrepareToShutdown);
@@ -1478,6 +1505,7 @@ namespace KinectScan
                 SendModelToGraphicsMemory();
 
                 SetStatus(LocalizedStrings.ModelLoaded);
+                ShowControlsForMode(Scanner.Modes.Depth480, true);
                 Text = Resources.AppTitle + " - " + Path.GetFileName(path);
             }
             catch
@@ -1547,11 +1575,12 @@ namespace KinectScan
                 ModelTextureStream.Dispose();
                 ModelTextureStream = null;
             }
+            HideModeControls();
         }
 
         private void SaveButtonsEnabled(bool enabled, Scanner.Modes mode = Scanner.Modes.Depth480)
         {
-            TSLLabel.Visible = TSTBLabel.Visible = TSBSave.Visible = TSSMainSeparatorSave.Visible = MISaveTo.Visible = TSBSequenceSave.Visible = enabled;
+            TSLLabel.Visible = TSTBLabel.Visible = TSBSave.Visible = TSSMainSeparatorSave.Visible = MISaveTo.Visible = enabled;
             if (!enabled) SetSequenceMode(false);
 
             if (enabled)
@@ -1593,6 +1622,34 @@ namespace KinectScan
                     TSI.Visible = modes.HasFlag((SaveModes)TSI.Tag);
                 }
             }
+        }
+
+        ToolStripItem[] ModeToolStripItems, DepthModeToolStripItems, ModelModeToolStripItems, DefaultToolStripItems;
+
+        private void ShowControlsForMode(KinectScanner.Modes mode, bool modelMode=false)
+        {
+            TSLVersion.Visible = false;
+            foreach (ToolStripItem item in ModeToolStripItems) item.Visible = false;
+            ToolStripItem[] modeToolStripItems;
+            if (modelMode)
+                modeToolStripItems = ModelModeToolStripItems;
+            else
+                switch (mode)
+                {
+                    case Scanner.Modes.Depth480:
+                        modeToolStripItems = DepthModeToolStripItems;
+                        break;
+                    default:
+                        modeToolStripItems = DefaultToolStripItems;
+                        break;
+                }
+            foreach (ToolStripItem item in modeToolStripItems) item.Visible = true;
+        }
+
+        private void HideModeControls()
+        {
+            foreach (ToolStripItem item in ModeToolStripItems) item.Visible = false;
+            TSLVersion.Visible = true;
         }
 
         private void SendModelToGraphicsMemory()

@@ -117,5 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="BActivate.Text" xml:space="preserve">
+    <value>Aktiválás</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="LMessage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 51</value>
+  </data>
+  <data name="LMessage.Text" xml:space="preserve">
+    <value>Figyelem! Ez egy időkorlátos sorozatszám, amely csak 90 napig használható. Amennyiben van már sorozatszáma, azt adja meg itt. Ha az időkorlátos kulcsot használja, 90 nap után meg kell adnia egy rendes kódot. Ha már megvásárolta a szoftvert kérjük írjon a drtamaspeter@gmail.com címre.</value>
+  </data>
+  <data name="LHelp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>338, 13</value>
+  </data>
+  <data name="LHelp.Text" xml:space="preserve">
+    <value>Az aktivációs kulcsot írja be ide: (Az aktivációhoz internet szükséges!)</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>433, 114</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Adja meg az aktiváló kulcsot</value>
+  </data>
 </root>

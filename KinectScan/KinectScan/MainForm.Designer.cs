@@ -52,10 +52,6 @@ namespace KinectScan
             this.MITiltDown = new System.Windows.Forms.MenuItem();
             this.MIDevicesSeparator2 = new System.Windows.Forms.MenuItem();
             this.MIVirtualDevice = new System.Windows.Forms.MenuItem();
-            this.MIView = new System.Windows.Forms.MenuItem();
-            this.MIRotateRight = new System.Windows.Forms.MenuItem();
-            this.MIRotateLeft = new System.Windows.Forms.MenuItem();
-            this.MIResetView = new System.Windows.Forms.MenuItem();
             this.MISettings = new System.Windows.Forms.MenuItem();
             this.MIModules = new System.Windows.Forms.MenuItem();
             this.SBStatus = new System.Windows.Forms.StatusBar();
@@ -76,6 +72,7 @@ namespace KinectScan
             this.TSTBLabel = new System.Windows.Forms.ToolStripTextBox();
             this.TSBSave = new System.Windows.Forms.ToolStripSplitButton();
             this.TSBSequenceSave = new System.Windows.Forms.ToolStripButton();
+            this.TSLVersion = new System.Windows.Forms.ToolStripLabel();
             this.XPanel = new System.Windows.Forms.Panel();
             this.TSSequence = new System.Windows.Forms.ToolStrip();
             this.TSLSequenceLabel = new System.Windows.Forms.ToolStripLabel();
@@ -102,7 +99,6 @@ namespace KinectScan
             this.MainMenu.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.MIFile,
             this.MIDevices,
-            this.MIView,
             this.MISettings,
             this.MIModules});
             // 
@@ -241,42 +237,15 @@ namespace KinectScan
             resources.ApplyResources(this.MIVirtualDevice, "MIVirtualDevice");
             this.MIVirtualDevice.Click += new System.EventHandler(this.TSMIDevice_Click);
             // 
-            // MIView
-            // 
-            this.MIView.Index = 2;
-            this.MIView.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.MIRotateRight,
-            this.MIRotateLeft,
-            this.MIResetView});
-            resources.ApplyResources(this.MIView, "MIView");
-            // 
-            // MIRotateRight
-            // 
-            this.MIRotateRight.Index = 0;
-            resources.ApplyResources(this.MIRotateRight, "MIRotateRight");
-            this.MIRotateRight.Click += new System.EventHandler(this.MIRotateRight_Click);
-            // 
-            // MIRotateLeft
-            // 
-            this.MIRotateLeft.Index = 1;
-            resources.ApplyResources(this.MIRotateLeft, "MIRotateLeft");
-            this.MIRotateLeft.Click += new System.EventHandler(this.MIRotateLeft_Click);
-            // 
-            // MIResetView
-            // 
-            this.MIResetView.Index = 2;
-            resources.ApplyResources(this.MIResetView, "MIResetView");
-            this.MIResetView.Click += new System.EventHandler(this.MIResetView_Click);
-            // 
             // MISettings
             // 
-            this.MISettings.Index = 3;
+            this.MISettings.Index = 2;
             resources.ApplyResources(this.MISettings, "MISettings");
             this.MISettings.Click += new System.EventHandler(this.MISettings_Click);
             // 
             // MIModules
             // 
-            this.MIModules.Index = 4;
+            this.MIModules.Index = 3;
             resources.ApplyResources(this.MIModules, "MIModules");
             // 
             // SBStatus
@@ -304,7 +273,8 @@ namespace KinectScan
             this.TSLLabel,
             this.TSTBLabel,
             this.TSBSave,
-            this.TSBSequenceSave});
+            this.TSBSequenceSave,
+            this.TSLVersion});
             resources.ApplyResources(this.TSMain, "TSMain");
             this.TSMain.Name = "TSMain";
             this.TSMain.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -413,6 +383,11 @@ namespace KinectScan
             resources.ApplyResources(this.TSBSequenceSave, "TSBSequenceSave");
             this.TSBSequenceSave.Name = "TSBSequenceSave";
             this.TSBSequenceSave.Click += new System.EventHandler(this.TSBSequenceSave_Click);
+            // 
+            // TSLVersion
+            // 
+            this.TSLVersion.Name = "TSLVersion";
+            resources.ApplyResources(this.TSLVersion, "TSLVersion");
             // 
             // XPanel
             // 
@@ -562,7 +537,6 @@ namespace KinectScan
         private System.Windows.Forms.MenuItem MITiltUp;
         private System.Windows.Forms.MenuItem MITiltDown;
         private System.Windows.Forms.MenuItem MISettings;
-        private System.Windows.Forms.MenuItem MIRotateRight;
         private System.Windows.Forms.ToolStrip TSMain;
         private System.Windows.Forms.MenuItem MIDevices;
         private System.Windows.Forms.MenuItem MIStart;
@@ -574,13 +548,10 @@ namespace KinectScan
         private System.Windows.Forms.MenuItem MIDevicesRefresh;
         private System.Windows.Forms.MenuItem MIFile;
         private System.Windows.Forms.MenuItem MIDevicesSeparator2;
-        private System.Windows.Forms.MenuItem MIView;
-        private System.Windows.Forms.MenuItem MIRotateLeft;
         private System.Windows.Forms.ToolStripButton TSBRotateLeft;
         private System.Windows.Forms.ToolStripButton TSBRotateRight;
         private System.Windows.Forms.MenuItem MIWorkingDirectory;
         private System.Windows.Forms.ToolStripButton TSBResetView;
-        private System.Windows.Forms.MenuItem MIResetView;
         private System.Windows.Forms.MenuItem MIFileSeparator;
         private System.Windows.Forms.MenuItem MIOpenSavedModel;
         private System.Windows.Forms.ToolStripSeparator TSSMainSeparator;
@@ -616,6 +587,7 @@ namespace KinectScan
         private System.Windows.Forms.MenuItem MICalibration;
         private System.Windows.Forms.NotifyIcon NotifyIcon;
         private System.Windows.Forms.MenuItem MIModules;
+        private System.Windows.Forms.ToolStripLabel TSLVersion;
     }
 }
 

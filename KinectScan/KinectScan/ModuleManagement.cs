@@ -37,16 +37,18 @@ namespace KinectScan
             KSC.ChangeUIMode += KSC_ChangeUIMode;
             KSC.MessageReceived += KSC_MessageReceived;
             MM = new ModuleManager(KSC);
-            MM.LoadAvailableModules();
-            MIModules.Enabled = MM.AvailableModules.Count > 0;
+            MM.LoadAvailableModules();            
             foreach (ModuleManager.ModuleInfo module in MM.AvailableModules)
             {
-                MenuItem MIModule = new MenuItem(module.Name);
-                MIModule.Tag = module;
-                MIModule.Click += MIModule_Click;
-                MIModules.MenuItems.Add(MIModule);
+                if (SC.IsModuleActivated(module.ID))
+                {
+                    MenuItem MIModule = new MenuItem(module.Name);
+                    MIModule.Tag = module;
+                    MIModule.Click += MIModule_Click;
+                    MIModules.MenuItems.Add(MIModule);
+                }
             }
-            
+            MIModules.Visible = MIModules.MenuItems.Count > 0;
         }
 
         void MIModule_Click(object sender, EventArgs e)

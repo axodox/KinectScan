@@ -126,7 +126,7 @@
     </ProjectReference>
     <ProjectReference Include="..\RotatingScannerContent\RotatingScannerContent.contentproj">
       <Project>{CA6016EE-F781-4BB6-A976-77AA10B48B87}</Project>
-      <Name>RotatingScannerContent</Name>
+      <Name>RotatingScannerContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>
     </ProjectReference>
     <ProjectReference Include="..\Turntables\Turntables.csproj">
@@ -180,10 +180,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Notes.txt" />
-    <None Include="RotatingScanner.plugin">
+    <Content Include="RotatingScanner.plugin">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
     <None Include="Resources\settingsfile16.png" />
     <None Include="Resources\resetview16.png" />
     <None Include="Resources\buildmodel16.png" />

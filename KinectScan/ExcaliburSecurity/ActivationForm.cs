@@ -11,9 +11,24 @@ namespace ExcaliburSecurity
 {
     public partial class ActivationForm : Form
     {
-        public ActivationForm()
+        private SecurityClient SC;
+        public ActivationForm(SecurityClient securityClient)
         {
             InitializeComponent();
+            SC = securityClient;
+            BActivate.Click += BActivate_Click;
+        }
+
+        void BActivate_Click(object sender, EventArgs e)
+        {
+            if (SC.Activate(TBSerial.Text))
+            {
+                Close();
+            }
+            else
+            {
+                MessageBox.Show(LocalizedResources.ActivationUnsuccessful);
+            }
         }
     }
 }

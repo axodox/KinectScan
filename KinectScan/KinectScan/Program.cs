@@ -16,19 +16,10 @@ namespace KinectScan
         [STAThread]
         static void Main()
         {
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            SecurityClient SC = new SecurityClient();
-            if (SC.PermissionToRun)
-            {
-                string path = null;
-                if (AppDomain.CurrentDomain.SetupInformation.ActivationArguments != null && AppDomain.CurrentDomain.SetupInformation.ActivationArguments.ActivationData != null)
-                {
-                    path = System.Web.HttpUtility.UrlDecode(AppDomain.CurrentDomain.SetupInformation.ActivationArguments.ActivationData[0]).Substring(8);
-                }
-                Application.Run(new MainForm(path));
-            }
+            MainForm.Activate();
+            if (MainForm.IsActivated) Application.Run(new MainForm());
         }
     }
 }
