@@ -54,6 +54,7 @@
             this.TSSL = new System.Windows.Forms.ToolStripStatusLabel();
             this.TSPB = new System.Windows.Forms.ToolStripProgressBar();
             this.SaveDialog = new System.Windows.Forms.SaveFileDialog();
+            this.XPanel = new System.Windows.Forms.Panel();
             this.SS.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -218,14 +219,21 @@
             this.SaveDialog.DefaultExt = "stl";
             resources.ApplyResources(this.SaveDialog, "SaveDialog");
             // 
+            // XPanel
+            // 
+            resources.ApplyResources(this.XPanel, "XPanel");
+            this.XPanel.Name = "XPanel";
+            // 
             // RotationScannerForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.XPanel);
             this.Controls.Add(this.SS);
             this.Menu = this.MM;
             this.Name = "RotationScannerForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RotationScannerForm_FormClosing);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RotationScannerForm_KeyDown);
             this.SS.ResumeLayout(false);
             this.SS.PerformLayout();
             this.ResumeLayout(false);
@@ -259,5 +267,6 @@
         private System.Windows.Forms.MenuItem MIViewRightLeg;
         private System.Windows.Forms.MenuItem MIViewBothLegs;
         private System.Windows.Forms.MenuItem MISVView1;
+        private System.Windows.Forms.Panel XPanel;
     }
 }

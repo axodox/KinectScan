@@ -211,10 +211,10 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="SBStatus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 315</value>
+    <value>0, 505</value>
   </data>
   <data name="SBStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>624, 22</value>
+    <value>640, 22</value>
   </data>
   <data name="SBStatus.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -405,7 +405,7 @@
     <value>0, 0</value>
   </data>
   <data name="TSMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>624, 25</value>
+    <value>640, 25</value>
   </data>
   <data name="TSMain.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -429,7 +429,7 @@
     <value>0, 25</value>
   </data>
   <data name="XPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>624, 290</value>
+    <value>640, 480</value>
   </data>
   <data name="XPanel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1079,7 +1079,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>624, 337</value>
+    <value>640, 527</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

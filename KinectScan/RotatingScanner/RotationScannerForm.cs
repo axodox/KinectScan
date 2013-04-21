@@ -17,6 +17,7 @@ namespace KinectScan
         TurntableSettingsForm SF;
         Modeller Modeller;
         MenuItem MISelectedView;
+        Timer TScan;
 
         public RotationScannerForm(KinectScanContext context)
         {
@@ -25,7 +26,7 @@ namespace KinectScan
 
             //Modeller
             Modeller = new ExCoreModeller(Context);
-            Modeller.CreateDevice(this);
+            Modeller.CreateDevice(XPanel);
             Modeller.DebugLoad();
 
             //GUI
@@ -78,6 +79,18 @@ namespace KinectScan
 
             MIViewLegs.MenuItems[Modeller.VisualizedLeg].Checked = true;
 
+            XPanel.KeyDown += (object o, KeyEventArgs e) => {
+                switch (e.KeyCode)
+                {
+                    case Keys.Space:
+                        MIScan_Click(this, null);
+                        break;
+                    case Keys.Tab:
+                        TScan.Start();
+                        break;
+                }
+            };
+
             //Settings
             SF = new TurntableSettingsForm();
             SF.LoadSettings();
@@ -96,18 +109,24 @@ namespace KinectScan
                     }
                 };
             SetState(ScanningStates.None);
-            Context.ScannerCreated += (object S, EventArgs E) =>
-                {
-                    Context.Scanner.RawFrameIn += (object sender, Scanner.RawFrameEventArgs e) =>
-                    {
-                        if (e.FrameType == Scanner.FrameTypes.Depth && ScanningState == ScanningStates.Scanning)
-                        {
-                            Modeller.LoadDepth(e.Data, -(float)Turntable.PositionInRadians);
-                        }
-                    };
-                };
+            Context.ScannerCreated += Context_ScannerCreated;
+            if (Context.Scanner != null) Context_ScannerCreated(this, null);
             Turntable.DeviceConnected += Turntable_DeviceConnected;
             Turntable.DeviceDisconnected += Turntable_DeviceDisconnected;
+            TScan = new Timer();
+            TScan.Interval = 20000;
+            TScan.Tick += (object sender, EventArgs e) => { MIScan_Click(this, null); TScan.Stop(); };
+        }
+
+        void Context_ScannerCreated(object s, EventArgs e2)
+        {
+            Context.Scanner.RawFrameIn += (object sender, Scanner.RawFrameEventArgs e) =>
+            {
+                if (e.FrameType == Scanner.FrameTypes.Depth && ScanningState == ScanningStates.Scanning)
+                {
+                    Modeller.LoadDepth(e.Data, -(float)Turntable.PositionInRadians);
+                }
+            };
         }
 
         void Turntable_DeviceDisconnected(object sender, EventArgs e)
@@ -150,7 +169,7 @@ namespace KinectScan
 
         private void MIScan_Click(object sender, EventArgs e)
         {
-            if (Context.Scanner == null)
+            //if (Context.Scanner == null)
                 Context.InitiateKinectDevice(Scanner.Modes.Depth480);
             if (Context.Scanner == null)
                 MessageBox.Show(LocalizedResources.DeviceNotFound, LocalizedResources.TurntableTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -281,6 +300,11 @@ namespace KinectScan
             MIViewLegs.MenuItems[Modeller.VisualizedLeg].Checked = false;
             Modeller.VisualizedLeg = (int)MI.Tag;
             MIViewLegs.MenuItems[Modeller.VisualizedLeg].Checked = true;
+        }
+
+        private void RotationScannerForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            XPanel.Focus();
         }
     }
 }

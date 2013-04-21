@@ -138,7 +138,8 @@ sampler DepthSamplerB = sampler_state
 sampler MainSampler = sampler_state
 {
 	magfilter = POINT; minfilter = POINT; mipfilter=POINT;
-	Texture = <MainTexture>;	
+	Texture = <MainTexture>;
+    AddressV = Clamp;
 };
 //Functions--------------------------------------------------------------------
 float ToDepth(float x)

@@ -120,6 +120,9 @@
   <metadata name="MM.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="MIFile.Text" xml:space="preserve">
+    <value>File</value>
+  </data>
   <data name="MINewProject.Text" xml:space="preserve">
     <value>New project...</value>
   </data>
@@ -144,9 +147,6 @@
   <data name="MIClose.Text" xml:space="preserve">
     <value>Close</value>
   </data>
-  <data name="MIFile.Text" xml:space="preserve">
-    <value>File</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="MIScan.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -157,6 +157,12 @@
   <data name="MIStop.Text" xml:space="preserve">
     <value>Stop</value>
   </data>
+  <data name="MIView.Text" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="MIViewLegs.Text" xml:space="preserve">
+    <value>Legs</value>
+  </data>
   <data name="MIViewLeftLeg.Text" xml:space="preserve">
     <value>Left</value>
   </data>
@@ -166,14 +172,8 @@
   <data name="MIViewBothLegs.Text" xml:space="preserve">
     <value>Both</value>
   </data>
-  <data name="MIViewLegs.Text" xml:space="preserve">
-    <value>Legs</value>
-  </data>
   <data name="MISVView1.Text" xml:space="preserve">
     <value>-</value>
-  </data>
-  <data name="MIView.Text" xml:space="preserve">
-    <value>View</value>
   </data>
   <data name="MICalibration.Text" xml:space="preserve">
     <value>Calibration</value>
@@ -185,20 +185,11 @@
     <value>91, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="TSSL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 17</value>
-  </data>
-  <data name="TSSL.Text" xml:space="preserve">
-    <value>Ready.</value>
-  </data>
-  <data name="TSPB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 16</value>
-  </data>
   <data name="SS.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 411</value>
+    <value>0, 480</value>
   </data>
   <data name="SS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>882, 22</value>
+    <value>640, 22</value>
   </data>
   <data name="SS.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -216,7 +207,16 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;SS.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
+  </data>
+  <data name="TSSL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 17</value>
+  </data>
+  <data name="TSSL.Text" xml:space="preserve">
+    <value>Ready.</value>
+  </data>
+  <data name="TSPB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 16</value>
   </data>
   <metadata name="SaveDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>156, 17</value>
@@ -227,6 +227,31 @@
   <data name="SaveDialog.Title" xml:space="preserve">
     <value>Save model</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="XPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="XPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="XPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>640, 480</value>
+  </data>
+  <data name="XPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;XPanel.Name" xml:space="preserve">
+    <value>XPanel</value>
+  </data>
+  <data name="&gt;&gt;XPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;XPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;XPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -234,7 +259,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>882, 433</value>
+    <value>640, 502</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Turntable scanner</value>

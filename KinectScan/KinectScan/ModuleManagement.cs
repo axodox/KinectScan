@@ -68,10 +68,13 @@ namespace KinectScan
 
         void KSC_StartKinectDevice(object sender, KinectScanContext.KinectEventArgs e)
         {
-            Stop();
-            SetMode(e.Mode);
-            if (e.Id != -1) SetActiveDevice(e.Id);
-            Start();
+            if (KS == null || KS.Mode != e.Mode || (e.Id != -1 && SelectedKinectIndex != e.Id))
+            {
+                Stop();
+                SetMode(e.Mode);
+                if (e.Id != -1) SetActiveDevice(e.Id);
+                Start();
+            }
         }
 
         void KSC_StartVirtualDevice(object sender, EventArgs e)

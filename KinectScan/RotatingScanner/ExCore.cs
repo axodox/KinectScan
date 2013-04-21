@@ -35,7 +35,7 @@ namespace KinectScan
 
         const float AngleStep = MathHelper.Pi / 36;
         const float DistanceStep = 0.01f;
-        private float HorizantalAngle = 0f, VerticalAngle = 0f, Distance = 0.3f;
+        private float ManualHorizantalAngle = 0f, ManualVerticalAngle = 0f, HorizantalAngle = 0f, VerticalAngle = 0f, Distance = 0.3f;
         void control_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.KeyCode)
@@ -47,10 +47,10 @@ namespace KinectScan
                     if (VerticalAngle - AngleStep > -MathHelper.PiOver2) VerticalAngle -= AngleStep;
                     break;
                 case Keys.Right:
-                    HorizantalAngle += AngleStep;
+                    ManualHorizantalAngle += AngleStep;
                     break;
                 case Keys.Left:
-                    HorizantalAngle -= AngleStep;
+                    ManualHorizantalAngle -= AngleStep;
                     break;
                 case Keys.NumPad1:
                     Distance += DistanceStep;
@@ -143,7 +143,7 @@ namespace KinectScan
                     (float)(Math.Cos(HorizantalAngle) * Math.Cos(VerticalAngle)), 
                     (float)(Math.Sin(HorizantalAngle) * Math.Cos(VerticalAngle)), 
                     (float)(Math.Sin(VerticalAngle)));
-            Matrix Projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, XDevice.DisplayMode.AspectRatio, 0.001f, 5);
+            Matrix Projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(20f), XDevice.DisplayMode.AspectRatio, 0.001f, 5);
             Matrix View = Matrix.CreateLookAt(
                 cameraPosition,
                 Vector3.Zero,
@@ -288,6 +288,7 @@ namespace KinectScan
      
         private void VisualizeModel(int leg)
         {
+            HorizantalAngle = ManualHorizantalAngle - mainRotation;
             //Model visualization
             if (ViewMode == Views.Special && SpecialView == SpecialViews.CoreModel &&(VisualizedLeg==2||VisualizedLeg==leg))
             {
@@ -300,7 +301,7 @@ namespace KinectScan
                 MiniPlane.Draw();
 
                 //Gauss-filtering
-                for (int i = 0; i < 0; i++)
+                for (int i = 0; i < GaussIterations; i++)
                 {
                     XDevice.SetRenderTarget(SingleTargetTick ? SingleTargetA : SingleTargetB);
                     DepthSampler.SetValue(SingleTargetTick ? SingleTargetB : SingleTargetA);

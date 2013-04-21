@@ -149,7 +149,7 @@ namespace KinectScan
                     {
                         IsFullScreen = false,
                         DeviceWindowHandle = control.Handle,
-                        PresentationInterval = PresentInterval.Immediate,
+                        PresentationInterval = PresentInterval.One,
                         BackBufferWidth = control.Width,
                         BackBufferHeight = control.Height,
                         DepthStencilFormat = DepthFormat.Depth16,
@@ -494,7 +494,7 @@ namespace KinectScan
                             Visualize(SingleTargetTick ? SingleTargetA : SingleTargetB, SignedDepthVisualizationTechnique, MainViewport);
 
                         //Gauss
-                        for (int i = 0; i < GaussIterations; i++)
+                        for (int i = 0; i < 0; i++)
                         {
                             XDevice.SetRenderTarget(SingleTargetTick ? SingleTargetB : SingleTargetA);
                             DepthSampler.SetValue(SingleTargetTick ? SingleTargetA : SingleTargetB);
